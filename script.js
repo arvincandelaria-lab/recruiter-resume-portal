@@ -1,414 +1,463 @@
+/* =========================================================
+   TARGETED RESUMES CAROUSEL
+   ========================================================= */
+
 document.addEventListener(
-  "DOMContentLoaded",
-  function () {
+    "DOMContentLoaded",
+    () => {
 
 
-    /* =====================================================
-       RESUME CAROUSEL
-       ===================================================== */
+        /* =====================================================
+           ELEMENTS
+           ===================================================== */
 
-    const viewport =
-      document.getElementById(
-        "resumeViewport"
-      );
+        const track =
+            document.getElementById(
+                "resumeTrack"
+            );
 
-    const carousel =
-      document.getElementById(
-        "resumeCarousel"
-      );
+        const viewport =
+            document.getElementById(
+                "resumeViewport"
+            );
 
-    const cards =
-      document.querySelectorAll(
-        ".resume-card"
-      );
+        const slides =
+            Array.from(
+                document.querySelectorAll(
+                    ".resume-slide"
+                )
+            );
 
-    const nextButton =
-      document.querySelector(
-        ".carousel-next"
-      );
+        const nextButton =
+            document.getElementById(
+                "nextResume"
+            );
 
-    const prevButton =
-      document.querySelector(
-        ".carousel-prev"
-      );
+        const prevButton =
+            document.getElementById(
+                "prevResume"
+            );
 
-
-    if (
-      viewport &&
-      carousel &&
-      cards.length > 0
-    ) {
-
-
-      function getCardDistance() {
-
-        const cardWidth =
-          cards[0]
-            .getBoundingClientRect()
-            .width;
-
-        const gap = 22;
-
-        return cardWidth + gap;
-      }
+        const dots =
+            Array.from(
+                document.querySelectorAll(
+                    ".resume-dot"
+                )
+            );
 
 
-      /* ===============================================
-         NEXT
-         =============================================== */
+        /* =====================================================
+           STATE
+           ===================================================== */
 
-      if (nextButton) {
+        let currentIndex = 0;
 
-        nextButton.addEventListener(
-          "click",
-          function () {
-
-            viewport.scrollBy({
-              left:
-                getCardDistance(),
-              behavior:
-                "smooth"
-            });
-
-          }
-        );
-
-      }
+        let isAnimating = false;
 
 
-      /* ===============================================
-         PREVIOUS
-         =============================================== */
+        /* =====================================================
+           GET SLIDE DISTANCE
+           ===================================================== */
 
-      if (prevButton) {
+        function getSlideDistance() {
 
-        prevButton.addEventListener(
-          "click",
-          function () {
-
-            viewport.scrollBy({
-              left:
-                -getCardDistance(),
-              behavior:
-                "smooth"
-            });
-
-          }
-        );
-
-      }
+            if (!slides.length) {
+                return 0;
+            }
 
 
-      /* ===============================================
-         KEYBOARD ACCESSIBILITY
-         =============================================== */
+            const slideWidth =
+                slides[0].getBoundingClientRect().width;
 
-      viewport.addEventListener(
-        "keydown",
-        function (event) {
 
-          if (
-            event.key === "ArrowRight"
-          ) {
+            const trackStyles =
+                window.getComputedStyle(
+                    track
+                );
 
-            viewport.scrollBy({
-              left:
-                getCardDistance(),
-              behavior:
-                "smooth"
-            });
 
-          }
+            const gap =
+                parseFloat(
+                    trackStyles.columnGap
+                ) || 0;
 
-          if (
-            event.key === "ArrowLeft"
-          ) {
 
-            viewport.scrollBy({
-              left:
-                -getCardDistance(),
-              behavior:
-                "smooth"
-            });
-
-          }
-
+            return slideWidth + gap;
         }
-      );
-
-    }
 
 
-    /* =====================================================
-       RESUME REQUEST MODAL
-       ===================================================== */
+        /* =====================================================
+           UPDATE DOTS
+           ===================================================== */
 
-    const modal =
-      document.getElementById(
-        "resumeModal"
-      );
+        function updateDots() {
 
-    const modalTitle =
-      document.getElementById(
-        "modalTitle"
-      );
+            dots.forEach(
+                (dot, index) => {
 
-    const requestedResume =
-      document.getElementById(
-        "requestedResume"
-      );
+                    dot.classList.toggle(
+                        "active",
+                        index === currentIndex
+                    );
 
-    const emailSubject =
-      document.getElementById(
-        "emailSubject"
-      );
-
-    const closeButton =
-      document.querySelector(
-        ".close-modal"
-      );
-
-    const overlay =
-      document.querySelector(
-        ".modal-overlay"
-      );
-
-    const requestButtons =
-      document.querySelectorAll(
-        ".request-btn"
-      );
-
-    const form =
-      document.getElementById(
-        "resumeRequestForm"
-      );
-
-
-    /* =====================================================
-       OPEN MODAL
-       ===================================================== */
-
-    requestButtons.forEach(
-      function (button) {
-
-        button.addEventListener(
-          "click",
-          function () {
-
-            const resumeName =
-              button.getAttribute(
-                "data-resume"
-              );
-
-
-            if (!resumeName) {
-
-              console.error(
-                "Missing data-resume attribute."
-              );
-
-              return;
-            }
-
-
-            /* UPDATE MODAL TITLE */
-
-            modalTitle.textContent =
-              "Request " +
-              resumeName;
-
-
-            /* SAVE SELECTED RESUME */
-
-            requestedResume.value =
-              resumeName;
-
-
-            /* UPDATE EMAIL SUBJECT */
-
-            emailSubject.value =
-              resumeName +
-              " Request";
-
-
-            /* SHOW MODAL */
-
-            modal.classList.add(
-              "active"
+                }
             );
-
-            modal.setAttribute(
-              "aria-hidden",
-              "false"
-            );
+        }
 
 
-            /* STOP BACKGROUND SCROLLING */
+        /* =====================================================
+           UPDATE CAROUSEL
+           ===================================================== */
 
-            document.body.classList.add(
-              "modal-open"
-            );
-
-
-            /* FOCUS NAME FIELD */
-
-            const nameInput =
-              document.getElementById(
-                "name"
-              );
-
-            if (nameInput) {
-
-              setTimeout(
-                function () {
-
-                  nameInput.focus();
-
-                },
-                200
-              );
-
-            }
-
-          }
-        );
-
-      }
-    );
-
-
-    /* =====================================================
-       CLOSE MODAL
-       ===================================================== */
-
-    function closeModal() {
-
-      modal.classList.remove(
-        "active"
-      );
-
-      modal.setAttribute(
-        "aria-hidden",
-        "true"
-      );
-
-      document.body.classList.remove(
-        "modal-open"
-      );
-
-    }
-
-
-    /* CLOSE BUTTON */
-
-    if (closeButton) {
-
-      closeButton.addEventListener(
-        "click",
-        closeModal
-      );
-
-    }
-
-
-    /* CLICK OUTSIDE */
-
-    if (overlay) {
-
-      overlay.addEventListener(
-        "click",
-        closeModal
-      );
-
-    }
-
-
-    /* =====================================================
-       ESCAPE KEY
-       ===================================================== */
-
-    document.addEventListener(
-      "keydown",
-      function (event) {
-
-        if (
-          event.key === "Escape" &&
-          modal.classList.contains(
-            "active"
-          )
+        function updateCarousel(
+            animate = true
         ) {
 
-          closeModal();
+            const distance =
+                getSlideDistance();
+
+
+            if (!animate) {
+
+                track.style.transition =
+                    "none";
+
+            } else {
+
+                track.style.transition =
+                    "transform 650ms cubic-bezier(0.22, 1, 0.36, 1)";
+            }
+
+
+            track.style.transform =
+                `translateX(-${currentIndex * distance}px)`;
+
+
+            updateDots();
+
+
+            if (!animate) {
+
+                requestAnimationFrame(
+                    () => {
+
+                        requestAnimationFrame(
+                            () => {
+
+                                track.style.transition =
+                                    "transform 650ms cubic-bezier(0.22, 1, 0.36, 1)";
+
+                            }
+                        );
+
+                    }
+                );
+            }
 
         }
 
-      }
-    );
+
+        /* =====================================================
+           GO TO SLIDE
+           ===================================================== */
+
+        function goToSlide(index) {
+
+            if (isAnimating) {
+                return;
+            }
 
 
-    /* =====================================================
-       FORM SUBMISSION
-       ===================================================== */
+            if (index < 0) {
 
-    if (form) {
+                index =
+                    slides.length - 1;
 
-      form.addEventListener(
-        "submit",
-        function () {
+            }
 
-          const submitButton =
-            form.querySelector(
-              ".submit-btn"
+
+            if (index >= slides.length) {
+
+                index = 0;
+
+            }
+
+
+            if (index === currentIndex) {
+                return;
+            }
+
+
+            currentIndex = index;
+
+            isAnimating = true;
+
+
+            updateCarousel(true);
+
+
+            setTimeout(
+                () => {
+
+                    isAnimating = false;
+
+                },
+                680
+            );
+
+        }
+
+
+        /* =====================================================
+           NEXT
+           ===================================================== */
+
+        nextButton.addEventListener(
+            "click",
+            () => {
+
+                goToSlide(
+                    currentIndex + 1
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           PREVIOUS
+           ===================================================== */
+
+        prevButton.addEventListener(
+            "click",
+            () => {
+
+                goToSlide(
+                    currentIndex - 1
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           DOT NAVIGATION
+           ===================================================== */
+
+        dots.forEach(
+            (dot) => {
+
+                dot.addEventListener(
+                    "click",
+                    () => {
+
+                        const index =
+                            Number(
+                                dot.dataset.slide
+                            );
+
+
+                        goToSlide(index);
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           KEYBOARD NAVIGATION
+           ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            (event) => {
+
+                if (
+                    event.key === "ArrowRight"
+                ) {
+
+                    goToSlide(
+                        currentIndex + 1
+                    );
+
+                }
+
+
+                if (
+                    event.key === "ArrowLeft"
+                ) {
+
+                    goToSlide(
+                        currentIndex - 1
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           TOUCH / SWIPE
+           ===================================================== */
+
+        let touchStartX = 0;
+
+        let touchEndX = 0;
+
+
+        viewport.addEventListener(
+            "touchstart",
+            (event) => {
+
+                touchStartX =
+                    event.touches[0].clientX;
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        viewport.addEventListener(
+            "touchend",
+            (event) => {
+
+                touchEndX =
+                    event.changedTouches[0].clientX;
+
+
+                const difference =
+                    touchStartX - touchEndX;
+
+
+                const minimumSwipe =
+                    50;
+
+
+                if (
+                    Math.abs(difference)
+                    < minimumSwipe
+                ) {
+
+                    return;
+
+                }
+
+
+                if (
+                    difference > 0
+                ) {
+
+                    goToSlide(
+                        currentIndex + 1
+                    );
+
+                } else {
+
+                    goToSlide(
+                        currentIndex - 1
+                    );
+
+                }
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        /* =====================================================
+           RESIZE
+           ===================================================== */
+
+        let resizeTimer;
+
+
+        window.addEventListener(
+            "resize",
+            () => {
+
+                clearTimeout(
+                    resizeTimer
+                );
+
+
+                resizeTimer =
+                    setTimeout(
+                        () => {
+
+                            updateCarousel(
+                                false
+                            );
+
+                        },
+                        150
+                    );
+
+            }
+        );
+
+
+        /* =====================================================
+           VIEW RESUME BUTTON
+           ===================================================== */
+
+        const viewResumeButtons =
+            document.querySelectorAll(
+                ".view-resume"
             );
 
 
-          if (submitButton) {
+        viewResumeButtons.forEach(
+            (button) => {
 
-            submitButton.disabled =
-              true;
+                button.addEventListener(
+                    "click",
+                    () => {
 
-            submitButton.textContent =
-              "Sending Request...";
+                        const resumeName =
+                            button.dataset.resume;
 
-          }
 
-        }
-      );
+                        console.log(
+                            `Opening ${resumeName}`
+                        );
+
+
+                        /*
+                         * PALITAN ITO NG ACTUAL
+                         * RESUME FILE MO.
+                         *
+                         * Example:
+                         *
+                         * window.open(
+                         *     "resumes/data-analytics.pdf",
+                         *     "_blank"
+                         * );
+                         */
+
+
+                        alert(
+                            `${resumeName} selected.`
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           INITIALIZE
+           ===================================================== */
+
+        updateCarousel(false);
 
     }
-
-
-    /* =====================================================
-       OPTIONAL:
-       HORIZONTAL MOUSE WHEEL SUPPORT
-       ===================================================== */
-
-    if (viewport) {
-
-      viewport.addEventListener(
-        "wheel",
-        function (event) {
-
-          if (
-            Math.abs(event.deltaY) >
-            Math.abs(event.deltaX)
-          ) {
-
-            event.preventDefault();
-
-            viewport.scrollLeft +=
-              event.deltaY;
-
-          }
-
-        },
-        {
-          passive: false
-        }
-      );
-
-    }
-
-
-  }
 );
