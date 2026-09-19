@@ -1,357 +1,62 @@
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+document.addEventListener("DOMContentLoaded", function () {
 
+    /* =====================================================
+       MAIN PRESENTATION SLIDER
+    ===================================================== */
 
-        /* =====================================================
-           RESUME REQUEST MODAL
-           ===================================================== */
+    const slidesTrack =
+        document.querySelector(".slides-track");
 
-        const modal =
-            document.getElementById(
-                "resumeModal"
-            );
+    const slides =
+        document.querySelectorAll(".slide");
 
+    const nextButton =
+        document.querySelector(".slide-next");
 
-        const modalTitle =
-            document.getElementById(
-                "modalTitle"
-            );
+    const prevButton =
+        document.querySelector(".slide-prev");
 
+    const currentSlide =
+        document.getElementById("currentSlide");
 
-        const requestedResume =
-            document.getElementById(
-                "requestedResume"
-            );
+    const navLinks =
+        document.querySelectorAll(".nav-links a");
 
+    const slideLinks =
+        document.querySelectorAll("[data-slide]");
 
-        const emailSubject =
-            document.getElementById(
-                "emailSubject"
-            );
 
+    let currentIndex = 0;
 
-        const closeButton =
-            document.querySelector(
-                ".close-modal"
-            );
+    const totalSlides = slides.length;
 
 
-        const overlay =
-            document.querySelector(
-                ".modal-overlay"
-            );
+    function updateSlide() {
 
+        /*
+            Move the entire presentation horizontally.
+        */
 
-        const requestButtons =
-            document.querySelectorAll(
-                ".request-btn"
-            );
+        slidesTrack.style.transform =
+            `translateX(-${currentIndex * 25}%)`;
 
 
-        const form =
-            document.getElementById(
-                "resumeRequestForm"
-            );
+        /*
+            Update counter
+        */
 
+        currentSlide.textContent =
+            String(currentIndex + 1).padStart(2, "0");
 
 
-        /* =====================================================
-           OPEN RESUME REQUEST MODAL
-           ===================================================== */
+        /*
+            Update URL hash
+        */
 
-        requestButtons.forEach(
-            function (button) {
+        const currentSection =
+            slides[currentIndex].id;
 
-                button.addEventListener(
-                    "click",
-                    function () {
-
-                        const resumeName =
-                            button.getAttribute(
-                                "data-resume"
-                            );
-
-
-                        modalTitle.textContent =
-                            "Request " +
-                            resumeName;
-
-
-                        requestedResume.value =
-                            resumeName;
-
-
-                        emailSubject.value =
-                            resumeName +
-                            " Request";
-
-
-                        modal.classList.add(
-                            "active"
-                        );
-
-
-                        modal.setAttribute(
-                            "aria-hidden",
-                            "false"
-                        );
-
-
-                        document.body.style.overflow =
-                            "hidden";
-
-                    }
-                );
-
-            }
-        );
-
-
-
-        /* =====================================================
-           CLOSE MODAL
-           ===================================================== */
-
-        function closeModal() {
-
-            modal.classList.remove(
-                "active"
-            );
-
-
-            modal.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
-
-            document.body.style.overflow =
-                "hidden";
-        }
-
-
-        closeButton.addEventListener(
-            "click",
-            closeModal
-        );
-
-
-        overlay.addEventListener(
-            "click",
-            closeModal
-        );
-
-
-
-        /* =====================================================
-           ESCAPE KEY
-           ===================================================== */
-
-        document.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (
-                    event.key === "Escape" &&
-                    modal.classList.contains(
-                        "active"
-                    )
-                ) {
-
-                    closeModal();
-
-                }
-
-            }
-        );
-
-
-
-        /* =====================================================
-           FORM SUBMISSION
-           ===================================================== */
-
-        form.addEventListener(
-            "submit",
-            function () {
-
-                const submitButton =
-                    form.querySelector(
-                        ".submit-btn"
-                    );
-
-
-                submitButton.disabled =
-                    true;
-
-
-                submitButton.textContent =
-                    "Sending Request...";
-
-            }
-        );
-
-
-
-        /* =====================================================
-           HORIZONTAL PRESENTATION
-           ===================================================== */
-
-        const slidesTrack =
-            document.querySelector(
-                ".slides-track"
-            );
-
-
-        const slides =
-            document.querySelectorAll(
-                ".slide"
-            );
-
-
-        const nextButton =
-            document.getElementById(
-                "nextSlide"
-            );
-
-
-        const prevButton =
-            document.getElementById(
-                "prevSlide"
-            );
-
-
-        const navLinks =
-            document.querySelectorAll(
-                ".nav-links a"
-            );
-
-
-        const footer =
-            document.querySelector(
-                ".footer"
-            );
-
-
-        let currentSlide =
-            0;
-
-
-
-        /* =====================================================
-           SHOW SLIDE
-           ===================================================== */
-
-        function showSlide(index) {
-
-
-            /* Keep index within range */
-
-            if (index < 0) {
-
-                index = 0;
-
-            }
-
-
-            if (
-                index >= slides.length
-            ) {
-
-                index =
-                    slides.length - 1;
-
-            }
-
-
-            currentSlide =
-                index;
-
-
-
-            /* Move horizontal track */
-
-            slidesTrack.style.transform =
-                `translateX(-${currentSlide * 100}vw)`;
-
-
-
-            /* =================================================
-               PREVIOUS ARROW
-               ================================================= */
-
-            if (
-                currentSlide === 0
-            ) {
-
-                prevButton.classList.add(
-                    "disabled"
-                );
-
-            } else {
-
-                prevButton.classList.remove(
-                    "disabled"
-                );
-
-            }
-
-
-
-            /* =================================================
-               NEXT ARROW
-               ================================================= */
-
-            if (
-                currentSlide ===
-                slides.length - 1
-            ) {
-
-                nextButton.classList.add(
-                    "disabled"
-                );
-
-            } else {
-
-                nextButton.classList.remove(
-                    "disabled"
-                );
-
-            }
-
-
-
-            /* =================================================
-               FOOTER
-               ================================================= */
-
-            if (
-                currentSlide ===
-                slides.length - 1
-            ) {
-
-                footer.classList.add(
-                    "show-footer"
-                );
-
-            } else {
-
-                footer.classList.remove(
-                    "show-footer"
-                );
-
-            }
-
-
-
-            /* =================================================
-               URL HASH
-               ================================================= */
-
-            const currentSection =
-                slides[currentSlide].id;
-
+        if (history.replaceState) {
 
             history.replaceState(
                 null,
@@ -362,379 +67,667 @@ document.addEventListener(
         }
 
 
+        /*
+            Active navigation
+        */
 
-        /* =====================================================
-           NEXT BUTTON
-           ===================================================== */
+        navLinks.forEach(function (link) {
 
-        nextButton.addEventListener(
-            "click",
-            function () {
+            const linkSlide =
+                Number(link.dataset.slide);
 
-                showSlide(
-                    currentSlide + 1
-                );
-
-            }
-        );
-
-
-
-        /* =====================================================
-           PREVIOUS BUTTON
-           ===================================================== */
-
-        prevButton.addEventListener(
-            "click",
-            function () {
-
-                showSlide(
-                    currentSlide - 1
-                );
-
-            }
-        );
-
-
-
-        /* =====================================================
-           KEYBOARD ARROWS
-           ===================================================== */
-
-        document.addEventListener(
-            "keydown",
-            function (event) {
-
-
-                /* Don't change slide while modal is open */
-
-                if (
-                    modal.classList.contains(
-                        "active"
-                    )
-                ) {
-
-                    return;
-
-                }
-
-
-
-                if (
-                    event.key === "ArrowRight"
-                ) {
-
-                    event.preventDefault();
-
-                    showSlide(
-                        currentSlide + 1
-                    );
-
-                }
-
-
-
-                if (
-                    event.key === "ArrowLeft"
-                ) {
-
-                    event.preventDefault();
-
-                    showSlide(
-                        currentSlide - 1
-                    );
-
-                }
-
-            }
-        );
-
-
-
-        /* =====================================================
-           NAVIGATION
-           ===================================================== */
-
-        navLinks.forEach(
-            function (link) {
-
-                link.addEventListener(
-                    "click",
-                    function (event) {
-
-                        event.preventDefault();
-
-
-                        const target =
-                            link.getAttribute(
-                                "href"
-                            );
-
-
-                        let slideIndex =
-                            0;
-
-
-                        if (
-                            target ===
-                            "#home"
-                        ) {
-
-                            slideIndex =
-                                0;
-
-                        }
-
-
-                        else if (
-                            target ===
-                            "#resumes"
-                        ) {
-
-                            slideIndex =
-                                1;
-
-                        }
-
-
-                        else if (
-                            target ===
-                            "#about"
-                        ) {
-
-                            slideIndex =
-                                2;
-
-                        }
-
-
-                        else if (
-                            target ===
-                            "#contact"
-                        ) {
-
-                            slideIndex =
-                                3;
-
-                        }
-
-
-                        showSlide(
-                            slideIndex
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-
-
-        /* =====================================================
-           HERO — VIEW RESUMES
-           ===================================================== */
-
-        const viewResumes =
-            document.querySelector(
-                '.hero a[href="#resumes"]'
+            link.classList.toggle(
+                "active",
+                linkSlide === currentIndex
             );
 
-
-        if (viewResumes) {
-
-            viewResumes.addEventListener(
-                "click",
-                function (event) {
-
-                    event.preventDefault();
-
-
-                    showSlide(1);
-
-                }
-            );
-
-        }
-
-
-
-        /* =====================================================
-           HERO — CONTACT ME
-           ===================================================== */
-
-        const contactMe =
-            document.querySelector(
-                '.hero a[href="#contact"]'
-            );
-
-
-        if (contactMe) {
-
-            contactMe.addEventListener(
-                "click",
-                function (event) {
-
-                    event.preventDefault();
-
-
-                    showSlide(3);
-
-                }
-            );
-
-        }
-
-
-
-        /* =====================================================
-           TOUCH / SWIPE SUPPORT
-           ===================================================== */
-
-        let touchStartX = 0;
-
-        let touchEndX = 0;
-
-
-        document.addEventListener(
-            "touchstart",
-            function (event) {
-
-                if (
-                    modal.classList.contains(
-                        "active"
-                    )
-                ) {
-
-                    return;
-
-                }
-
-
-                touchStartX =
-                    event.changedTouches[0].screenX;
-
-            },
-            {
-                passive: true
-            }
-        );
-
-
-        document.addEventListener(
-            "touchend",
-            function (event) {
-
-                if (
-                    modal.classList.contains(
-                        "active"
-                    )
-                ) {
-
-                    return;
-
-                }
-
-
-                touchEndX =
-                    event.changedTouches[0].screenX;
-
-
-                handleSwipe();
-
-            },
-            {
-                passive: true
-            }
-        );
-
-
-
-        function handleSwipe() {
-
-            const swipeDistance =
-                touchEndX -
-                touchStartX;
-
-
-            /* Swipe left */
-
-            if (
-                swipeDistance < -60
-            ) {
-
-                showSlide(
-                    currentSlide + 1
-                );
-
-            }
-
-
-            /* Swipe right */
-
-            if (
-                swipeDistance > 60
-            ) {
-
-                showSlide(
-                    currentSlide - 1
-                );
-
-            }
-
-        }
-
-
-
-        /* =====================================================
-           LOAD HASHED SLIDE
-           ===================================================== */
-
-        function loadInitialSlide() {
-
-            const hash =
-                window.location.hash;
-
-
-            if (
-                hash === "#resumes"
-            ) {
-
-                showSlide(1);
-
-            }
-
-            else if (
-                hash === "#about"
-            ) {
-
-                showSlide(2);
-
-            }
-
-            else if (
-                hash === "#contact"
-            ) {
-
-                showSlide(3);
-
-            }
-
-            else {
-
-                showSlide(0);
-
-            }
-
-        }
-
-
-
-        /* =====================================================
-           INITIALIZE
-           ===================================================== */
-
-        loadInitialSlide();
+        });
 
     }
-);
+
+
+    function goToSlide(index) {
+
+        if (index < 0) {
+
+            index = totalSlides - 1;
+
+        }
+
+        if (index >= totalSlides) {
+
+            index = 0;
+
+        }
+
+        currentIndex = index;
+
+        updateSlide();
+
+    }
+
+
+    function nextSlide() {
+
+        goToSlide(currentIndex + 1);
+
+    }
+
+
+    function previousSlide() {
+
+        goToSlide(currentIndex - 1);
+
+    }
+
+
+    nextButton.addEventListener(
+        "click",
+        nextSlide
+    );
+
+
+    prevButton.addEventListener(
+        "click",
+        previousSlide
+    );
+
+
+    /* =====================================================
+       NAVIGATION LINKS
+    ===================================================== */
+
+    slideLinks.forEach(function (link) {
+
+        link.addEventListener(
+            "click",
+            function (event) {
+
+                const index =
+                    Number(link.dataset.slide);
+
+                if (!Number.isNaN(index)) {
+
+                    event.preventDefault();
+
+                    goToSlide(index);
+
+                }
+
+            }
+        );
+
+    });
+
+
+    /* =====================================================
+       KEYBOARD CONTROLS
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            /*
+                Do not interfere with typing
+                inside modal form fields.
+            */
+
+            const tag =
+                document.activeElement.tagName;
+
+            if (
+                tag === "INPUT" ||
+                tag === "TEXTAREA"
+            ) {
+
+                return;
+
+            }
+
+
+            if (event.key === "ArrowRight") {
+
+                nextSlide();
+
+            }
+
+
+            if (event.key === "ArrowLeft") {
+
+                previousSlide();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       TOUCH / SWIPE
+    ===================================================== */
+
+    let touchStartX = 0;
+
+    let touchEndX = 0;
+
+
+    document.addEventListener(
+        "touchstart",
+        function (event) {
+
+            touchStartX =
+                event.changedTouches[0].screenX;
+
+        },
+        { passive: true }
+    );
+
+
+    document.addEventListener(
+        "touchend",
+        function (event) {
+
+            touchEndX =
+                event.changedTouches[0].screenX;
+
+            const distance =
+                touchEndX - touchStartX;
+
+
+            if (Math.abs(distance) < 60) {
+
+                return;
+
+            }
+
+
+            if (distance < 0) {
+
+                nextSlide();
+
+            } else {
+
+                previousSlide();
+
+            }
+
+        },
+        { passive: true }
+    );
+
+
+    /* =====================================================
+       MOUSE DRAG
+    ===================================================== */
+
+    let mouseStartX = null;
+
+
+    document.addEventListener(
+        "mousedown",
+        function (event) {
+
+            mouseStartX = event.clientX;
+
+        }
+    );
+
+
+    document.addEventListener(
+        "mouseup",
+        function (event) {
+
+            if (mouseStartX === null) {
+
+                return;
+
+            }
+
+
+            const distance =
+                event.clientX - mouseStartX;
+
+
+            mouseStartX = null;
+
+
+            if (Math.abs(distance) < 80) {
+
+                return;
+
+            }
+
+
+            if (distance < 0) {
+
+                nextSlide();
+
+            } else {
+
+                previousSlide();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       RESUME INNER CAROUSEL
+    ===================================================== */
+
+    const resumeTrack =
+        document.querySelector(".resume-track");
+
+    const resumeCards =
+        document.querySelectorAll(".resume-card");
+
+    const resumeNext =
+        document.querySelector(".resume-next");
+
+    const resumePrev =
+        document.querySelector(".resume-prev");
+
+
+    let resumeIndex = 0;
+
+
+    function getResumeGap() {
+
+        const styles =
+            window.getComputedStyle(
+                resumeTrack
+            );
+
+        return parseFloat(styles.gap) || 20;
+
+    }
+
+
+    function getResumeCardWidth() {
+
+        if (!resumeCards.length) {
+
+            return 0;
+
+        }
+
+        return resumeCards[0].offsetWidth;
+
+    }
+
+
+    function updateResumeCarousel() {
+
+        const cardWidth =
+            getResumeCardWidth();
+
+        const gap =
+            getResumeGap();
+
+
+        resumeTrack.scrollTo({
+
+            left:
+                resumeIndex *
+                (cardWidth + gap),
+
+            behavior: "smooth"
+
+        });
+
+    }
+
+
+    resumeNext.addEventListener(
+        "click",
+        function () {
+
+            if (!resumeCards.length) {
+
+                return;
+
+            }
+
+
+            resumeIndex++;
+
+            if (
+                resumeIndex >=
+                resumeCards.length
+            ) {
+
+                resumeIndex = 0;
+
+            }
+
+
+            updateResumeCarousel();
+
+        }
+    );
+
+
+    resumePrev.addEventListener(
+        "click",
+        function () {
+
+            if (!resumeCards.length) {
+
+                return;
+
+            }
+
+
+            resumeIndex--;
+
+            if (resumeIndex < 0) {
+
+                resumeIndex =
+                    resumeCards.length - 1;
+
+            }
+
+
+            updateResumeCarousel();
+
+        }
+    );
+
+
+    /* =====================================================
+       RESUME CARD MOUSE PARALLAX
+    ===================================================== */
+
+    resumeCards.forEach(function (card) {
+
+        card.addEventListener(
+            "mousemove",
+            function (event) {
+
+                const rect =
+                    card.getBoundingClientRect();
+
+
+                const x =
+                    event.clientX - rect.left;
+
+
+                const y =
+                    event.clientY - rect.top;
+
+
+                const rotateY =
+                    ((x / rect.width) - 0.5) * 5;
+
+
+                const rotateX =
+                    ((y / rect.height) - 0.5) * -5;
+
+
+                card.style.transform =
+                    `perspective(900px)
+                     rotateX(${rotateX}deg)
+                     rotateY(${rotateY}deg)
+                     translateY(-5px)`;
+
+            }
+        );
+
+
+        card.addEventListener(
+            "mouseleave",
+            function () {
+
+                card.style.transform = "";
+
+            }
+        );
+
+    });
+
+
+    /* =====================================================
+       ABOUT PHOTO PARALLAX
+    ===================================================== */
+
+    const aboutSection =
+        document.querySelector(".about-section");
+
+    const aboutPhoto =
+        document.querySelector(".about-photo img");
+
+
+    if (aboutSection && aboutPhoto) {
+
+        aboutSection.addEventListener(
+            "mousemove",
+            function (event) {
+
+                const rect =
+                    aboutSection.getBoundingClientRect();
+
+
+                const x =
+                    (event.clientX - rect.left) /
+                    rect.width;
+
+
+                const y =
+                    (event.clientY - rect.top) /
+                    rect.height;
+
+
+                const moveX =
+                    (x - 0.5) * 14;
+
+
+                const moveY =
+                    (y - 0.5) * 14;
+
+
+                aboutPhoto.style.transform =
+                    `scale(1.04)
+                     translate(${moveX}px, ${moveY}px)`;
+
+            }
+        );
+
+
+        aboutSection.addEventListener(
+            "mouseleave",
+            function () {
+
+                aboutPhoto.style.transform =
+                    "scale(1) translate(0,0)";
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       RESUME REQUEST MODAL
+    ===================================================== */
+
+    const modal =
+        document.getElementById("resumeModal");
+
+    const modalTitle =
+        document.getElementById("modalTitle");
+
+    const requestedResume =
+        document.getElementById("requestedResume");
+
+    const emailSubject =
+        document.getElementById("emailSubject");
+
+    const closeButton =
+        document.querySelector(".close-modal");
+
+    const overlay =
+        document.querySelector(".modal-overlay");
+
+    const requestButtons =
+        document.querySelectorAll(".request-btn");
+
+    const form =
+        document.getElementById("resumeRequestForm");
+
+
+    function openModal(resumeName) {
+
+        modalTitle.textContent =
+            "Request " + resumeName;
+
+
+        requestedResume.value =
+            resumeName;
+
+
+        emailSubject.value =
+            resumeName + " Request";
+
+
+        modal.classList.add("active");
+
+        modal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+
+        document.body.style.overflow =
+            "hidden";
+
+    }
+
+
+    function closeModal() {
+
+        modal.classList.remove("active");
+
+        modal.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+
+        document.body.style.overflow =
+            "hidden";
+
+    }
+
+
+    requestButtons.forEach(
+        function (button) {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    const resumeName =
+                        button.getAttribute(
+                            "data-resume"
+                        );
+
+
+                    openModal(resumeName);
+
+                }
+            );
+
+        }
+    );
+
+
+    closeButton.addEventListener(
+        "click",
+        closeModal
+    );
+
+
+    overlay.addEventListener(
+        "click",
+        closeModal
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape" &&
+                modal.classList.contains("active")
+            ) {
+
+                closeModal();
+
+            }
+
+        }
+    );
+
+
+    form.addEventListener(
+        "submit",
+        function () {
+
+            const submitButton =
+                form.querySelector(
+                    ".submit-btn"
+                );
+
+
+            submitButton.disabled = true;
+
+            submitButton.textContent =
+                "Sending Request...";
+
+        }
+    );
+
+
+    /* =====================================================
+       HASH NAVIGATION
+    ===================================================== */
+
+    const hash =
+        window.location.hash;
+
+
+    if (hash) {
+
+        const matchingSlide =
+            document.querySelector(hash);
+
+
+        if (matchingSlide) {
+
+            const index =
+                Array.from(slides).indexOf(
+                    matchingSlide
+                );
+
+
+            if (index >= 0) {
+
+                currentIndex = index;
+
+            }
+
+        }
+
+    }
+
+
+    /* =====================================================
+       INITIALIZE
+    ===================================================== */
+
+    updateSlide();
+
+});
