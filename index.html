@@ -2,27 +2,1565 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta charset="UTF-8">
 
-    <title>
-        Arvin H. Candelaria | Recruiter Resume Portal
-    </title>
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <meta
-        name="description"
-        content="Recruiter-focused resume portal showcasing targeted resumes for Data Analyst, Research Analyst, and Workforce Analyst roles."
-    >
+<title>
+    Arvin H. Candelaria | Recruiter Resume Portal
+</title>
 
-    <link rel="stylesheet" href="style.css">
+<meta
+    name="description"
+    content="Recruiter-focused resume portal showcasing targeted resumes for Data Analyst, Research Analyst, and Workforce Analyst roles."
+>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #080808;
+
+    color: #171717;
+
+    line-height: 1.6;
+
+    overflow-x: hidden;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+
+    width:
+        min(1180px, 92%);
+
+    margin:
+        0 auto;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navbar {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    background:
+        rgba(8,8,8,0.82);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.10);
+
+    backdrop-filter:
+        blur(16px);
+}
+
+.nav-container {
+
+    min-height: 76px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.logo {
+
+    color: #fff;
+
+    font-size: 0.88rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.1em;
+}
+
+.nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+}
+
+.nav-links a {
+
+    color: #aaa;
+
+    font-size: 0.86rem;
+
+    font-weight: 700;
+
+    transition:
+        color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+
+/* =========================================================
+   HERO
+   NO GRADUATION PHOTO HERE
+========================================================= */
+
+.hero {
+
+    min-height:
+        calc(100svh - 76px);
+
+    display: flex;
+
+    align-items: center;
+
+    background:
+
+        radial-gradient(
+            circle at 75% 25%,
+            rgba(255,255,255,0.08),
+            transparent 30%
+        ),
+
+        #080808;
+
+    color: #fff;
+}
+
+.hero-content {
+
+    padding:
+        80px 0;
+}
+
+.hero-copy {
+
+    max-width:
+        760px;
+}
+
+.eyebrow {
+
+    margin-bottom:
+        16px;
+
+    font-size:
+        0.72rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.18em;
+
+    text-transform:
+        uppercase;
+}
+
+.hero .eyebrow {
+    color: #aaa;
+}
+
+.hero h1 {
+
+    max-width:
+        800px;
+
+    margin-bottom:
+        26px;
+
+    font-size:
+        clamp(3rem, 6.3vw, 6.3rem);
+
+    line-height:
+        0.98;
+
+    letter-spacing:
+        -0.055em;
+}
+
+.hero h1 span {
+
+    display: block;
+
+    color:
+        #777;
+}
+
+.hero-description {
+
+    max-width:
+        650px;
+
+    margin-bottom:
+        34px;
+
+    color:
+        #aaa;
+
+    font-size:
+        1.04rem;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.hero-buttons {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+.primary-btn,
+.secondary-btn,
+.request-btn,
+.submit-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding:
+        0 22px;
+
+    border:
+        1px solid transparent;
+
+    cursor: pointer;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover,
+.request-btn:hover,
+.submit-btn:hover {
+
+    transform:
+        translateY(-2px);
+}
+
+.primary-btn {
+
+    background:
+        #fff;
+
+    color:
+        #171717;
+}
+
+.primary-btn:hover {
+    background: #e8e8e8;
+}
+
+.secondary-btn {
+
+    background:
+        transparent;
+
+    color:
+        #fff;
+
+    border-color:
+        rgba(255,255,255,0.42);
+}
+
+.secondary-btn:hover {
+
+    background:
+        #fff;
+
+    color:
+        #171717;
+}
+
+
+/* =========================================================
+   RESUME SECTION
+   GRADUATION PHOTO IS HERE
+========================================================= */
+
+.resume-section {
+
+    position: relative;
+
+    isolation: isolate;
+
+    overflow: hidden;
+
+    padding:
+        112px 0 120px;
+
+    color: #fff;
+}
+
+
+/* Graduation photo */
+
+.resume-background {
+
+    position: absolute;
+
+    inset:
+        -35px;
+
+    z-index:
+        -3;
+
+    background-image:
+        url("assets/graduation.jpg");
+
+    background-size:
+        cover;
+
+    background-position:
+        center 22%;
+
+    filter:
+        blur(20px);
+
+    transform:
+        scale(1.08);
+
+    opacity:
+        0.50;
+}
+
+
+/* Premium black layer */
+
+.resume-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index:
+        -2;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.94),
+            rgba(0,0,0,0.68),
+            rgba(0,0,0,0.92)
+        );
+}
+
+
+/* Vignette */
+
+.resume-section::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index:
+        -1;
+
+    pointer-events:
+        none;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            transparent 0%,
+            rgba(0,0,0,0.25) 45%,
+            rgba(0,0,0,0.72) 100%
+        );
+}
+
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.section-heading {
+
+    max-width:
+        720px;
+
+    margin-bottom:
+        46px;
+}
+
+.section-heading .eyebrow {
+    color: #aaa;
+}
+
+.section-heading h2 {
+
+    margin-bottom:
+        16px;
+
+    font-size:
+        clamp(2.3rem, 5vw, 4rem);
+
+    line-height:
+        1.05;
+
+    letter-spacing:
+        -0.045em;
+}
+
+.section-heading p:last-child {
+
+    color:
+        #aaa;
+}
+
+
+/* =========================================================
+   RESUME CAROUSEL
+   ONE MAIN CARD + NEXT CARD PARTIALLY VISIBLE
+========================================================= */
+
+.resume-carousel-wrap {
+
+    position:
+        relative;
+
+    width:
+        100%;
+}
+
+.resume-grid {
+
+    display:
+        flex;
+
+    gap:
+        22px;
+
+    overflow-x:
+        auto;
+
+    overflow-y:
+        hidden;
+
+    padding:
+        8px 0 30px;
+
+    scroll-snap-type:
+        x mandatory;
+
+    scrollbar-width:
+        none;
+
+    overscroll-behavior-x:
+        contain;
+
+    -webkit-overflow-scrolling:
+        touch;
+}
+
+.resume-grid::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================================================
+   RESUME CARD
+========================================================= */
+
+.resume-card {
+
+    position:
+        relative;
+
+    flex:
+        0 0 min(
+            650px,
+            calc(100vw - 18vw)
+        );
+
+    min-width:
+        0;
+
+    scroll-snap-align:
+        center;
+
+    overflow:
+        hidden;
+
+    background:
+        rgba(255,255,255,0.96);
+
+    color:
+        #171717;
+
+    border:
+        1px solid rgba(255,255,255,0.35);
+
+    border-radius:
+        18px;
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,0.40);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.resume-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,0.48);
+}
+
+
+/* =========================================================
+   CARD IMAGE — UPPER HALF
+========================================================= */
+
+.card-image {
+
+    position:
+        relative;
+
+    height:
+        260px;
+
+    overflow:
+        hidden;
+
+    background:
+        #171717;
+}
+
+.card-image img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    display:
+        block;
+
+    object-fit:
+        cover;
+
+    object-position:
+        center;
+
+    transition:
+        transform 0.5s ease;
+}
+
+.resume-card:hover
+.card-image img {
+
+    transform:
+        scale(1.025);
+}
+
+
+/* Image dark gradient */
+
+.card-image::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            transparent 45%,
+            rgba(0,0,0,0.38)
+        );
+
+    pointer-events:
+        none;
+}
+
+
+/* =========================================================
+   CARD NUMBER
+========================================================= */
+
+.card-number {
+
+    position:
+        absolute;
+
+    top:
+        18px;
+
+    left:
+        18px;
+
+    z-index:
+        2;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        48px;
+
+    height:
+        48px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.5);
+
+    background:
+        rgba(0,0,0,0.38);
+
+    color:
+        #fff;
+
+    backdrop-filter:
+        blur(8px);
+
+    font-size:
+        0.75rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.1em;
+}
+
+
+/* =========================================================
+   CARD TEXT — LOWER HALF
+========================================================= */
+
+.card-body {
+
+    padding:
+        30px 32px 32px;
+}
+
+.card-kicker {
+
+    margin-bottom:
+        8px;
+
+    color:
+        #8a867e;
+
+    font-size:
+        0.68rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.16em;
+}
+
+.resume-card h3 {
+
+    margin-bottom:
+        14px;
+
+    font-size:
+        clamp(1.65rem, 3vw, 2.1rem);
+
+    letter-spacing:
+        -0.03em;
+}
+
+.resume-card
+.card-body > p:not(.card-kicker) {
+
+    max-width:
+        620px;
+
+    margin-bottom:
+        22px;
+
+    color:
+        #65615a;
+
+    font-size:
+        0.95rem;
+}
+
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.skills-list {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        7px;
+
+    margin-bottom:
+        24px;
+}
+
+.skills-list span {
+
+    padding:
+        5px 9px;
+
+    background:
+        #f1efe9;
+
+    color:
+        #4f4b45;
+
+    font-size:
+        0.72rem;
+
+    font-weight:
+        700;
+}
+
+
+/* =========================================================
+   REQUEST RESUME BUTTON
+========================================================= */
+
+.request-btn {
+
+    width:
+        100%;
+
+    background:
+        #171717;
+
+    color:
+        #fff;
+}
+
+.request-btn:hover {
+    background: #343434;
+}
+
+
+/* =========================================================
+   CAROUSEL ARROWS
+========================================================= */
+
+.carousel-arrow {
+
+    position:
+        absolute;
+
+    z-index:
+        5;
+
+    top:
+        50%;
+
+    width:
+        48px;
+
+    height:
+        48px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.25);
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(15,15,15,0.88);
+
+    color:
+        #fff;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        0 12px 30px
+        rgba(0,0,0,0.30);
+
+    transform:
+        translateY(-50%);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.carousel-arrow:hover {
+
+    transform:
+        translateY(-50%)
+        scale(1.05);
+
+    background:
+        #fff;
+
+    color:
+        #171717;
+}
+
+.carousel-prev {
+    left: -24px;
+}
+
+.carousel-next {
+    right: -24px;
+}
+
+
+/* =========================================================
+   CAROUSEL HINT
+========================================================= */
+
+.carousel-hint {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        9px;
+
+    margin-top:
+        3px;
+
+    color:
+        #aaa;
+
+    font-size:
+        0.72rem;
+}
+
+.hint-dot {
+
+    width:
+        7px;
+
+    height:
+        7px;
+
+    border-radius:
+        50%;
+
+    background:
+        #aaa;
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-section {
+
+    padding:
+        110px 0;
+
+    background:
+        #eae7e0;
+
+    color:
+        #171717;
+}
+
+.about-content {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        0.8fr 1.2fr;
+
+    gap:
+        80px;
+
+    align-items:
+        start;
+}
+
+.about-text {
+    max-width: 700px;
+}
+
+.about-text p {
+
+    margin-bottom:
+        22px;
+
+    color:
+        #4f4b45;
+
+    font-size:
+        1.05rem;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-section {
+
+    padding:
+        110px 0;
+
+    background:
+        #171717;
+
+    color:
+        #fff;
+}
+
+.contact-section .eyebrow {
+    color: #aaa69e;
+}
+
+.contact-section h2 {
+
+    margin-bottom:
+        16px;
+
+    font-size:
+        clamp(2.3rem, 5vw, 4rem);
+
+    line-height:
+        1.05;
+
+    letter-spacing:
+        -0.045em;
+}
+
+.contact-section p:not(.eyebrow) {
+
+    max-width:
+        650px;
+
+    margin-bottom:
+        32px;
+
+    color:
+        #d0cdc6;
+}
+
+
+/* Contact cards */
+
+.contact-details {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:
+        18px;
+
+    margin-bottom:
+        30px;
+}
+
+.contact-item {
+
+    padding:
+        20px;
+
+    border:
+        1px solid
+        #373737;
+
+    background:
+        #1d1d1d;
+}
+
+.contact-item span {
+
+    display:
+        block;
+
+    margin-bottom:
+        6px;
+
+    color:
+        #aaa69e;
+
+    font-size:
+        0.68rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.14em;
+
+    text-transform:
+        uppercase;
+}
+
+.contact-item a {
+
+    font-size:
+        0.88rem;
+
+    overflow-wrap:
+        anywhere;
+}
+
+.contact-buttons {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        12px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+    padding:
+        30px 0;
+
+    background:
+        #101010;
+
+    color:
+        #88847d;
+
+    font-size:
+        0.78rem;
+}
+
+.footer .container {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        20px;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        2000;
+
+    display:
+        none;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        25px;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-overlay {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        rgba(0,0,0,0.78);
+
+    backdrop-filter:
+        blur(7px);
+}
+
+.modal-content {
+
+    position:
+        relative;
+
+    z-index:
+        1;
+
+    width:
+        min(620px,100%);
+
+    max-height:
+        90vh;
+
+    overflow-y:
+        auto;
+
+    padding:
+        45px;
+
+    background:
+        #fff;
+
+    color:
+        #171717;
+
+    border-radius:
+        18px;
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,0.45);
+}
+
+.close-modal {
+
+    position:
+        absolute;
+
+    top:
+        16px;
+
+    right:
+        20px;
+
+    width:
+        38px;
+
+    height:
+        38px;
+
+    border:
+        none;
+
+    background:
+        transparent;
+
+    color:
+        #444;
+
+    cursor:
+        pointer;
+
+    font-size:
+        2rem;
+
+    line-height:
+        1;
+}
+
+.modal-content .eyebrow {
+    color: #68645d;
+}
+
+.modal-content h2 {
+
+    margin-bottom:
+        12px;
+
+    font-size:
+        2.2rem;
+
+    letter-spacing:
+        -0.04em;
+}
+
+.modal-description {
+
+    margin-bottom:
+        30px;
+
+    color:
+        #68645d;
+
+    font-size:
+        0.92rem;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form-group {
+
+    margin-bottom:
+        19px;
+}
+
+.form-group label {
+
+    display:
+        block;
+
+    margin-bottom:
+        7px;
+
+    font-size:
+        0.82rem;
+
+    font-weight:
+        800;
+}
+
+.form-group input,
+.form-group textarea {
+
+    width:
+        100%;
+
+    padding:
+        13px 14px;
+
+    border:
+        1px solid
+        #d5d1c9;
+
+    outline:
+        none;
+
+    background:
+        #faf9f6;
+
+    color:
+        #171717;
+
+    transition:
+        border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+
+    border-color:
+        #171717;
+}
+
+.form-group textarea {
+
+    resize:
+        vertical;
+
+    min-height:
+        110px;
+}
+
+.submit-btn {
+
+    width:
+        100%;
+
+    margin-top:
+        5px;
+
+    background:
+        #171717;
+
+    color:
+        #fff;
+}
+
+.submit-btn:hover {
+    background: #343434;
+}
+
+.form-note {
+
+    margin-top:
+        14px;
+
+    color:
+        #858178;
+
+    font-size:
+        0.72rem;
+
+    text-align:
+        center;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width:1000px) {
+
+    .resume-card {
+
+        flex-basis:
+            min(
+                620px,
+                calc(100vw - 16vw)
+            );
+    }
+
+    .carousel-prev {
+        left: -10px;
+    }
+
+    .carousel-next {
+        right: -10px;
+    }
+
+    .about-content {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            35px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width:750px) {
+
+    .nav-container {
+        min-height: 65px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero {
+        min-height:
+            calc(100svh - 65px);
+    }
+
+    .hero-content {
+        padding:
+            60px 0 80px;
+    }
+
+    .hero h1 {
+
+        font-size:
+            clamp(
+                2.7rem,
+                13vw,
+                4.8rem
+            );
+    }
+
+    .resume-section,
+    .about-section,
+    .contact-section {
+
+        padding:
+            80px 0;
+    }
+
+    .resume-card {
+
+        flex-basis:
+            calc(100vw - 12vw);
+
+        border-radius:
+            15px;
+    }
+
+    .card-image {
+        height: 230px;
+    }
+
+    .card-body {
+        padding:
+            27px 25px 29px;
+    }
+
+    .carousel-arrow {
+        display: none;
+    }
+
+    .contact-details {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .modal-content {
+
+        padding:
+            35px 25px;
+    }
+
+    .footer .container {
+
+        flex-direction:
+            column;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width:500px) {
+
+    .hero-buttons .primary-btn,
+    .hero-buttons .secondary-btn {
+
+        width:
+            100%;
+    }
+
+    .resume-grid {
+
+        gap:
+            14px;
+
+        padding-bottom:
+            24px;
+    }
+
+    .resume-card {
+
+        flex-basis:
+            calc(100vw - 14vw);
+    }
+
+    .card-image {
+        height: 210px;
+    }
+}
+
+</style>
+
 </head>
 
 
 <body>
+
 
 <!-- =========================================================
      NAVIGATION
@@ -32,11 +1570,18 @@
 
     <div class="container nav-container">
 
-        <a href="#home" class="logo">
+        <a
+            href="#home"
+            class="logo"
+        >
             ARVIN H. CANDELARIA
         </a>
 
-        <nav class="nav-links" aria-label="Primary navigation">
+
+        <nav
+            class="nav-links"
+            aria-label="Primary navigation"
+        >
 
             <a href="#home">
                 Home
@@ -64,13 +1609,16 @@
 
 <main>
 
+
 <!-- =========================================================
      HERO
-     IMPORTANT:
-     Graduation photo is NOT here.
+     GRADUATION PHOTO IS NOT HERE
 ========================================================= -->
 
-<section id="home" class="hero">
+<section
+    id="home"
+    class="hero"
+>
 
     <div class="container hero-content">
 
@@ -80,18 +1628,26 @@
                 RECRUITER RESUME PORTAL
             </p>
 
+
             <h1>
+
                 Targeted Resumes for
+
                 <span>
                     Data &amp; Analytics Roles
                 </span>
+
             </h1>
 
+
             <p class="hero-description">
+
                 Welcome to my recruiter-focused resume portal.
                 Select the resume that best matches
                 the position you are hiring for.
+
             </p>
+
 
             <div class="hero-buttons">
 
@@ -101,6 +1657,7 @@
                 >
                     View Resumes
                 </a>
+
 
                 <a
                     href="#contact"
@@ -121,9 +1678,7 @@
 
 <!-- =========================================================
      RESUME SECTION
-     
-     Graduation photo is used as the BACKGROUND here.
-     The cards sit on top of it.
+     GRADUATION PHOTO IS THE BACKGROUND
 ========================================================= -->
 
 <section
@@ -131,20 +1686,22 @@
     class="resume-section"
 >
 
-    <!-- Background image layer -->
+
     <div
         class="resume-background"
         aria-hidden="true"
     ></div>
 
-    <!-- Dark / premium overlay -->
+
     <div
         class="resume-overlay"
         aria-hidden="true"
     ></div>
 
 
-    <div class="container resume-container">
+
+    <div class="container">
+
 
         <div class="section-heading">
 
@@ -152,9 +1709,11 @@
                 TARGETED RESUMES
             </p>
 
+
             <h2>
                 Select a Resume
             </h2>
+
 
             <p>
                 Each resume is tailored to a specific
@@ -169,9 +1728,10 @@
              CAROUSEL
         ================================================== -->
 
-        <div class="resume-carousel">
+        <div class="resume-carousel-wrap">
 
-            <!-- Previous button -->
+
+            <!-- PREVIOUS -->
 
             <button
                 class="carousel-arrow carousel-prev"
@@ -183,338 +1743,258 @@
 
 
 
-            <!-- Viewport -->
+            <!-- RESUME CARDS -->
 
             <div
-                class="carousel-viewport"
-                id="carouselViewport"
+                class="resume-grid"
+                id="resumeCarousel"
             >
 
-                <!-- Track -->
 
-                <div
-                    class="resume-track"
-                    id="resumeTrack"
-                >
+                <!-- =================================================
+                     CARD 01 — DATA ANALYST
+                ================================================== -->
+
+                <article class="resume-card">
 
 
-                    <!-- =====================================
-                         CARD 01 — DATA ANALYST
-                    ====================================== -->
+                    <!-- IMAGE -->
 
-                    <article class="resume-card">
+                    <div class="card-image">
 
-                        <!-- IMAGE / VISUAL -->
-                        <div class="card-image data-visual">
+                        <img
+                            src="https://image.pollinations.ai/prompt/photorealistic%20professional%20data%20analyst%20working%20at%20a%20modern%20desk%20with%20laptop%20and%20analytics%20dashboard%2C%20clean%20corporate%20office%2C%20professional%20editorial%20photography%2C%20no%20text?width=1200&height=800&nologo=true"
+                            alt="Professional data analyst workspace"
+                            loading="lazy"
+                        >
 
-                            <div class="visual-grid"></div>
 
-                            <div class="dashboard-window">
+                        <span class="card-number">
+                            01
+                        </span>
 
-                                <div class="window-header">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
+                    </div>
 
-                                <div class="chart-area">
 
-                                    <div class="bar bar-1"></div>
-                                    <div class="bar bar-2"></div>
-                                    <div class="bar bar-3"></div>
-                                    <div class="bar bar-4"></div>
-                                    <div class="bar bar-5"></div>
 
-                                </div>
+                    <!-- TEXT -->
 
-                                <div class="mini-line">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
+                    <div class="card-body">
 
-                            </div>
+                        <p class="card-kicker">
+                            ANALYTICS
+                        </p>
 
-                            <div class="visual-label">
-                                DATA
-                            </div>
 
-                            <span class="card-number">
-                                01
+                        <h3>
+                            Data Analyst
+                        </h3>
+
+
+                        <p>
+                            Focused on data analysis,
+                            reporting, data validation,
+                            Excel, Power BI, statistical
+                            analysis, and data-driven insights.
+                        </p>
+
+
+                        <div class="skills-list">
+
+                            <span>
+                                Excel
+                            </span>
+
+                            <span>
+                                Power BI
+                            </span>
+
+                            <span>
+                                SQL
+                            </span>
+
+                            <span>
+                                Statistics
                             </span>
 
                         </div>
 
 
-                        <!-- TEXT -->
+                        <button
+                            class="request-btn"
+                            data-resume="Data Analyst Resume"
+                            type="button"
+                        >
+                            Request Resume
+                        </button>
 
-                        <div class="card-body">
+                    </div>
 
-                            <p class="card-kicker">
-                                ANALYTICS
-                            </p>
-
-                            <h3>
-                                Data Analyst
-                            </h3>
-
-                            <p>
-                                Focused on data analysis,
-                                reporting, data validation,
-                                Excel, Power BI, statistical
-                                analysis, and data-driven insights.
-                            </p>
-
-
-                            <div class="skills-list">
-
-                                <span>
-                                    Excel
-                                </span>
-
-                                <span>
-                                    Power BI
-                                </span>
-
-                                <span>
-                                    SQL
-                                </span>
-
-                                <span>
-                                    Statistics
-                                </span>
-
-                            </div>
-
-
-                            <button
-                                class="request-btn"
-                                data-resume="Data Analyst Resume"
-                                type="button"
-                            >
-                                Request Resume
-                                <span>→</span>
-                            </button>
-
-                        </div>
-
-                    </article>
+                </article>
 
 
 
-                    <!-- =====================================
-                         CARD 02 — RESEARCH ANALYST
-                    ====================================== -->
+                <!-- =================================================
+                     CARD 02 — RESEARCH ANALYST
+                ================================================== -->
 
-                    <article class="resume-card">
+                <article class="resume-card">
 
-                        <!-- IMAGE / VISUAL -->
 
-                        <div class="card-image research-visual">
+                    <div class="card-image">
 
-                            <div class="research-orbit orbit-1"></div>
-                            <div class="research-orbit orbit-2"></div>
+                        <img
+                            src="https://image.pollinations.ai/prompt/photorealistic%20professional%20research%20analyst%20reviewing%20survey%20data%20and%20statistical%20charts%20on%20computer%2C%20modern%20research%20office%2C%20professional%20editorial%20photography%2C%20no%20text?width=1200&height=800&nologo=true"
+                            alt="Professional research analyst workspace"
+                            loading="lazy"
+                        >
 
-                            <div class="research-center">
-                                σ
-                            </div>
 
-                            <div class="research-dot dot-1"></div>
-                            <div class="research-dot dot-2"></div>
-                            <div class="research-dot dot-3"></div>
-                            <div class="research-dot dot-4"></div>
+                        <span class="card-number">
+                            02
+                        </span>
 
-                            <div class="visual-label">
-                                RESEARCH
-                            </div>
+                    </div>
 
-                            <span class="card-number">
-                                02
+
+
+                    <div class="card-body">
+
+                        <p class="card-kicker">
+                            RESEARCH
+                        </p>
+
+
+                        <h3>
+                            Research Analyst
+                        </h3>
+
+
+                        <p>
+                            Focused on quantitative research,
+                            statistical analysis, survey methodology,
+                            hypothesis testing, research design,
+                            and interpretation of findings.
+                        </p>
+
+
+                        <div class="skills-list">
+
+                            <span>
+                                SPSS
+                            </span>
+
+                            <span>
+                                Research
+                            </span>
+
+                            <span>
+                                Statistics
+                            </span>
+
+                            <span>
+                                Survey Design
                             </span>
 
                         </div>
 
 
-                        <!-- TEXT -->
+                        <button
+                            class="request-btn"
+                            data-resume="Research Analyst Resume"
+                            type="button"
+                        >
+                            Request Resume
+                        </button>
 
-                        <div class="card-body">
+                    </div>
 
-                            <p class="card-kicker">
-                                RESEARCH
-                            </p>
-
-                            <h3>
-                                Research Analyst
-                            </h3>
-
-                            <p>
-                                Focused on quantitative research,
-                                statistical analysis, survey methodology,
-                                hypothesis testing, research design,
-                                and interpretation of findings.
-                            </p>
-
-
-                            <div class="skills-list">
-
-                                <span>
-                                    SPSS
-                                </span>
-
-                                <span>
-                                    Research
-                                </span>
-
-                                <span>
-                                    Statistics
-                                </span>
-
-                                <span>
-                                    Survey Design
-                                </span>
-
-                            </div>
-
-
-                            <button
-                                class="request-btn"
-                                data-resume="Research Analyst Resume"
-                                type="button"
-                            >
-                                Request Resume
-                                <span>→</span>
-                            </button>
-
-                        </div>
-
-                    </article>
+                </article>
 
 
 
-                    <!-- =====================================
-                         CARD 03 — WORKFORCE ANALYST
-                    ====================================== -->
+                <!-- =================================================
+                     CARD 03 — WORKFORCE ANALYST
+                ================================================== -->
 
-                    <article class="resume-card">
+                <article class="resume-card">
 
-                        <!-- IMAGE / VISUAL -->
 
-                        <div class="card-image workforce-visual">
+                    <div class="card-image">
 
-                            <div class="workforce-dashboard">
+                        <img
+                            src="https://image.pollinations.ai/prompt/photorealistic%20professional%20workforce%20analyst%20monitoring%20business%20performance%20dashboard%20and%20workforce%20planning%2C%20modern%20operations%20office%2C%20professional%20editorial%20photography%2C%20no%20text?width=1200&height=800&nologo=true"
+                            alt="Professional workforce analyst workspace"
+                            loading="lazy"
+                        >
 
-                                <div class="wfm-header">
-                                    WORKFORCE
-                                </div>
 
-                                <div class="wfm-stats">
+                        <span class="card-number">
+                            03
+                        </span>
 
-                                    <div>
-                                        <strong>
-                                            94%
-                                        </strong>
-                                        <small>
-                                            SLA
-                                        </small>
-                                    </div>
+                    </div>
 
-                                    <div>
-                                        <strong>
-                                            87%
-                                        </strong>
-                                        <small>
-                                            Occupancy
-                                        </small>
-                                    </div>
 
-                                </div>
 
-                                <div class="wfm-chart">
+                    <div class="card-body">
 
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
+                        <p class="card-kicker">
+                            WORKFORCE
+                        </p>
 
-                                </div>
 
-                            </div>
+                        <h3>
+                            Workforce Analyst
+                        </h3>
 
-                            <div class="visual-label">
+
+                        <p>
+                            Focused on workforce reporting,
+                            performance monitoring, trend analysis,
+                            operational data, and workforce analytics.
+                        </p>
+
+
+                        <div class="skills-list">
+
+                            <span>
+                                Excel
+                            </span>
+
+                            <span>
+                                Power BI
+                            </span>
+
+                            <span>
+                                Reporting
+                            </span>
+
+                            <span>
                                 WFM
-                            </div>
-
-                            <span class="card-number">
-                                03
                             </span>
 
                         </div>
 
 
-                        <!-- TEXT -->
+                        <button
+                            class="request-btn"
+                            data-resume="Workforce Analyst Resume"
+                            type="button"
+                        >
+                            Request Resume
+                        </button>
 
-                        <div class="card-body">
+                    </div>
 
-                            <p class="card-kicker">
-                                WORKFORCE
-                            </p>
+                </article>
 
-                            <h3>
-                                Workforce Analyst
-                            </h3>
-
-                            <p>
-                                Focused on workforce reporting,
-                                performance monitoring, trend analysis,
-                                operational data, and workforce analytics.
-                            </p>
-
-
-                            <div class="skills-list">
-
-                                <span>
-                                    Excel
-                                </span>
-
-                                <span>
-                                    Power BI
-                                </span>
-
-                                <span>
-                                    Reporting
-                                </span>
-
-                                <span>
-                                    WFM
-                                </span>
-
-                            </div>
-
-
-                            <button
-                                class="request-btn"
-                                data-resume="Workforce Analyst Resume"
-                                type="button"
-                            >
-                                Request Resume
-                                <span>→</span>
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-                </div>
 
             </div>
 
 
 
-            <!-- Next button -->
+            <!-- NEXT -->
 
             <button
                 class="carousel-arrow carousel-next"
@@ -524,44 +2004,23 @@
                 &#8594;
             </button>
 
-        </div>
-
-
-
-        <!-- Dots -->
-
-        <div
-            class="carousel-dots"
-            id="carouselDots"
-            aria-label="Resume selection"
-        >
-
-            <button
-                type="button"
-                class="dot active"
-                aria-label="Data Analyst Resume"
-            ></button>
-
-            <button
-                type="button"
-                class="dot"
-                aria-label="Research Analyst Resume"
-            ></button>
-
-            <button
-                type="button"
-                class="dot"
-                aria-label="Workforce Analyst Resume"
-            ></button>
 
         </div>
 
 
-        <p class="carousel-hint">
-            <span>←</span>
-            Explore the targeted resumes
-            <span>→</span>
-        </p>
+
+        <!-- CAROUSEL HINT -->
+
+        <div class="carousel-hint">
+
+            <span class="hint-dot"></span>
+
+            <span>
+                Swipe horizontally to view the next resume
+            </span>
+
+        </div>
+
 
     </div>
 
@@ -579,6 +2038,7 @@
 >
 
     <div class="container about-content">
+
 
         <div class="section-heading">
 
@@ -601,12 +2061,14 @@
                 and workforce-related operations.
             </p>
 
+
             <p>
                 My academic and professional background has
                 developed my interest in data analysis,
                 statistical research, workforce analytics,
                 and data-driven decision-making.
             </p>
+
 
             <p>
                 This portal provides recruiters with targeted
@@ -633,13 +2095,16 @@
 
     <div class="container contact-content">
 
+
         <p class="eyebrow">
             CONTACT
         </p>
 
+
         <h2>
             Let's Connect
         </h2>
+
 
         <p>
             For recruitment opportunities,
@@ -648,7 +2113,9 @@
         </p>
 
 
+
         <div class="contact-details">
+
 
             <div class="contact-item">
 
@@ -656,11 +2123,14 @@
                     Email
                 </span>
 
-                <a href="mailto:arvin.candelaria0410@gmail.com">
+                <a
+                    href="mailto:arvin.candelaria0410@gmail.com"
+                >
                     arvin.candelaria0410@gmail.com
                 </a>
 
             </div>
+
 
 
             <div class="contact-item">
@@ -680,6 +2150,7 @@
             </div>
 
 
+
             <div class="contact-item">
 
                 <span>
@@ -696,7 +2167,9 @@
 
             </div>
 
+
         </div>
+
 
 
         <div class="contact-buttons">
@@ -708,6 +2181,7 @@
                 Email Me
             </a>
 
+
             <a
                 href="https://www.linkedin.com/in/arvincandelaria/"
                 target="_blank"
@@ -716,6 +2190,7 @@
             >
                 LinkedIn
             </a>
+
 
             <a
                 href="https://github.com/arvincandelaria-lab"
@@ -732,6 +2207,7 @@
 
 </section>
 
+
 </main>
 
 
@@ -745,8 +2221,7 @@
     <div class="container">
 
         <p>
-            © 2026 Arvin H. Candelaria.
-            All rights reserved.
+            © 2026 Arvin H. Candelaria. All rights reserved.
         </p>
 
         <p>
@@ -779,6 +2254,7 @@
         aria-labelledby="modalTitle"
     >
 
+
         <button
             type="button"
             class="close-modal"
@@ -792,9 +2268,11 @@
             RESUME REQUEST
         </p>
 
+
         <h2 id="modalTitle">
             Request Resume
         </h2>
+
 
         <p class="modal-description">
             Please provide your professional information.
@@ -803,8 +2281,9 @@
         </p>
 
 
+
         <!-- =================================================
-             FORMSPREE
+             FORMSPREE FORM
         ================================================== -->
 
         <form
@@ -813,7 +2292,8 @@
             method="POST"
         >
 
-            <!-- Requested resume -->
+
+            <!-- Selected resume -->
 
             <input
                 type="hidden"
@@ -822,7 +2302,7 @@
             >
 
 
-            <!-- Subject -->
+            <!-- Email subject -->
 
             <input
                 type="hidden"
@@ -841,6 +2321,7 @@
                 tabindex="-1"
                 autocomplete="off"
             >
+
 
 
             <!-- NAME -->
@@ -862,6 +2343,7 @@
             </div>
 
 
+
             <!-- COMPANY -->
 
             <div class="form-group">
@@ -879,6 +2361,7 @@
                 >
 
             </div>
+
 
 
             <!-- EMAIL -->
@@ -900,6 +2383,7 @@
             </div>
 
 
+
             <!-- POSITION -->
 
             <div class="form-group">
@@ -917,6 +2401,7 @@
                 >
 
             </div>
+
 
 
             <!-- MESSAGE -->
@@ -937,6 +2422,7 @@
             </div>
 
 
+
             <!-- SUBMIT -->
 
             <button
@@ -952,6 +2438,7 @@
                 to respond to your resume request.
             </p>
 
+
         </form>
 
     </div>
@@ -960,7 +2447,312 @@
 
 
 
-<script src="script.js"></script>
+<script>
+
+/* =========================================================
+   RESUME CAROUSEL
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        const carousel =
+            document.getElementById(
+                "resumeCarousel"
+            );
+
+
+        const cards =
+            document.querySelectorAll(
+                ".resume-card"
+            );
+
+
+        const nextButton =
+            document.querySelector(
+                ".carousel-next"
+            );
+
+
+        const prevButton =
+            document.querySelector(
+                ".carousel-prev"
+            );
+
+
+
+        /* =================================================
+           NEXT CARD
+        ================================================= */
+
+        nextButton.addEventListener(
+            "click",
+            function () {
+
+                const cardWidth =
+                    cards[0].offsetWidth + 22;
+
+                carousel.scrollBy({
+
+                    left:
+                        cardWidth,
+
+                    behavior:
+                        "smooth"
+
+                });
+
+            }
+        );
+
+
+
+        /* =================================================
+           PREVIOUS CARD
+        ================================================= */
+
+        prevButton.addEventListener(
+            "click",
+            function () {
+
+                const cardWidth =
+                    cards[0].offsetWidth + 22;
+
+                carousel.scrollBy({
+
+                    left:
+                        -cardWidth,
+
+                    behavior:
+                        "smooth"
+
+                });
+
+            }
+        );
+
+
+
+        /* =================================================
+           RESUME REQUEST MODAL
+        ================================================= */
+
+        const modal =
+            document.getElementById(
+                "resumeModal"
+            );
+
+
+        const modalTitle =
+            document.getElementById(
+                "modalTitle"
+            );
+
+
+        const requestedResume =
+            document.getElementById(
+                "requestedResume"
+            );
+
+
+        const emailSubject =
+            document.getElementById(
+                "emailSubject"
+            );
+
+
+        const closeButton =
+            document.querySelector(
+                ".close-modal"
+            );
+
+
+        const overlay =
+            document.querySelector(
+                ".modal-overlay"
+            );
+
+
+        const requestButtons =
+            document.querySelectorAll(
+                ".request-btn"
+            );
+
+
+        const form =
+            document.getElementById(
+                "resumeRequestForm"
+            );
+
+
+
+        /* =================================================
+           OPEN REQUEST MODAL
+        ================================================= */
+
+        requestButtons.forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+
+                        const resumeName =
+                            button.getAttribute(
+                                "data-resume"
+                            );
+
+
+                        /*
+                           Changes:
+
+                           Request Resume
+
+                           →
+
+                           Request Data Analyst Resume
+
+                           etc.
+                        */
+
+                        modalTitle.textContent =
+                            "Request " +
+                            resumeName;
+
+
+                        requestedResume.value =
+                            resumeName;
+
+
+                        emailSubject.value =
+                            resumeName +
+                            " Request";
+
+
+                        modal.classList.add(
+                            "active"
+                        );
+
+
+                        modal.setAttribute(
+                            "aria-hidden",
+                            "false"
+                        );
+
+
+                        document.body.classList.add(
+                            "modal-open"
+                        );
+
+
+                    }
+                );
+
+            }
+        );
+
+
+
+        /* =================================================
+           CLOSE MODAL
+        ================================================= */
+
+        function closeModal() {
+
+            modal.classList.remove(
+                "active"
+            );
+
+
+            modal.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            document.body.classList.remove(
+                "modal-open"
+            );
+
+        }
+
+
+
+        closeButton.addEventListener(
+            "click",
+            closeModal
+        );
+
+
+        overlay.addEventListener(
+            "click",
+            closeModal
+        );
+
+
+
+        /* =================================================
+           ESCAPE KEY
+        ================================================= */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+
+                    event.key === "Escape" &&
+
+                    modal.classList.contains(
+                        "active"
+                    )
+
+                ) {
+
+                    closeModal();
+
+                }
+
+            }
+        );
+
+
+
+        /* =================================================
+           FORM SUBMISSION
+        ================================================= */
+
+        form.addEventListener(
+            "submit",
+            function () {
+
+
+                const submitButton =
+                    form.querySelector(
+                        ".submit-btn"
+                    );
+
+
+                submitButton.disabled =
+                    true;
+
+
+                submitButton.textContent =
+                    "Sending Request...";
+
+            }
+        );
+
+
+    }
+);
+
+</script>
+
 
 </body>
+
 </html>
