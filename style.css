@@ -1549,3 +1549,769 @@ button {
   }
 
 }
+
+/* =========================================================
+   DATA ANALYST AI-STYLE VISUAL
+========================================================= */
+
+.data-analyst-image {
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 70% 25%,
+      #52606d 0%,
+      #27313a 35%,
+      #111820 75%,
+      #090d11 100%
+    );
+
+}
+
+
+/* Background glow */
+
+.data-analyst-image::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+
+  height: 300px;
+
+  top: -100px;
+
+  right: -60px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(130, 160, 180, 0.18);
+
+  filter:
+    blur(40px);
+
+}
+
+
+/* Scene */
+
+.ai-scene {
+
+  position: absolute;
+
+  inset: 0;
+
+}
+
+
+/* Monitor */
+
+.monitor {
+
+  position: absolute;
+
+  width: 48%;
+
+  height: 58%;
+
+  top: 12%;
+
+  left: 9%;
+
+  padding: 13px;
+
+  border-radius: 5px;
+
+  background: #151b21;
+
+  border: 3px solid #353f48;
+
+  box-shadow:
+    0 25px 40px rgba(0,0,0,.45);
+
+}
+
+
+/* Monitor header */
+
+.monitor-top {
+
+  height: 15%;
+
+  display: flex;
+
+  align-items: center;
+
+  color: #d9e2e8;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: .12em;
+
+}
+
+
+/* Chart */
+
+.chart-area {
+
+  position: absolute;
+
+  left: 12%;
+
+  right: 12%;
+
+  bottom: 14%;
+
+  height: 53%;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  gap: 7px;
+
+}
+
+
+.bar {
+
+  flex: 1;
+
+  background:
+    linear-gradient(
+      to top,
+      #8398a5,
+      #c2d0d7
+    );
+
+  border-radius:
+    2px 2px 0 0;
+
+}
+
+
+.bar-1 { height: 35%; }
+.bar-2 { height: 55%; }
+.bar-3 { height: 43%; }
+.bar-4 { height: 78%; }
+.bar-5 { height: 64%; }
+
+
+.chart-line {
+
+  position: absolute;
+
+  left: 15%;
+
+  right: 14%;
+
+  top: 42%;
+
+  height: 25%;
+
+  border-top:
+    2px solid #d6a96a;
+
+  transform:
+    skewY(-12deg);
+
+}
+
+
+/* Laptop */
+
+.laptop {
+
+  position: absolute;
+
+  width: 45%;
+
+  right: 7%;
+
+  bottom: 11%;
+
+  z-index: 4;
+
+}
+
+
+.laptop-screen {
+
+  height: 115px;
+
+  padding: 12px;
+
+  border:
+    7px solid #303940;
+
+  border-radius:
+    8px 8px 3px 3px;
+
+  background:
+    #11171c;
+
+  box-shadow:
+    0 20px 30px rgba(0,0,0,.4);
+
+}
+
+
+.dashboard-title {
+
+  color: #cfd9de;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: .12em;
+
+  margin-bottom: 10px;
+
+}
+
+
+.dashboard-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 6px;
+
+}
+
+
+.dashboard-grid div {
+
+  height: 26px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #526572,
+      #293640
+    );
+
+  border-radius: 2px;
+
+}
+
+
+.laptop-base {
+
+  height: 10px;
+
+  margin: 0 -10px;
+
+  border-radius:
+    0 0 8px 8px;
+
+  background:
+    #59636a;
+
+}
+
+
+/* Person */
+
+.person-silhouette {
+
+  position: absolute;
+
+  right: 16%;
+
+  bottom: -2%;
+
+  z-index: 5;
+
+}
+
+
+.person-silhouette .head {
+
+  width: 72px;
+
+  height: 72px;
+
+  margin: auto;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #d39b79,
+      #815947
+    );
+
+  box-shadow:
+    0 5px 20px rgba(0,0,0,.3);
+
+}
+
+
+.person-silhouette .body {
+
+  width: 170px;
+
+  height: 190px;
+
+  margin-top: -5px;
+
+  border-radius:
+    60px 60px 0 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      #29343b,
+      #11161b
+    );
+
+}
+
+
+/* Desk */
+
+.desk {
+
+  position: absolute;
+
+  bottom: 0;
+
+  left: 0;
+
+  right: 0;
+
+  height: 24%;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #343b40,
+      #171b1e
+    );
+
+  transform:
+    perspective(400px)
+    rotateX(8deg);
+
+}
+
+
+/* =========================================================
+   RESEARCH ANALYST AI-STYLE VISUAL
+========================================================= */
+
+.research-analyst-image {
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      #68716f 0%,
+      #37413f 32%,
+      #1a2222 70%,
+      #0d1111 100%
+    );
+
+}
+
+
+/* Background light */
+
+.research-analyst-image::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 350px;
+
+  height: 350px;
+
+  top: -150px;
+
+  left: -100px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(180, 190, 175, .17);
+
+  filter:
+    blur(45px);
+
+}
+
+
+/* Research scene */
+
+.research-scene {
+
+  position: absolute;
+
+  inset: 0;
+
+}
+
+
+/* Research board */
+
+.research-board {
+
+  position: absolute;
+
+  top: 12%;
+
+  right: 9%;
+
+  width: 54%;
+
+  height: 58%;
+
+  padding: 16px;
+
+  border:
+    5px solid #39423f;
+
+  border-radius: 4px;
+
+  background:
+    #121918;
+
+  box-shadow:
+    0 25px 45px rgba(0,0,0,.45);
+
+}
+
+
+.research-title {
+
+  color:
+    #dce1d9;
+
+  font-size:
+    9px;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    .1em;
+
+  margin-bottom:
+    15px;
+
+}
+
+
+/* Research chart */
+
+.research-chart {
+
+  height:
+    55%;
+
+  display:
+    flex;
+
+  align-items:
+    flex-end;
+
+  gap:
+    7px;
+
+  border-bottom:
+    1px solid #68736e;
+
+}
+
+
+.research-column {
+
+  flex: 1;
+
+  background:
+    linear-gradient(
+      to top,
+      #8b9a91,
+      #c5cec5
+    );
+
+  border-radius:
+    2px 2px 0 0;
+
+}
+
+
+.c1 { height: 35%; }
+.c2 { height: 62%; }
+.c3 { height: 48%; }
+.c4 { height: 78%; }
+.c5 { height: 68%; }
+
+
+/* Research lines */
+
+.research-lines {
+
+  margin-top:
+    12px;
+
+}
+
+
+.research-lines span {
+
+  display:
+    block;
+
+  height:
+    4px;
+
+  margin-bottom:
+    6px;
+
+  width:
+    75%;
+
+  background:
+    #46514c;
+
+}
+
+
+.research-lines span:nth-child(2) {
+  width: 55%;
+}
+
+
+.research-lines span:nth-child(3) {
+  width: 68%;
+}
+
+
+.research-lines span:nth-child(4) {
+  width: 42%;
+}
+
+
+/* Papers */
+
+.papers {
+
+  position: absolute;
+
+  left: 10%;
+
+  bottom: 9%;
+
+  width: 38%;
+
+  height: 42%;
+
+}
+
+
+.paper {
+
+  position: absolute;
+
+  width: 75%;
+
+  height: 85%;
+
+  padding: 15px;
+
+  background:
+    #dedbd1;
+
+  box-shadow:
+    0 15px 30px rgba(0,0,0,.35);
+
+}
+
+
+.paper div {
+
+  height: 5px;
+
+  margin-bottom: 9px;
+
+  background:
+    #8b8b82;
+
+}
+
+
+.paper-one {
+
+  left: 0;
+
+  bottom: 0;
+
+  transform:
+    rotate(-7deg);
+
+}
+
+
+.paper-two {
+
+  left: 25px;
+
+  bottom: 8px;
+
+  transform:
+    rotate(6deg);
+
+}
+
+
+/* Research person */
+
+.research-person {
+
+  position: absolute;
+
+  left: 42%;
+
+  bottom: -2%;
+
+  z-index: 5;
+
+}
+
+
+.research-head {
+
+  width: 70px;
+
+  height: 70px;
+
+  margin: auto;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #d6a080,
+      #855c49
+    );
+
+}
+
+
+.research-body {
+
+  width: 155px;
+
+  height: 180px;
+
+  margin-top: -4px;
+
+  border-radius:
+    55px 55px 0 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      #35403d,
+      #111615
+    );
+
+}
+
+
+/* =========================================================
+   MOBILE AI VISUALS
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .monitor {
+
+    width: 50%;
+
+    height: 52%;
+
+    left: 5%;
+
+  }
+
+
+  .laptop {
+
+    width: 48%;
+
+    right: 4%;
+
+  }
+
+
+  .person-silhouette {
+
+    right: 13%;
+
+    transform:
+      scale(.8);
+
+    transform-origin:
+      bottom right;
+
+  }
+
+
+  .research-board {
+
+    width: 55%;
+
+    height: 52%;
+
+    right: 5%;
+
+  }
+
+
+  .papers {
+
+    left: 5%;
+
+    transform:
+      scale(.85);
+
+    transform-origin:
+      bottom left;
+
+  }
+
+
+  .research-person {
+
+    left: 38%;
+
+    transform:
+      scale(.8);
+
+    transform-origin:
+      bottom center;
+
+  }
+
+}
