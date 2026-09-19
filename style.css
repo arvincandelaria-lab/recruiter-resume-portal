@@ -305,6 +305,32 @@ textarea {
     align-items: center;
 }
 
+.about-content {
+    position: relative;
+}
+
+.about-content::before {
+    content: "";
+
+    position: absolute;
+
+    left: 70px;
+    top: 50%;
+
+    width: 280px;
+    height: 280px;
+
+    transform: translateY(-50%);
+
+    background: rgba(255, 255, 255, 0.035);
+
+    filter: blur(90px);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
 /* =====================================
    PREMIUM GRADUATION PHOTO
 ===================================== */
@@ -402,6 +428,17 @@ textarea {
     display: block;
     object-fit: cover;
     object-position: center 20%;
+}
+
+.about-photo {
+    position: relative;
+    isolation: isolate;
+}
+
+.about-photo {
+    filter: drop-shadow(
+        0 25px 60px rgba(0, 0, 0, 0.8)
+    );
 }
 
 /* RIGHT CONTENT */
