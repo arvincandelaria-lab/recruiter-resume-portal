@@ -1,463 +1,89 @@
-/* =========================================================
-   TARGETED RESUMES CAROUSEL
-   ========================================================= */
+document.addEventListener("DOMContentLoaded", function () {
 
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
+    const modal = document.getElementById("resumeModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const requestedResume = document.getElementById("requestedResume");
+    const emailSubject = document.getElementById("emailSubject");
+    const closeButton = document.querySelector(".close-modal");
+    const overlay = document.querySelector(".modal-overlay");
+    const requestButtons = document.querySelectorAll(".request-btn");
+    const form = document.getElementById("resumeRequestForm");
 
 
-        /* =====================================================
-           ELEMENTS
-           ===================================================== */
+    // =========================
+    // OPEN RESUME REQUEST MODAL
+    // =========================
 
-        const track =
-            document.getElementById(
-                "resumeTrack"
-            );
+    requestButtons.forEach(function (button) {
 
-        const viewport =
-            document.getElementById(
-                "resumeViewport"
-            );
+        button.addEventListener("click", function () {
 
-        const slides =
-            Array.from(
-                document.querySelectorAll(
-                    ".resume-slide"
-                )
-            );
+            const resumeName = button.getAttribute("data-resume");
 
-        const nextButton =
-            document.getElementById(
-                "nextResume"
-            );
+            modalTitle.textContent = "Request " + resumeName;
 
-        const prevButton =
-            document.getElementById(
-                "prevResume"
-            );
+            requestedResume.value = resumeName;
 
-        const dots =
-            Array.from(
-                document.querySelectorAll(
-                    ".resume-dot"
-                )
-            );
+            emailSubject.value = resumeName + " Request";
 
+            modal.classList.add("active");
 
-        /* =====================================================
-           STATE
-           ===================================================== */
+            modal.setAttribute("aria-hidden", "false");
 
-        let currentIndex = 0;
+            document.body.style.overflow = "hidden";
 
-        let isAnimating = false;
+        });
 
+    });
 
-        /* =====================================================
-           GET SLIDE DISTANCE
-           ===================================================== */
 
-        function getSlideDistance() {
+    // =========================
+    // CLOSE MODAL
+    // =========================
 
-            if (!slides.length) {
-                return 0;
-            }
+    function closeModal() {
 
+        modal.classList.remove("active");
 
-            const slideWidth =
-                slides[0].getBoundingClientRect().width;
+        modal.setAttribute("aria-hidden", "true");
 
-
-            const trackStyles =
-                window.getComputedStyle(
-                    track
-                );
-
-
-            const gap =
-                parseFloat(
-                    trackStyles.columnGap
-                ) || 0;
-
-
-            return slideWidth + gap;
-        }
-
-
-        /* =====================================================
-           UPDATE DOTS
-           ===================================================== */
-
-        function updateDots() {
-
-            dots.forEach(
-                (dot, index) => {
-
-                    dot.classList.toggle(
-                        "active",
-                        index === currentIndex
-                    );
-
-                }
-            );
-        }
-
-
-        /* =====================================================
-           UPDATE CAROUSEL
-           ===================================================== */
-
-        function updateCarousel(
-            animate = true
-        ) {
-
-            const distance =
-                getSlideDistance();
-
-
-            if (!animate) {
-
-                track.style.transition =
-                    "none";
-
-            } else {
-
-                track.style.transition =
-                    "transform 650ms cubic-bezier(0.22, 1, 0.36, 1)";
-            }
-
-
-            track.style.transform =
-                `translateX(-${currentIndex * distance}px)`;
-
-
-            updateDots();
-
-
-            if (!animate) {
-
-                requestAnimationFrame(
-                    () => {
-
-                        requestAnimationFrame(
-                            () => {
-
-                                track.style.transition =
-                                    "transform 650ms cubic-bezier(0.22, 1, 0.36, 1)";
-
-                            }
-                        );
-
-                    }
-                );
-            }
-
-        }
-
-
-        /* =====================================================
-           GO TO SLIDE
-           ===================================================== */
-
-        function goToSlide(index) {
-
-            if (isAnimating) {
-                return;
-            }
-
-
-            if (index < 0) {
-
-                index =
-                    slides.length - 1;
-
-            }
-
-
-            if (index >= slides.length) {
-
-                index = 0;
-
-            }
-
-
-            if (index === currentIndex) {
-                return;
-            }
-
-
-            currentIndex = index;
-
-            isAnimating = true;
-
-
-            updateCarousel(true);
-
-
-            setTimeout(
-                () => {
-
-                    isAnimating = false;
-
-                },
-                680
-            );
-
-        }
-
-
-        /* =====================================================
-           NEXT
-           ===================================================== */
-
-        nextButton.addEventListener(
-            "click",
-            () => {
-
-                goToSlide(
-                    currentIndex + 1
-                );
-
-            }
-        );
-
-
-        /* =====================================================
-           PREVIOUS
-           ===================================================== */
-
-        prevButton.addEventListener(
-            "click",
-            () => {
-
-                goToSlide(
-                    currentIndex - 1
-                );
-
-            }
-        );
-
-
-        /* =====================================================
-           DOT NAVIGATION
-           ===================================================== */
-
-        dots.forEach(
-            (dot) => {
-
-                dot.addEventListener(
-                    "click",
-                    () => {
-
-                        const index =
-                            Number(
-                                dot.dataset.slide
-                            );
-
-
-                        goToSlide(index);
-
-                    }
-                );
-
-            }
-        );
-
-
-        /* =====================================================
-           KEYBOARD NAVIGATION
-           ===================================================== */
-
-        document.addEventListener(
-            "keydown",
-            (event) => {
-
-                if (
-                    event.key === "ArrowRight"
-                ) {
-
-                    goToSlide(
-                        currentIndex + 1
-                    );
-
-                }
-
-
-                if (
-                    event.key === "ArrowLeft"
-                ) {
-
-                    goToSlide(
-                        currentIndex - 1
-                    );
-
-                }
-
-            }
-        );
-
-
-        /* =====================================================
-           TOUCH / SWIPE
-           ===================================================== */
-
-        let touchStartX = 0;
-
-        let touchEndX = 0;
-
-
-        viewport.addEventListener(
-            "touchstart",
-            (event) => {
-
-                touchStartX =
-                    event.touches[0].clientX;
-
-            },
-            {
-                passive: true
-            }
-        );
-
-
-        viewport.addEventListener(
-            "touchend",
-            (event) => {
-
-                touchEndX =
-                    event.changedTouches[0].clientX;
-
-
-                const difference =
-                    touchStartX - touchEndX;
-
-
-                const minimumSwipe =
-                    50;
-
-
-                if (
-                    Math.abs(difference)
-                    < minimumSwipe
-                ) {
-
-                    return;
-
-                }
-
-
-                if (
-                    difference > 0
-                ) {
-
-                    goToSlide(
-                        currentIndex + 1
-                    );
-
-                } else {
-
-                    goToSlide(
-                        currentIndex - 1
-                    );
-
-                }
-
-            },
-            {
-                passive: true
-            }
-        );
-
-
-        /* =====================================================
-           RESIZE
-           ===================================================== */
-
-        let resizeTimer;
-
-
-        window.addEventListener(
-            "resize",
-            () => {
-
-                clearTimeout(
-                    resizeTimer
-                );
-
-
-                resizeTimer =
-                    setTimeout(
-                        () => {
-
-                            updateCarousel(
-                                false
-                            );
-
-                        },
-                        150
-                    );
-
-            }
-        );
-
-
-        /* =====================================================
-           VIEW RESUME BUTTON
-           ===================================================== */
-
-        const viewResumeButtons =
-            document.querySelectorAll(
-                ".view-resume"
-            );
-
-
-        viewResumeButtons.forEach(
-            (button) => {
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        const resumeName =
-                            button.dataset.resume;
-
-
-                        console.log(
-                            `Opening ${resumeName}`
-                        );
-
-
-                        /*
-                         * PALITAN ITO NG ACTUAL
-                         * RESUME FILE MO.
-                         *
-                         * Example:
-                         *
-                         * window.open(
-                         *     "resumes/data-analytics.pdf",
-                         *     "_blank"
-                         * );
-                         */
-
-
-                        alert(
-                            `${resumeName} selected.`
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-
-        /* =====================================================
-           INITIALIZE
-           ===================================================== */
-
-        updateCarousel(false);
+        document.body.style.overflow = "";
 
     }
-);
+
+
+    closeButton.addEventListener("click", closeModal);
+
+    overlay.addEventListener("click", closeModal);
+
+
+    // =========================
+    // ESCAPE KEY
+    // =========================
+
+    document.addEventListener("keydown", function (event) {
+
+        if (event.key === "Escape" && modal.classList.contains("active")) {
+
+            closeModal();
+
+        }
+
+    });
+
+
+    // =========================
+    // FORM SUBMISSION
+    // =========================
+
+    form.addEventListener("submit", function () {
+
+        const submitButton = form.querySelector(".submit-btn");
+
+        submitButton.disabled = true;
+
+        submitButton.textContent = "Sending Request...";
+
+    });
+
+});
