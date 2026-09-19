@@ -85,5 +85,5 @@ document.addEventListener("DOMContentLoaded", function () {
         submitButton.textContent = "Sending Request...";
 
     });
-    
+
 });
