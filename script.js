@@ -1,11 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+
     /* =====================================================
        RESUME CAROUSEL
     ===================================================== */
 
-    const carousel = document.getElementById("resumeCarousel");
-    const cards = document.querySelectorAll(".resume-card");
+    const carousel =
+        document.getElementById("resumeCarousel");
+
+    const cards =
+        document.querySelectorAll(".resume-card");
 
     const nextButton =
         document.querySelector(".carousel-next");
@@ -14,38 +18,60 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector(".carousel-prev");
 
 
-    if (carousel && cards.length > 0) {
+    if (
+        carousel &&
+        cards.length > 0
+    ) {
+
 
         if (nextButton) {
 
-            nextButton.addEventListener("click", function () {
+            nextButton.addEventListener(
+                "click",
+                function () {
 
-                const cardWidth =
-                    cards[0].getBoundingClientRect().width + 22;
+                    const cardWidth =
+                        cards[0].getBoundingClientRect().width;
 
-                carousel.scrollBy({
-                    left: cardWidth,
-                    behavior: "smooth"
-                });
+                    const gap =
+                        22;
 
-            });
+                    carousel.scrollBy({
+                        left:
+                            cardWidth + gap,
+
+                        behavior:
+                            "smooth"
+                    });
+
+                }
+            );
 
         }
 
 
         if (prevButton) {
 
-            prevButton.addEventListener("click", function () {
+            prevButton.addEventListener(
+                "click",
+                function () {
 
-                const cardWidth =
-                    cards[0].getBoundingClientRect().width + 22;
+                    const cardWidth =
+                        cards[0].getBoundingClientRect().width;
 
-                carousel.scrollBy({
-                    left: -cardWidth,
-                    behavior: "smooth"
-                });
+                    const gap =
+                        22;
 
-            });
+                    carousel.scrollBy({
+                        left:
+                            -(cardWidth + gap),
+
+                        behavior:
+                            "smooth"
+                    });
+
+                }
+            );
 
         }
 
@@ -58,34 +84,58 @@ document.addEventListener("DOMContentLoaded", function () {
     ===================================================== */
 
     const modal =
-        document.getElementById("resumeModal");
+        document.getElementById(
+            "resumeModal"
+        );
 
     const modalTitle =
-        document.getElementById("modalTitle");
+        document.getElementById(
+            "modalTitle"
+        );
 
     const requestedResume =
-        document.getElementById("requestedResume");
+        document.getElementById(
+            "requestedResume"
+        );
 
     const emailSubject =
-        document.getElementById("emailSubject");
+        document.getElementById(
+            "emailSubject"
+        );
 
     const closeButton =
-        document.querySelector(".close-modal");
+        document.querySelector(
+            ".close-modal"
+        );
 
     const overlay =
-        document.querySelector(".modal-overlay");
+        document.querySelector(
+            ".modal-overlay"
+        );
 
     const requestButtons =
-        document.querySelectorAll(".request-btn");
+        document.querySelectorAll(
+            ".request-btn"
+        );
 
     const form =
-        document.getElementById("resumeRequestForm");
+        document.getElementById(
+            "resumeRequestForm"
+        );
+
+
+    console.log(
+        "Resume portal script loaded."
+    );
+
+    console.log(
+        "Request buttons found:",
+        requestButtons.length
+    );
 
 
     /*
-       IMPORTANT:
-       Stop here if the modal does not exist.
-       This prevents JavaScript from crashing.
+       Safety check
     */
 
     if (
@@ -100,18 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
         return;
-
     }
-
-
-    console.log(
-        "Resume request system loaded."
-    );
-
-    console.log(
-        "Request buttons found:",
-        requestButtons.length
-    );
 
 
 
@@ -119,97 +158,115 @@ document.addEventListener("DOMContentLoaded", function () {
        OPEN MODAL
     ===================================================== */
 
-    requestButtons.forEach(function (button) {
+    requestButtons.forEach(
+        function (button) {
 
-        button.addEventListener("click", function () {
-
-            const resumeName =
-                button.getAttribute("data-resume");
-
-
-            if (!resumeName) {
-
-                console.error(
-                    "This Request Resume button has no data-resume value."
-                );
-
-                return;
-
-            }
+            button.addEventListener(
+                "click",
+                function () {
 
 
-            /*
-               Example:
-
-               Request Resume
-
-               becomes:
-
-               Request Data Analyst Resume
-            */
-
-            modalTitle.textContent =
-                "Request " + resumeName;
+                    const resumeName =
+                        button.getAttribute(
+                            "data-resume"
+                        );
 
 
-            /*
-               Send selected resume
-               to Formspree.
-            */
+                    if (!resumeName) {
 
-            requestedResume.value =
-                resumeName;
+                        console.error(
+                            "Missing data-resume."
+                        );
 
-
-            /*
-               Change email subject.
-            */
-
-            emailSubject.value =
-                resumeName + " Request";
+                        return;
+                    }
 
 
-            /*
-               Show modal.
-            */
+                    /*
+                       Example:
 
-            modal.classList.add("active");
+                       Request Resume
 
-            modal.setAttribute(
-                "aria-hidden",
-                "false"
+                       becomes:
+
+                       Request Data Analyst Resume
+                    */
+
+                    modalTitle.textContent =
+                        "Request " +
+                        resumeName;
+
+
+                    /*
+                       Send selected resume
+                       to Formspree.
+                    */
+
+                    requestedResume.value =
+                        resumeName;
+
+
+                    /*
+                       Change email subject.
+                    */
+
+                    emailSubject.value =
+                        resumeName +
+                        " Request";
+
+
+                    /*
+                       Show modal.
+                    */
+
+                    modal.classList.add(
+                        "active"
+                    );
+
+
+                    modal.setAttribute(
+                        "aria-hidden",
+                        "false"
+                    );
+
+
+                    /*
+                       Prevent background scrolling.
+                    */
+
+                    document.body.classList.add(
+                        "modal-open"
+                    );
+
+
+                    /*
+                       Focus Full Name.
+                    */
+
+                    const nameInput =
+                        document.getElementById(
+                            "name"
+                        );
+
+
+                    if (nameInput) {
+
+                        setTimeout(
+                            function () {
+
+                                nameInput.focus();
+
+                            },
+                            200
+                        );
+
+                    }
+
+                }
             );
 
-
-            /*
-               Stop background scrolling.
-            */
-
-            document.body.classList.add(
-                "modal-open"
-            );
-
-
-            /*
-               Put cursor inside Full Name.
-            */
-
-            const nameInput =
-                document.getElementById("name");
-
-            if (nameInput) {
-
-                setTimeout(function () {
-
-                    nameInput.focus();
-
-                }, 200);
-
-            }
-
-        });
-
-    });
+        }
+    );
 
 
 
@@ -219,18 +276,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function closeModal() {
 
-        modal.classList.remove("active");
+        modal.classList.remove(
+            "active"
+        );
+
 
         modal.setAttribute(
             "aria-hidden",
             "true"
         );
 
+
         document.body.classList.remove(
             "modal-open"
         );
 
     }
+
 
 
     if (closeButton) {
@@ -255,7 +317,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       ESC KEY
+       ESCAPE KEY
     ===================================================== */
 
     document.addEventListener(
@@ -264,7 +326,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (
                 event.key === "Escape" &&
-                modal.classList.contains("active")
+                modal.classList.contains(
+                    "active"
+                )
             ) {
 
                 closeModal();
@@ -287,7 +351,9 @@ document.addEventListener("DOMContentLoaded", function () {
             function () {
 
                 const submitButton =
-                    form.querySelector(".submit-btn");
+                    form.querySelector(
+                        ".submit-btn"
+                    );
 
 
                 if (submitButton) {
