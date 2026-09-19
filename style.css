@@ -1,130 +1,770 @@
 /* =========================================================
+   GLOBAL
+========================================================= */
+
+:root {
+
+    --bg:
+        #090b0e;
+
+    --bg-soft:
+        #101419;
+
+    --card:
+        rgba(255,255,255,.055);
+
+    --card-border:
+        rgba(255,255,255,.11);
+
+    --text:
+        #f3f4f4;
+
+    --muted:
+        rgba(243,244,244,.62);
+
+    --muted-2:
+        rgba(243,244,244,.4);
+
+    --white:
+        #ffffff;
+
+    --radius:
+        22px;
+
+}
+
+
+* {
+
+    box-sizing:
+        border-box;
+
+    margin:
+        0;
+
+    padding:
+        0;
+
+}
+
+
+html {
+
+    scroll-behavior:
+        smooth;
+
+}
+
+
+body {
+
+    min-height:
+        100vh;
+
+    overflow-x:
+        hidden;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        var(--bg);
+
+    color:
+        var(--text);
+
+    line-height:
+        1.5;
+
+}
+
+
+button,
+a {
+
+    -webkit-tap-highlight-color:
+        transparent;
+
+}
+
+
+a {
+
+    color:
+        inherit;
+
+    text-decoration:
+        none;
+
+}
+
+
+button {
+
+    font-family:
+        inherit;
+
+}
+
+
+::selection {
+
+    background:
+        #ffffff;
+
+    color:
+        #111;
+
+}
+
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.page-background {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        -10;
+
+    overflow:
+        hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            #20262c 0%,
+            #0d1013 40%,
+            #07090b 100%
+        );
+
+}
+
+
+.background-glow {
+
+    position:
+        absolute;
+
+    border-radius:
+        50%;
+
+    filter:
+        blur(100px);
+
+    opacity:
+        .15;
+
+}
+
+
+.glow-one {
+
+    width:
+        450px;
+
+    height:
+        450px;
+
+    top:
+        5%;
+
+    left:
+        -150px;
+
+    background:
+        #72808a;
+
+}
+
+
+.glow-two {
+
+    width:
+        500px;
+
+    height:
+        500px;
+
+    right:
+        -200px;
+
+    top:
+        35%;
+
+    background:
+        #52616b;
+
+}
+
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header {
+
+    position:
+        sticky;
+
+    top:
+        0;
+
+    z-index:
+        100;
+
+    width:
+        100%;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.07);
+
+    background:
+        rgba(8,10,12,.72);
+
+    backdrop-filter:
+        blur(18px);
+
+}
+
+
+.nav-container {
+
+    width:
+        min(1100px, calc(100% - 40px));
+
+    min-height:
+        68px;
+
+    margin:
+        auto;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+}
+
+
+.logo {
+
+    width:
+        38px;
+
+    height:
+        38px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    border-radius:
+        50%;
+
+    font-size:
+        11px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .08em;
+
+}
+
+
+.main-nav {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        30px;
+
+}
+
+
+.main-nav a {
+
+    font-size:
+        11px;
+
+    color:
+        var(--muted);
+
+    transition:
+        color .2s ease;
+
+}
+
+
+.main-nav a:hover {
+
+    color:
+        var(--white);
+
+}
+
+
+.nav-button {
+
+    padding:
+        9px 14px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    border-radius:
+        100px;
+
+    font-size:
+        10px;
+
+    font-weight:
+        800;
+
+}
+
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero-section {
+
+    position:
+        relative;
+
+    width:
+        min(1100px, calc(100% - 40px));
+
+    min-height:
+        570px;
+
+    margin:
+        auto;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+}
+
+
+.hero-content {
+
+    max-width:
+        650px;
+
+}
+
+
+.eyebrow {
+
+    margin-bottom:
+        18px;
+
+    font-size:
+        10px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        .2em;
+
+    color:
+        var(--muted-2);
+
+}
+
+
+.hero-content h1 {
+
+    max-width:
+        680px;
+
+    font-size:
+        clamp(
+            45px,
+            7vw,
+            78px
+        );
+
+    line-height:
+        .98;
+
+    letter-spacing:
+        -.045em;
+
+}
+
+
+.hero-content h1 span {
+
+    display:
+        block;
+
+    color:
+        rgba(255,255,255,.45);
+
+}
+
+
+.hero-description {
+
+    max-width:
+        510px;
+
+    margin-top:
+        25px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        15px;
+
+    line-height:
+        1.8;
+
+}
+
+
+.hero-button {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        20px;
+
+    margin-top:
+        30px;
+
+    padding:
+        13px 18px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    border-radius:
+        100px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    font-size:
+        11px;
+
+    font-weight:
+        800;
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
+
+}
+
+
+.hero-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        rgba(255,255,255,.13);
+
+}
+
+
+.hero-decoration {
+
+    width:
+        260px;
+
+    height:
+        260px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+}
+
+
+.hero-circle {
+
+    width:
+        200px;
+
+    height:
+        200px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    border-radius:
+        50%;
+
+    box-shadow:
+        inset 0 0 60px
+        rgba(255,255,255,.03);
+
+}
+
+
+.hero-circle span {
+
+    font-size:
+        50px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        -.08em;
+
+    color:
+        rgba(255,255,255,.15);
+
+}
+
+
+
+/* =========================================================
    RESUME SECTION
 ========================================================= */
 
 .resume-section {
 
-    position: relative;
+    position:
+        relative;
 
-    width: 100%;
+    width:
+        min(1100px, calc(100% - 40px));
 
-    max-width: 1100px;
+    margin:
+        auto;
 
-    margin: 0 auto;
-
-    padding: 90px 30px 120px;
-
-    overflow: hidden;
+    padding:
+        70px 0 110px;
 
 }
 
 
-/* Heading */
-
 .resume-heading {
 
-    max-width: 600px;
+    max-width:
+        600px;
 
     margin:
         0 auto 45px;
 
-    text-align: center;
+    text-align:
+        center;
 
 }
 
 
 .section-label {
 
-    margin: 0 0 10px;
+    margin-bottom:
+        9px;
 
-    font-size: 11px;
+    font-size:
+        9px;
 
-    font-weight: 800;
+    font-weight:
+        900;
 
-    letter-spacing: .2em;
+    letter-spacing:
+        .22em;
 
-    opacity: .6;
+    color:
+        var(--muted-2);
 
 }
 
 
 .resume-heading h2 {
 
-    margin: 0;
+    font-size:
+        clamp(
+            32px,
+            5vw,
+            50px
+        );
 
-    font-size: clamp(
-        32px,
-        5vw,
-        50px
-    );
+    line-height:
+        1;
 
-    line-height: 1.05;
+    letter-spacing:
+        -.04em;
 
 }
 
 
 .resume-heading h2 span {
 
-    opacity: .55;
+    color:
+        rgba(255,255,255,.42);
 
 }
 
 
 .section-description {
 
-    max-width: 470px;
+    max-width:
+        450px;
 
     margin:
-        16px auto 0;
+        15px auto 0;
 
-    line-height: 1.7;
+    color:
+        var(--muted);
 
-    opacity: .65;
+    font-size:
+        13px;
+
+}
+
+
+
+/* =========================================================
+   RESUME LAYOUT
+========================================================= */
+
+.resume-layout {
+
+    position:
+        relative;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        35px;
 
 }
 
 
 /* =========================================================
    CAROUSEL
+
+   IMPORTANT:
+
+   viewport is intentionally wider than one card
+   but narrower than two cards.
+
+   Result:
+
+   FULL MAIN CARD
+   +
+   PARTIAL NEXT CARD
 ========================================================= */
 
 .resume-carousel {
 
-    position: relative;
+    width:
+        730px;
 
-    width: 100%;
+    max-width:
+        730px;
 
-    max-width: 760px;
-
-    margin: 0 auto;
+    flex:
+        0 0 730px;
 
 }
 
 
-/*
-   IMPORTANT:
+.resume-viewport {
 
-   This is what creates:
+    width:
+        100%;
 
-   ONE FULL CARD
-   +
-   NEXT CARD PARTIALLY VISIBLE
-*/
+    overflow:
+        hidden;
 
-.resume-carousel {
-
-    overflow: hidden;
+    padding:
+        15px 0 25px;
 
 }
 
 
 .resume-track {
 
-    display: flex;
+    display:
+        flex;
 
-    gap: 24px;
+    gap:
+        22px;
 
-    width: max-content;
+    width:
+        max-content;
+
+    will-change:
+        transform;
 
     transition:
         transform .55s
@@ -134,41 +774,46 @@
 
 
 /* =========================================================
-   SMALLER CARD
+   RESUME CARD
 ========================================================= */
 
 .resume-card {
 
-    position: relative;
+    position:
+        relative;
 
     flex:
-        0 0 330px;
+        0 0 340px;
 
-    width: 330px;
+    width:
+        340px;
 
-    min-height: 510px;
+    min-height:
+        510px;
 
-    overflow: hidden;
-
-    border-radius: 22px;
-
-    background:
-        rgba(255,255,255,.06);
+    overflow:
+        hidden;
 
     border:
         1px solid
-        rgba(255,255,255,.12);
+        var(--card-border);
+
+    border-radius:
+        var(--radius);
+
+    background:
+        var(--card);
 
     box-shadow:
-        0 20px 60px
-        rgba(0,0,0,.18);
+        0 25px 70px
+        rgba(0,0,0,.3);
 
     backdrop-filter:
         blur(15px);
 
     transition:
         transform .35s ease,
-        box-shadow .35s ease;
+        border-color .35s ease;
 
 }
 
@@ -178,63 +823,129 @@
     transform:
         translateY(-5px);
 
-    box-shadow:
-        0 30px 70px
-        rgba(0,0,0,.25);
+    border-color:
+        rgba(255,255,255,.18);
 
 }
 
 
+
 /* =========================================================
-   CARD IMAGE
+   RESUME IMAGE
 ========================================================= */
 
 .resume-image {
 
-    position: relative;
+    position:
+        relative;
 
-    width: 100%;
+    width:
+        100%;
 
-    height: 220px;
+    height:
+        220px;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
 }
 
 
 .resume-number {
 
-    position: absolute;
+    position:
+        absolute;
 
-    top: 15px;
+    top:
+        14px;
 
-    right: 15px;
+    right:
+        14px;
 
-    display: flex;
+    z-index:
+        20;
 
-    align-items: center;
+    width:
+        36px;
 
-    justify-content: center;
+    height:
+        36px;
 
-    width: 38px;
+    display:
+        flex;
 
-    height: 38px;
+    align-items:
+        center;
 
-    border-radius: 50%;
+    justify-content:
+        center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    border-radius:
+        50%;
 
     background:
-        rgba(0,0,0,.45);
+        rgba(0,0,0,.4);
 
-    color: white;
+    backdrop-filter:
+        blur(10px);
 
-    font-size: 11px;
+    color:
+        white;
 
-    font-weight: 800;
+    font-size:
+        10px;
+
+    font-weight:
+        900;
+
+}
+
+
+.image-label {
+
+    position:
+        absolute;
+
+    left:
+        15px;
+
+    bottom:
+        14px;
+
+    z-index:
+        20;
+
+    padding:
+        6px 9px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    border-radius:
+        100px;
+
+    background:
+        rgba(0,0,0,.35);
 
     backdrop-filter:
         blur(8px);
 
+    font-size:
+        8px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        .13em;
+
 }
+
 
 
 /* =========================================================
@@ -244,66 +955,81 @@
 .resume-content {
 
     padding:
-        24px 24px 26px;
+        23px 23px 24px;
 
 }
 
 
 .resume-category {
 
-    margin:
-        0 0 7px;
+    margin-bottom:
+        7px;
 
-    font-size: 9px;
+    font-size:
+        8px;
 
-    font-weight: 800;
+    font-weight:
+        900;
 
-    letter-spacing: .18em;
+    letter-spacing:
+        .18em;
 
-    opacity: .55;
+    color:
+        var(--muted-2);
 
 }
 
 
 .resume-content h3 {
 
-    margin:
-        0 0 10px;
+    margin-bottom:
+        10px;
 
-    font-size: 25px;
+    font-size:
+        24px;
 
-    line-height: 1.1;
+    line-height:
+        1.05;
+
+    letter-spacing:
+        -.025em;
 
 }
 
 
 .resume-content > p:not(.resume-category) {
 
-    margin:
-        0 0 17px;
+    min-height:
+        63px;
 
-    font-size: 13px;
+    margin-bottom:
+        16px;
 
-    line-height: 1.65;
+    color:
+        var(--muted);
 
-    opacity: .7;
+    font-size:
+        12px;
+
+    line-height:
+        1.65;
 
 }
 
 
-/* =========================================================
-   SKILLS
-========================================================= */
-
 .resume-skills {
 
-    display: flex;
+    display:
+        flex;
 
-    flex-wrap: wrap;
+    flex-wrap:
+        wrap;
 
-    gap: 6px;
+    gap:
+        5px;
 
-    margin-bottom: 20px;
+    margin-bottom:
+        18px;
 
 }
 
@@ -311,53 +1037,70 @@
 .resume-skills span {
 
     padding:
-        6px 9px;
-
-    border-radius: 100px;
-
-    background:
-        rgba(255,255,255,.07);
+        5px 8px;
 
     border:
         1px solid
-        rgba(255,255,255,.1);
+        rgba(255,255,255,.09);
 
-    font-size: 9px;
+    border-radius:
+        100px;
 
-    font-weight: 700;
+    background:
+        rgba(255,255,255,.04);
+
+    color:
+        rgba(255,255,255,.7);
+
+    font-size:
+        8px;
+
+    font-weight:
+        800;
 
 }
 
 
-/* =========================================================
-   BUTTON
-========================================================= */
-
 .resume-button {
 
-    width: 100%;
+    width:
+        100%;
 
-    min-height: 42px;
+    height:
+        40px;
 
-    border: 0;
+    display:
+        flex;
 
-    border-radius: 10px;
+    align-items:
+        center;
 
-    cursor: pointer;
+    justify-content:
+        space-between;
 
-    font: inherit;
+    padding:
+        0 14px;
 
-    font-size: 11px;
+    border:
+        0;
 
-    font-weight: 800;
-
-    letter-spacing: .04em;
+    border-radius:
+        10px;
 
     background:
-        rgba(255,255,255,.9);
+        rgba(255,255,255,.92);
 
     color:
         #111;
+
+    cursor:
+        pointer;
+
+    font-size:
+        10px;
+
+    font-weight:
+        900;
 
     transition:
         transform .2s ease,
@@ -371,9 +1114,11 @@
     transform:
         translateY(-2px);
 
-    opacity: .85;
+    opacity:
+        .85;
 
 }
+
 
 
 /* =========================================================
@@ -382,39 +1127,59 @@
 
 .resume-controls {
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: center;
+    justify-content:
+        center;
 
-    gap: 22px;
+    gap:
+        20px;
 
-    margin-top: 28px;
+    margin-top:
+        3px;
 
 }
 
 
 .carousel-button {
 
-    width: 42px;
+    width:
+        40px;
 
-    height: 42px;
+    height:
+        40px;
 
-    border-radius: 50%;
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
 
     border:
         1px solid
-        rgba(255,255,255,.15);
+        rgba(255,255,255,.12);
+
+    border-radius:
+        50%;
 
     background:
-        rgba(255,255,255,.05);
+        rgba(255,255,255,.04);
 
-    color: inherit;
+    color:
+        white;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
-    font-size: 18px;
+    font-size:
+        16px;
 
     transition:
         background .2s ease,
@@ -426,7 +1191,7 @@
 .carousel-button:hover {
 
     background:
-        rgba(255,255,255,.12);
+        rgba(255,255,255,.1);
 
     transform:
         scale(1.05);
@@ -434,121 +1199,184 @@
 }
 
 
+.carousel-button:disabled {
+
+    opacity:
+        .25;
+
+    cursor:
+        default;
+
+    transform:
+        none;
+
+}
+
+
 .carousel-indicator {
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 10px;
+    gap:
+        10px;
 
-    font-size: 10px;
+    font-size:
+        9px;
 
-    font-weight: 800;
+    font-weight:
+        900;
 
-    letter-spacing: .1em;
+    letter-spacing:
+        .08em;
 
 }
 
 
 .indicator-line {
 
-    display: block;
+    width:
+        35px;
 
-    width: 35px;
-
-    height: 1px;
+    height:
+        1px;
 
     background:
-        currentColor;
-
-    opacity: .4;
+        rgba(255,255,255,.4);
 
 }
+
 
 
 /* =========================================================
-   GRADUATION PHOTO
+   GRADUATION PROFILE
+
+   PHOTO IS BESIDE THE RESUME CARD.
 ========================================================= */
+
+.graduation-profile {
+
+    position:
+        relative;
+
+    flex:
+        0 0 150px;
+
+    width:
+        150px;
+
+    margin-top:
+        25px;
+
+}
+
 
 .graduation-photo {
 
-    position: absolute;
+    position:
+        relative;
 
-    /*
-       Place it beside the cards,
-       NOT as hero
-    */
+    width:
+        150px;
 
-    right: -15px;
-
-    top: 48%;
-
-    z-index: 10;
-
-    width: 155px;
-
-    transform:
-        translateY(-50%);
+    height:
+        200px;
 
 }
 
+
+/*
+   Blurred background behind the portrait.
+*/
+
+.graduation-photo-blur {
+
+    position:
+        absolute;
+
+    inset:
+        -18px;
+
+    border-radius:
+        25px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,.2),
+            rgba(255,255,255,0)
+        );
+
+    filter:
+        blur(18px);
+
+    opacity:
+        .7;
+
+}
+
+
+/*
+   Actual photo frame.
+*/
 
 .graduation-photo-frame {
 
-    position: relative;
+    position:
+        relative;
 
-    width: 155px;
+    z-index:
+        2;
 
-    height: 205px;
+    width:
+        150px;
 
-    overflow: hidden;
+    height:
+        200px;
 
-    border-radius: 18px;
+    overflow:
+        hidden;
 
     border:
-        5px solid
-        rgba(255,255,255,.9);
+        4px solid
+        rgba(255,255,255,.88);
 
-    background: #111;
-
-    box-shadow:
-        0 20px 50px
-        rgba(0,0,0,.35);
-
-    transform:
-        rotate(4deg);
-
-}
-
-
-.graduation-photo-frame::after {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
+    border-radius:
+        18px;
 
     background:
         linear-gradient(
-            to bottom,
-            transparent 60%,
-            rgba(0,0,0,.3)
+            135deg,
+            #20262b,
+            #0c0f11
         );
+
+    box-shadow:
+        0 25px 50px
+        rgba(0,0,0,.4);
+
+    transform:
+        rotate(3deg);
 
 }
 
 
 .graduation-photo-frame img {
 
-    width: 100%;
+    display:
+        block;
 
-    height: 100%;
+    width:
+        100%;
 
-    display: block;
+    height:
+        100%;
 
-    object-fit: cover;
+    object-fit:
+        cover;
 
     object-position:
         center top;
@@ -556,115 +1384,1427 @@
 }
 
 
-/* Graduation label */
+.photo-missing-text {
 
-.graduation-label {
+    position:
+        absolute;
 
-    margin-top: 10px;
+    inset:
+        0;
 
-    text-align: center;
+    display:
+        flex;
 
-    transform:
-        rotate(4deg);
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        20px;
+
+    text-align:
+        center;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.5;
+
+    color:
+        rgba(255,255,255,.5);
+
+}
+
+
+.graduation-photo-frame:not(.photo-missing)
+.photo-missing-text {
+
+    display:
+        none;
 
 }
 
 
-.graduation-label span {
+.graduation-caption {
 
-    display: block;
+    position:
+        relative;
 
-    font-size: 8px;
+    z-index:
+        3;
 
-    font-weight: 800;
+    margin-top:
+        15px;
 
-    letter-spacing: .18em;
+    text-align:
+        center;
 
-    opacity: .55;
+}
+
+
+.graduation-caption span {
+
+    display:
+        block;
+
+    margin-bottom:
+        3px;
+
+    color:
+        var(--muted-2);
+
+    font-size:
+        8px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .18em;
 
 }
 
 
-.graduation-label strong {
+.graduation-caption strong {
 
-    display: block;
+    display:
+        block;
 
-    margin-top: 3px;
+    font-size:
+        10px;
 
-    font-size: 10px;
+    line-height:
+        1.3;
 
 }
+
 
 
 /* =========================================================
-   DESKTOP POSITION
+   DATA ANALYST VISUAL
 ========================================================= */
 
-@media (min-width: 1000px) {
+.data-analyst-image {
 
-    .graduation-photo {
-
-        right: 30px;
-
-    }
+    background:
+        radial-gradient(
+            circle at 65% 25%,
+            #465963 0%,
+            #26343c 40%,
+            #11191f 75%,
+            #080c10 100%
+        );
 
 }
+
+
+.ai-scene {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+}
+
+
+.monitor {
+
+    position:
+        absolute;
+
+    left:
+        8%;
+
+    top:
+        14%;
+
+    width:
+        48%;
+
+    height:
+        58%;
+
+    padding:
+        10px;
+
+    border:
+        3px solid
+        #39464e;
+
+    border-radius:
+        5px;
+
+    background:
+        #11181d;
+
+    box-shadow:
+        0 20px 35px
+        rgba(0,0,0,.4);
+
+}
+
+
+.monitor-top {
+
+    height:
+        18%;
+
+    color:
+        #d2dce1;
+
+    font-size:
+        7px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .1em;
+
+}
+
+
+.chart-area {
+
+    position:
+        absolute;
+
+    left:
+        12%;
+
+    right:
+        12%;
+
+    bottom:
+        13%;
+
+    height:
+        55%;
+
+    display:
+        flex;
+
+    align-items:
+        flex-end;
+
+    gap:
+        5px;
+
+}
+
+
+.bar {
+
+    flex:
+        1;
+
+    border-radius:
+        2px 2px 0 0;
+
+    background:
+        linear-gradient(
+            to top,
+            #758b96,
+            #c3d0d5
+        );
+
+}
+
+
+.bar-1 {
+    height: 32%;
+}
+
+
+.bar-2 {
+    height: 52%;
+}
+
+
+.bar-3 {
+    height: 44%;
+}
+
+
+.bar-4 {
+    height: 79%;
+}
+
+
+.bar-5 {
+    height: 63%;
+}
+
+
+.chart-line {
+
+    position:
+        absolute;
+
+    left:
+        12%;
+
+    right:
+        13%;
+
+    top:
+        47%;
+
+    border-top:
+        2px solid
+        #c79b63;
+
+    transform:
+        rotate(-9deg);
+
+}
+
+
+
+/* Laptop */
+
+.laptop {
+
+    position:
+        absolute;
+
+    right:
+        7%;
+
+    bottom:
+        13%;
+
+    width:
+        46%;
+
+    z-index:
+        5;
+
+}
+
+
+.laptop-screen {
+
+    height:
+        95px;
+
+    padding:
+        9px;
+
+    border:
+        6px solid
+        #343e44;
+
+    border-radius:
+        7px 7px 2px 2px;
+
+    background:
+        #11171b;
+
+}
+
+
+.dashboard-title {
+
+    margin-bottom:
+        8px;
+
+    color:
+        #d6dfe2;
+
+    font-size:
+        7px;
+
+    font-weight:
+        900;
+
+}
+
+
+.dashboard-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:
+        5px;
+
+}
+
+
+.dashboard-grid div {
+
+    height:
+        20px;
+
+    border-radius:
+        2px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #536a75,
+            #293841
+        );
+
+}
+
+
+.laptop-base {
+
+    height:
+        8px;
+
+    margin:
+        0 -9px;
+
+    border-radius:
+        0 0 6px 6px;
+
+    background:
+        #657077;
+
+}
+
+
+
+/* Person */
+
+.person-silhouette {
+
+    position:
+        absolute;
+
+    right:
+        13%;
+
+    bottom:
+        -10%;
+
+    z-index:
+        7;
+
+}
+
+
+.person-silhouette .head {
+
+    width:
+        55px;
+
+    height:
+        55px;
+
+    margin:
+        auto;
+
+    border-radius:
+        50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #d39a78,
+            #805847
+        );
+
+}
+
+
+.person-silhouette .body {
+
+    width:
+        125px;
+
+    height:
+        145px;
+
+    margin-top:
+        -3px;
+
+    border-radius:
+        50px 50px 0 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2c383f,
+            #101519
+        );
+
+}
+
+
+
+/* =========================================================
+   RESEARCH VISUAL
+========================================================= */
+
+.research-analyst-image {
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #626d69 0%,
+            #36413e 35%,
+            #1b2422 72%,
+            #0b0f0e 100%
+        );
+
+}
+
+
+.research-scene {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+}
+
+
+.research-board {
+
+    position:
+        absolute;
+
+    right:
+        7%;
+
+    top:
+        12%;
+
+    width:
+        55%;
+
+    height:
+        58%;
+
+    padding:
+        12px;
+
+    border:
+        4px solid
+        #3c4643;
+
+    border-radius:
+        4px;
+
+    background:
+        #111817;
+
+    box-shadow:
+        0 20px 35px
+        rgba(0,0,0,.4);
+
+}
+
+
+.research-title {
+
+    margin-bottom:
+        10px;
+
+    color:
+        #dce3df;
+
+    font-size:
+        7px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .08em;
+
+}
+
+
+.research-chart {
+
+    height:
+        53%;
+
+    display:
+        flex;
+
+    align-items:
+        flex-end;
+
+    gap:
+        5px;
+
+    border-bottom:
+        1px solid
+        #58625e;
+
+}
+
+
+.research-column {
+
+    flex:
+        1;
+
+    border-radius:
+        2px 2px 0 0;
+
+    background:
+        linear-gradient(
+            to top,
+            #82928b,
+            #c2cbc5
+        );
+
+}
+
+
+.c1 {
+    height:
+        34%;
+}
+
+
+.c2 {
+    height:
+        60%;
+}
+
+
+.c3 {
+    height:
+        46%;
+}
+
+
+.c4 {
+    height:
+        80%;
+}
+
+
+.c5 {
+    height:
+        66%;
+}
+
+
+.research-lines {
+
+    margin-top:
+        9px;
+
+}
+
+
+.research-lines span {
+
+    display:
+        block;
+
+    width:
+        75%;
+
+    height:
+        3px;
+
+    margin-bottom:
+        5px;
+
+    background:
+        #47534e;
+
+}
+
+
+.research-lines span:nth-child(2) {
+    width:
+        55%;
+}
+
+
+.research-lines span:nth-child(3) {
+    width:
+        68%;
+}
+
+
+.research-lines span:nth-child(4) {
+    width:
+        42%;
+}
+
+
+
+/* Papers */
+
+.papers {
+
+    position:
+        absolute;
+
+    left:
+        7%;
+
+    bottom:
+        7%;
+
+    width:
+        40%;
+
+    height:
+        43%;
+
+}
+
+
+.paper {
+
+    position:
+        absolute;
+
+    width:
+        75%;
+
+    height:
+        82%;
+
+    padding:
+        10px;
+
+    background:
+        #ddd9ce;
+
+    box-shadow:
+        0 15px 25px
+        rgba(0,0,0,.3);
+
+}
+
+
+.paper div {
+
+    height:
+        4px;
+
+    margin-bottom:
+        6px;
+
+    background:
+        #8b8c85;
+
+}
+
+
+.paper-one {
+
+    bottom:
+        0;
+
+    left:
+        0;
+
+    transform:
+        rotate(-7deg);
+
+}
+
+
+.paper-two {
+
+    bottom:
+        7px;
+
+    left:
+        20px;
+
+    transform:
+        rotate(6deg);
+
+}
+
+
+
+/* Person */
+
+.research-person {
+
+    position:
+        absolute;
+
+    left:
+        39%;
+
+    bottom:
+        -9%;
+
+    z-index:
+        8;
+
+}
+
+
+.research-head {
+
+    width:
+        55px;
+
+    height:
+        55px;
+
+    margin:
+        auto;
+
+    border-radius:
+        50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #d5a080,
+            #835a47
+        );
+
+}
+
+
+.research-body {
+
+    width:
+        120px;
+
+    height:
+        145px;
+
+    margin-top:
+        -3px;
+
+    border-radius:
+        48px 48px 0 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #35413d,
+            #111615
+        );
+
+}
+
+
+
+/* =========================================================
+   WORKFORCE VISUAL
+========================================================= */
+
+.workforce-image {
+
+    background:
+        radial-gradient(
+            circle at 65% 25%,
+            #59656b 0%,
+            #303b42 38%,
+            #151c21 75%,
+            #090d10 100%
+        );
+
+}
+
+
+.workforce-visual {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+}
+
+
+.workforce-screen {
+
+    position:
+        absolute;
+
+    left:
+        11%;
+
+    top:
+        15%;
+
+    width:
+        56%;
+
+    height:
+        58%;
+
+    padding:
+        14px;
+
+    border:
+        4px solid
+        #3b474d;
+
+    border-radius:
+        5px;
+
+    background:
+        #12191e;
+
+    color:
+        #d7e0e3;
+
+    font-size:
+        8px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .12em;
+
+}
+
+
+.workforce-bars {
+
+    height:
+        65%;
+
+    margin-top:
+        18px;
+
+    display:
+        flex;
+
+    align-items:
+        flex-end;
+
+    gap:
+        7px;
+
+}
+
+
+.workforce-bars span {
+
+    flex:
+        1;
+
+    border-radius:
+        3px 3px 0 0;
+
+    background:
+        linear-gradient(
+            to top,
+            #71828b,
+            #c1cdd2
+        );
+
+}
+
+
+.workforce-bars span:nth-child(1) {
+    height:
+        40%;
+}
+
+
+.workforce-bars span:nth-child(2) {
+    height:
+        65%;
+}
+
+
+.workforce-bars span:nth-child(3) {
+    height:
+        50%;
+}
+
+
+.workforce-bars span:nth-child(4) {
+    height:
+        82%;
+}
+
+
+.workforce-person {
+
+    position:
+        absolute;
+
+    right:
+        10%;
+
+    bottom:
+        -7%;
+
+}
+
+
+.wf-head {
+
+    width:
+        60px;
+
+    height:
+        60px;
+
+    margin:
+        auto;
+
+    border-radius:
+        50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #d19a79,
+            #815946
+        );
+
+}
+
+
+.wf-body {
+
+    width:
+        135px;
+
+    height:
+        150px;
+
+    border-radius:
+        55px 55px 0 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #303d44,
+            #11161a
+        );
+
+}
+
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-section {
+
+    width:
+        min(900px, calc(100% - 40px));
+
+    margin:
+        auto;
+
+    padding:
+        30px 0 120px;
+
+}
+
+
+.about-card {
+
+    padding:
+        40px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    border-radius:
+        25px;
+
+    background:
+        rgba(255,255,255,.035);
+
+}
+
+
+.about-card h2 {
+
+    margin:
+        10px 0 15px;
+
+    font-size:
+        clamp(
+            28px,
+            5vw,
+            45px
+        );
+
+    line-height:
+        1;
+
+    letter-spacing:
+        -.04em;
+
+}
+
+
+.about-card h2 span {
+
+    display:
+        block;
+
+    color:
+        rgba(255,255,255,.4);
+
+}
+
+
+.about-card > p:last-child {
+
+    max-width:
+        650px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.8;
+
+}
+
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.resume-modal {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        1000;
+
+    display:
+        none;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        20px;
+
+}
+
+
+.resume-modal.active {
+
+    display:
+        flex;
+
+}
+
+
+.modal-backdrop {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        rgba(0,0,0,.72);
+
+    backdrop-filter:
+        blur(10px);
+
+}
+
+
+.modal-card {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    width:
+        min(430px,100%);
+
+    padding:
+        35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    border-radius:
+        22px;
+
+    background:
+        #15191d;
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.55);
+
+}
+
+
+.modal-close {
+
+    position:
+        absolute;
+
+    top:
+        14px;
+
+    right:
+        14px;
+
+    width:
+        35px;
+
+    height:
+        35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255,255,255,.05);
+
+    color:
+        white;
+
+    cursor:
+        pointer;
+
+    font-size:
+        20px;
+
+}
+
+
+.modal-label {
+
+    margin-bottom:
+        8px;
+
+    color:
+        var(--muted-2);
+
+    font-size:
+        8px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .2em;
+
+}
+
+
+.modal-card h2 {
+
+    margin-bottom:
+        10px;
+
+    font-size:
+        30px;
+
+}
+
+
+.modal-card > p {
+
+    margin-bottom:
+        22px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.7;
+
+}
+
+
+.modal-download {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    padding:
+        13px 15px;
+
+    border-radius:
+        10px;
+
+    background:
+        white;
+
+    color:
+        #111;
+
+    font-size:
+        10px;
+
+    font-weight:
+        900;
+
+}
+
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer {
+
+    width:
+        min(1100px, calc(100% - 40px));
+
+    margin:
+        auto;
+
+    padding:
+        25px 0 40px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.07);
+
+    color:
+        var(--muted-2);
+
+    font-size:
+        9px;
+
+}
+
 
 
 /* =========================================================
    TABLET
 ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
 
-    .resume-section {
+    .resume-layout {
 
-        padding-left: 20px;
+        flex-direction:
+            column;
 
-        padding-right: 20px;
+    }
+
+
+    .resume-carousel {
+
+        width:
+            min(730px,100%);
+
+        max-width:
+            min(730px,100%);
+
+        flex:
+            none;
+
+    }
+
+
+    .graduation-profile {
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        gap:
+            15px;
+
+        width:
+            auto;
 
     }
 
 
     .graduation-photo {
 
-        position: relative;
+        width:
+            125px;
 
-        top: auto;
-
-        right: auto;
-
-        width: 125px;
-
-        margin:
-            35px auto 0;
-
-        transform:
-            none;
+        height:
+            165px;
 
     }
 
 
     .graduation-photo-frame {
 
-        width: 125px;
+        width:
+            125px;
 
-        height: 165px;
-
-        transform:
-            rotate(2deg);
+        height:
+            165px;
 
     }
 
 
-    .graduation-label {
+    .graduation-caption {
 
-        transform:
-            none;
+        text-align:
+            left;
 
     }
 
 }
+
 
 
 /* =========================================================
@@ -673,36 +2813,105 @@
 
 @media (max-width: 600px) {
 
-    .resume-section {
+    .nav-container {
 
-        padding:
-            65px 16px 90px;
+        width:
+            calc(100% - 28px);
 
     }
 
 
-    .resume-heading {
+    .main-nav {
 
-        margin-bottom: 30px;
+        display:
+            none;
+
+    }
+
+
+    .nav-button {
+
+        font-size:
+            8px;
+
+        padding:
+            8px 11px;
+
+    }
+
+
+    .hero-section {
+
+        width:
+            calc(100% - 32px);
+
+        min-height:
+            500px;
+
+    }
+
+
+    .hero-content h1 {
+
+        font-size:
+            48px;
+
+    }
+
+
+    .hero-decoration {
+
+        display:
+            none;
+
+    }
+
+
+    .resume-section {
+
+        width:
+            calc(100% - 28px);
+
+    }
+
+
+    .resume-layout {
+
+        width:
+            100%;
 
     }
 
 
     /*
-       Narrow mobile carousel
+       MOBILE CARD
+
+       Still compact.
     */
 
     .resume-carousel {
 
-        max-width:
+        width:
             100%;
+
+    }
+
+
+    .resume-viewport {
+
+        width:
+            100%;
+
+        padding:
+            10px 0 20px;
 
     }
 
 
     .resume-track {
 
-        gap: 16px;
+        gap:
+            16px;
 
     }
 
@@ -710,20 +2919,21 @@
     .resume-card {
 
         flex:
-            0 0 290px;
+            0 0 292px;
 
-        width: 290px;
+        width:
+            292px;
 
-        min-height: 485px;
-
-        border-radius: 19px;
+        min-height:
+            480px;
 
     }
 
 
     .resume-image {
 
-        height: 195px;
+        height:
+            190px;
 
     }
 
@@ -738,19 +2948,91 @@
 
     .resume-content h3 {
 
-        font-size: 22px;
+        font-size:
+            22px;
+
+    }
+
+
+    .resume-content > p:not(.resume-category) {
+
+        min-height:
+            70px;
 
     }
 
 
     /*
-       Graduation photo moves below
-       the carousel on small screens
+       Graduation image below cards
     */
+
+    .graduation-profile {
+
+        margin-top:
+            10px;
+
+    }
+
 
     .graduation-photo {
 
-        margin-top: 32px;
+        width:
+            105px;
+
+        height:
+            140px;
+
+    }
+
+
+    .graduation-photo-frame {
+
+        width:
+            105px;
+
+        height:
+            140px;
+
+    }
+
+
+    .graduation-caption {
+
+        font-size:
+            9px;
+
+    }
+
+
+    .about-section {
+
+        width:
+            calc(100% - 28px);
+
+    }
+
+
+    .about-card {
+
+        padding:
+            25px;
+
+    }
+
+
+    .site-footer {
+
+        width:
+            calc(100% - 28px);
+
+        flex-direction:
+            column;
+
+        gap:
+            5px;
+
+        text-align:
+            center;
 
     }
 
