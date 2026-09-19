@@ -307,8 +307,8 @@ textarea {
 
 /* Graduation Photo */
 .about-photo {
-    width: 260px;
-    height: 350px;
+    width: 270px;
+    height: 390px;
     overflow: hidden;
     border-radius: 18px;
     justify-self: center;
@@ -320,7 +320,6 @@ textarea {
     display: block;
     object-fit: cover;
     object-position: center 20%;
-}
 
 .about-text {
     max-width: 700px;
