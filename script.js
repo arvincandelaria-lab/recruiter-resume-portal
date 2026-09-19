@@ -89,71 +89,94 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /* =========================================================
-   FULL SCREEN SLIDE NAVIGATION
+   HORIZONTAL SLIDE PRESENTATION
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const slider = document.getElementById("slide-container");
+    const slider =
+        document.getElementById("slide-container");
 
     if (!slider) return;
 
-    const slides = Array.from(
-        slider.querySelectorAll(".slide")
-    );
+
+    const slides =
+        Array.from(
+            slider.querySelectorAll(".slide")
+        );
 
     if (!slides.length) return;
 
 
-    /* -----------------------------------------------------
-       CREATE DOT NAVIGATION
-       ----------------------------------------------------- */
+    let currentSlide = 0;
 
-    const dotsContainer = document.createElement("div");
 
-    dotsContainer.className = "slide-dots";
+    /* =====================================================
+       CREATE DOTS
+       ===================================================== */
+
+    const dotsContainer =
+        document.createElement("div");
+
+    dotsContainer.className =
+        "slide-dots";
+
 
     slides.forEach((slide, index) => {
 
-        const dot = document.createElement("button");
+        const dot =
+            document.createElement("button");
 
-        dot.className = "slide-dot";
+        dot.className =
+            "slide-dot";
+
+        dot.dataset.slide = index;
 
         dot.setAttribute(
             "aria-label",
             `Go to slide ${index + 1}`
         );
 
-        dot.dataset.slide = index;
 
-        dot.addEventListener("click", () => {
+        dot.addEventListener(
+            "click",
+            () => {
 
-            goToSlide(index);
+                goToSlide(index);
 
-        });
+            }
+        );
+
 
         dotsContainer.appendChild(dot);
 
     });
 
-    document.body.appendChild(dotsContainer);
+
+    document.body.appendChild(
+        dotsContainer
+    );
 
 
-    /* -----------------------------------------------------
-       CREATE ARROW CONTROLS
-       ----------------------------------------------------- */
+    /* =====================================================
+       CREATE CONTROLS
+       ===================================================== */
 
-    const controls = document.createElement("div");
+    const controls =
+        document.createElement("div");
 
-    controls.className = "slide-controls";
+    controls.className =
+        "slide-controls";
+
 
     controls.innerHTML = `
+
         <button
             class="slide-control"
             id="slide-prev"
             aria-label="Previous slide"
         >
-            ↑
+            ‹
         </button>
 
         <button
@@ -161,100 +184,148 @@ document.addEventListener("DOMContentLoaded", () => {
             id="slide-next"
             aria-label="Next slide"
         >
-            ↓
+            ›
         </button>
+
     `;
 
-    document.body.appendChild(controls);
 
-
-    const dots = Array.from(
-        document.querySelectorAll(".slide-dot")
+    document.body.appendChild(
+        controls
     );
 
+
+    const dots =
+        Array.from(
+            document.querySelectorAll(
+                ".slide-dot"
+            )
+        );
+
+
     const prevButton =
-        document.getElementById("slide-prev");
+        document.getElementById(
+            "slide-prev"
+        );
+
 
     const nextButton =
-        document.getElementById("slide-next");
+        document.getElementById(
+            "slide-next"
+        );
 
 
-    /* -----------------------------------------------------
-       CURRENT SLIDE
-       ----------------------------------------------------- */
+    /* =====================================================
+       UPDATE SLIDE
+       ===================================================== */
 
-    let currentSlide = 0;
+    function updateSlide() {
 
-    let isAnimating = false;
+        slider.style.transform =
+            `translateX(-${currentSlide * 100}vw)`;
 
-    let wheelLocked = false;
+
+        /* Update dots */
+
+        dots.forEach(
+            (dot, index) => {
+
+                dot.classList.toggle(
+                    "active",
+                    index === currentSlide
+                );
+
+            }
+        );
 
 
-    /* -----------------------------------------------------
+        /* Previous button */
+
+        prevButton.disabled =
+            currentSlide === 0;
+
+
+        /* Next button */
+
+        nextButton.disabled =
+            currentSlide ===
+            slides.length - 1;
+
+    }
+
+
+    /* =====================================================
        GO TO SLIDE
-       ----------------------------------------------------- */
+       ===================================================== */
 
     function goToSlide(index) {
 
         if (index < 0) {
+
             index = 0;
+
         }
 
-        if (index >= slides.length) {
-            index = slides.length - 1;
+
+        if (
+            index >= slides.length
+        ) {
+
+            index =
+                slides.length - 1;
+
         }
+
 
         currentSlide = index;
 
-        slides[index].scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-
-        updateDots();
+        updateSlide();
 
     }
 
 
-    /* -----------------------------------------------------
-       UPDATE DOTS
-       ----------------------------------------------------- */
-
-    function updateDots() {
-
-        dots.forEach((dot, index) => {
-
-            dot.classList.toggle(
-                "active",
-                index === currentSlide
-            );
-
-        });
-
-    }
-
-
-    /* -----------------------------------------------------
-       NEXT / PREVIOUS
-       ----------------------------------------------------- */
+    /* =====================================================
+       NEXT
+       ===================================================== */
 
     function nextSlide() {
 
-        goToSlide(currentSlide + 1);
+        if (
+            currentSlide <
+            slides.length - 1
+        ) {
+
+            currentSlide++;
+
+            updateSlide();
+
+        }
 
     }
+
+
+    /* =====================================================
+       PREVIOUS
+       ===================================================== */
 
     function previousSlide() {
 
-        goToSlide(currentSlide - 1);
+        if (
+            currentSlide > 0
+        ) {
+
+            currentSlide--;
+
+            updateSlide();
+
+        }
 
     }
 
 
-    prevButton.addEventListener(
-        "click",
-        previousSlide
-    );
+    /* =====================================================
+       BUTTONS
+       ===================================================== */
 
     nextButton.addEventListener(
         "click",
@@ -262,77 +333,39 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    /* -----------------------------------------------------
-       WHEEL = ONE SLIDE AT A TIME
-       ----------------------------------------------------- */
-
-    slider.addEventListener(
-        "wheel",
-        (event) => {
-
-            if (
-                window.innerWidth <= 700
-            ) {
-                return;
-            }
-
-            event.preventDefault();
-
-            if (wheelLocked) return;
-
-            wheelLocked = true;
-
-            if (event.deltaY > 0) {
-
-                nextSlide();
-
-            } else if (event.deltaY < 0) {
-
-                previousSlide();
-
-            }
-
-            setTimeout(() => {
-
-                wheelLocked = false;
-
-            }, 750);
-
-        },
-        {
-            passive: false
-        }
+    prevButton.addEventListener(
+        "click",
+        previousSlide
     );
 
 
-    /* -----------------------------------------------------
-       KEYBOARD NAVIGATION
-       ----------------------------------------------------- */
+    /* =====================================================
+       KEYBOARD
+       ===================================================== */
 
     document.addEventListener(
         "keydown",
         (event) => {
 
-            if (
-                window.innerWidth <= 700
-            ) {
-                return;
-            }
-
             const tag =
                 document.activeElement.tagName;
+
+
+            /* Don't hijack typing */
 
             if (
                 tag === "INPUT" ||
                 tag === "TEXTAREA" ||
                 tag === "SELECT"
             ) {
+
                 return;
+
             }
 
 
             if (
-                event.key === "ArrowDown" ||
+                event.key === "ArrowRight" ||
                 event.key === "PageDown"
             ) {
 
@@ -344,7 +377,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             if (
-                event.key === "ArrowUp" ||
+                event.key === "ArrowLeft" ||
                 event.key === "PageUp"
             ) {
 
@@ -355,7 +388,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            if (event.key === "Home") {
+            if (
+                event.key === "Home"
+            ) {
 
                 event.preventDefault();
 
@@ -364,11 +399,15 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            if (event.key === "End") {
+            if (
+                event.key === "End"
+            ) {
 
                 event.preventDefault();
 
-                goToSlide(slides.length - 1);
+                goToSlide(
+                    slides.length - 1
+                );
 
             }
 
@@ -376,96 +415,194 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    /* -----------------------------------------------------
-       INTERSECTION OBSERVER
-       ----------------------------------------------------- */
+    /* =====================================================
+       MOUSE WHEEL
+       ===================================================== */
 
-    const observer =
-        new IntersectionObserver(
-            (entries) => {
+    let wheelLocked = false;
 
-                entries.forEach((entry) => {
 
-                    if (
-                        entry.isIntersecting &&
-                        entry.intersectionRatio >= 0.5
-                    ) {
+    document.addEventListener(
+        "wheel",
+        (event) => {
 
-                        const index =
-                            slides.indexOf(
-                                entry.target
-                            );
+            if (
+                window.innerWidth <= 700
+            ) {
 
-                        if (index !== -1) {
+                return;
 
-                            currentSlide = index;
-
-                            updateDots();
-
-                        }
-
-                    }
-
-                });
-
-            },
-            {
-                root: slider,
-                threshold: 0.5
             }
-        );
 
 
-    slides.forEach((slide) => {
+            if (wheelLocked) {
 
-        observer.observe(slide);
+                event.preventDefault();
 
-    });
+                return;
+
+            }
 
 
-    /* -----------------------------------------------------
-       INTERNAL SLIDE LINKS
-       ----------------------------------------------------- */
+            event.preventDefault();
+
+            wheelLocked = true;
+
+
+            if (
+                event.deltaY > 0
+            ) {
+
+                nextSlide();
+
+            }
+            else if (
+                event.deltaY < 0
+            ) {
+
+                previousSlide();
+
+            }
+
+
+            setTimeout(
+                () => {
+
+                    wheelLocked = false;
+
+                },
+                700
+            );
+
+        },
+        {
+            passive: false
+        }
+    );
+
+
+    /* =====================================================
+       TOUCH / SWIPE
+       ===================================================== */
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+
+    document.addEventListener(
+        "touchstart",
+        (event) => {
+
+            touchStartX =
+                event.changedTouches[0].screenX;
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    document.addEventListener(
+        "touchend",
+        (event) => {
+
+            touchEndX =
+                event.changedTouches[0].screenX;
+
+
+            const difference =
+                touchStartX - touchEndX;
+
+
+            /* Swipe left */
+
+            if (
+                difference > 50
+            ) {
+
+                nextSlide();
+
+            }
+
+
+            /* Swipe right */
+
+            if (
+                difference < -50
+            ) {
+
+                previousSlide();
+
+            }
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    /* =====================================================
+       NAVBAR LINKS
+       ===================================================== */
 
     document
         .querySelectorAll(
             'a[href^="#"]'
         )
-        .forEach((link) => {
+        .forEach(
+            (link) => {
 
-            const targetID =
-                link.getAttribute("href");
+                const targetID =
+                    link.getAttribute(
+                        "href"
+                    );
 
-            const target =
-                document.querySelector(targetID);
 
-            if (!target) return;
+                const target =
+                    document.querySelector(
+                        targetID
+                    );
 
-            link.addEventListener(
-                "click",
-                (event) => {
 
-                    event.preventDefault();
+                if (!target) return;
 
-                    const index =
-                        slides.indexOf(target);
 
-                    if (index !== -1) {
+                link.addEventListener(
+                    "click",
+                    (event) => {
 
-                        goToSlide(index);
+                        event.preventDefault();
+
+
+                        const index =
+                            slides.indexOf(
+                                target
+                            );
+
+
+                        if (
+                            index !== -1
+                        ) {
+
+                            goToSlide(
+                                index
+                            );
+
+                        }
 
                     }
+                );
 
-                }
-            );
-
-        });
+            }
+        );
 
 
-    /* -----------------------------------------------------
-       INITIAL STATE
-       ----------------------------------------------------- */
+    /* =====================================================
+       INITIAL
+       ===================================================== */
 
-    updateDots();
+    updateSlide();
 
 });
