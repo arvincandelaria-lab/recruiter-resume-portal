@@ -1,738 +1,542 @@
 /* =========================================================
-   RECRUITER RESUME PORTAL
-   JAVASCRIPT
+   RESUME CAROUSEL
 ========================================================= */
 
+Const track =
+    Document.getElementById(“resumeTrack”);
 
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
+Const viewport =
+    Document.getElementById(“carouselViewport”);
 
+Const cards =
+    Array.from(
+        Document.querySelectorAll(“.resume-card”)
+    );
 
-        /* =====================================================
-           ELEMENTS
-        ====================================================== */
+Const nextButton =
+    Document.querySelector(“.carousel-next”);
 
-        const track =
-            document.getElementById(
-                "resumeTrack"
-            );
+Const prevButton =
+    Document.querySelector(“.carousel-prev”);
 
-
-        const viewport =
-            document.getElementById(
-                "resumeViewport"
-            );
-
-
-        const cards =
-            Array.from(
-                document.querySelectorAll(
-                    ".resume-card"
-                )
-            );
+Const dots =
+    Array.from(
+        Document.querySelectorAll(“.dot”)
+    );
 
 
-        const nextButton =
-            document.getElementById(
-                "resumeNext"
-            );
-
-
-        const prevButton =
-            document.getElementById(
-                "resumePrev"
-            );
-
-
-        const currentSlide =
-            document.getElementById(
-                "currentSlide"
-            );
-
-
-        const modal =
-            document.getElementById(
-                "resumeModal"
-            );
-
-
-        const modalTitle =
-            document.getElementById(
-                "modalTitle"
-            );
-
-
-        const modalLabel =
-            document.getElementById(
-                "modalLabel"
-            );
-
-
-        const modalClose =
-            document.getElementById(
-                "modalClose"
-            );
-
-
-        const modalBackdrop =
-            document.getElementById(
-                "modalBackdrop"
-            );
-
-
-        const modalDownload =
-            document.getElementById(
-                "modalDownload"
-            );
+Let currentIndex = 0;
 
 
 
-        /* =====================================================
-           CAROUSEL
-        ====================================================== */
+/* =========================================================
+   POSITION CAROUSEL
+========================================================= */
 
-        let currentIndex = 0;
+Function updateCarousel(
+    Animate = true
+) {
 
-        let startX = 0;
-
-        let currentX = 0;
-
-        let isDragging = false;
-
-
-
-        /*
-         * Get exact card width including gap.
-         */
-
-        function getStep() {
-
-            if (
-                !cards.length
-            ) {
-
-                return 0;
-
-            }
+    If (!cards.length) {
+        Return;
+    }
 
 
-            const card =
-                cards[0];
+    Const activeCard =
+        Cards[currentIndex];
 
 
-            const cardWidth =
-                card.getBoundingClientRect()
-                    .width;
+    /*
+       Find the position of the active card
+       And move it to the center of the viewport.
+    */
+
+    Const viewportWidth =
+        Viewport.offsetWidth;
+
+    Const cardCenter =
+        activeCard.offsetLeft +
+        activeCard.offsetWidth / 2;
 
 
-            const trackStyle =
-                window.getComputedStyle(
-                    track
-                );
+    const offset =
+        viewportWidth / 2 –
+        cardCenter;
 
 
-            const gap =
-                parseFloat(
-                    trackStyle.gap
-                ) || 0;
+    if (!animate) {
+
+        track.style.transition =
+            “none”;
+
+    } else {
+
+        Track.style.transition =
+            “transform 0.65s cubic-bezier(0.22, 1, 0.36, 1)”;
+    }
 
 
-            return (
-                cardWidth +
-                gap
+    Track.style.transform =
+        `translateX(${offset}px)`;
+
+
+    updateDots();
+
+
+    updateButtons();
+
+}
+
+
+
+/* =========================================================
+   DOTS
+========================================================= */
+
+Function updateDots() {
+
+    Dots.forEach(
+        (dot, index) => {
+
+            Dot.classList.toggle(
+                “active”,
+                Index === currentIndex
             );
 
         }
+    );
 
+}
 
 
-        /*
-         * Update carousel position.
-         */
 
-        function updateCarousel(
-            animate = true
-        ) {
+/* =========================================================
+   BUTTON STATES
+========================================================= */
 
-            if (
-                !track ||
-                !cards.length
-            ) {
+Function updateButtons() {
 
-                return;
+    /*
+       We keep all three cards in a loop.
+       Therefore arrows never become disabled.
+    */
 
-            }
+    prevButton.disabled = false;
+    nextButton.disabled = false;
 
+}
 
-            const step =
-                getStep();
 
 
-            if (!animate) {
+/* =========================================================
+   NEXT
+========================================================= */
 
-                track.style.transition =
-                    "none";
+Function goNext() {
 
-            } else {
+    currentIndex++;
 
-                track.style.transition =
-                    "transform .55s cubic-bezier(.22,.61,.36,1)";
+    if (
+        currentIndex >= cards.length
+    ) {
 
-            }
+        currentIndex = 0;
 
+    }
 
-            track.style.transform =
-                `translateX(-${currentIndex * step}px)`;
+    updateCarousel();
 
+}
 
-            /*
-             * Update number.
-             */
 
-            if (currentSlide) {
 
-                currentSlide.textContent =
-                    String(
-                        currentIndex + 1
-                    ).padStart(2, "0");
+/* =========================================================
+   PREVIOUS
+========================================================= */
 
-            }
+Function goPrevious() {
 
+    currentIndex--;
 
-            /*
-             * Disable arrows
-             * when necessary.
-             */
+    if (
+        currentIndex < 0
+    ) {
 
-            if (prevButton) {
+        currentIndex =
+            cards.length – 1;
 
-                prevButton.disabled =
-                    currentIndex === 0;
+    }
 
-            }
+    updateCarousel();
 
+}
 
-            if (nextButton) {
 
-                nextButton.disabled =
-                    currentIndex ===
-                    cards.length - 1;
 
-            }
+/* =========================================================
+   BUTTON EVENTS
+========================================================= */
 
-        }
+nextButton.addEventListener(
+    “click”,
+    goNext
+);
 
+prevButton.addEventListener(
+    “click”,
+    goPrevious
+);
 
 
-        /*
-         * Next
-         */
 
-        function nextSlide() {
+/* =========================================================
+   DOT EVENTS
+========================================================= */
 
-            if (
-                currentIndex <
-                cards.length - 1
-            ) {
+Dots.forEach(
+    (dot, index) => {
 
-                currentIndex++;
-
-                updateCarousel();
-
-            }
-
-        }
-
-
-
-        /*
-         * Previous
-         */
-
-        function previousSlide() {
-
-            if (
-                currentIndex > 0
-            ) {
-
-                currentIndex--;
-
-                updateCarousel();
-
-            }
-
-        }
-
-
-
-        /*
-         * Buttons
-         */
-
-        if (nextButton) {
-
-            nextButton.addEventListener(
-                "click",
-                nextSlide
-            );
-
-        }
-
-
-        if (prevButton) {
-
-            prevButton.addEventListener(
-                "click",
-                previousSlide
-            );
-
-        }
-
-
-
-        /* =====================================================
-           TOUCH / SWIPE SUPPORT
-        ====================================================== */
-
-        if (viewport) {
-
-
-            viewport.addEventListener(
-                "pointerdown",
-                (event) => {
-
-                    isDragging = true;
-
-                    startX =
-                        event.clientX;
-
-                    currentX =
-                        event.clientX;
-
-                    viewport.setPointerCapture(
-                        event.pointerId
-                    );
-
-                    track.style.transition =
-                        "none";
-
-                }
-            );
-
-
-            viewport.addEventListener(
-                "pointermove",
-                (event) => {
-
-                    if (!isDragging) {
-
-                        return;
-
-                    }
-
-
-                    currentX =
-                        event.clientX;
-
-
-                    const difference =
-                        currentX -
-                        startX;
-
-
-                    const step =
-                        getStep();
-
-
-                    const base =
-                        -(currentIndex * step);
-
-
-                    track.style.transform =
-                        `translateX(${base + difference}px)`;
-
-                }
-            );
-
-
-            viewport.addEventListener(
-                "pointerup",
-                () => {
-
-                    if (!isDragging) {
-
-                        return;
-
-                    }
-
-
-                    isDragging =
-                        false;
-
-
-                    const difference =
-                        currentX -
-                        startX;
-
-
-                    /*
-                     * Swipe threshold
-                     */
-
-                    if (
-                        difference < -50
-                    ) {
-
-                        nextSlide();
-
-                    }
-                    else if (
-                        difference > 50
-                    ) {
-
-                        previousSlide();
-
-                    }
-                    else {
-
-                        updateCarousel();
-
-                    }
-
-                }
-            );
-
-
-            viewport.addEventListener(
-                "pointercancel",
-                () => {
-
-                    isDragging =
-                        false;
-
-                    updateCarousel();
-
-                }
-            );
-
-        }
-
-
-
-        /* =====================================================
-           KEYBOARD SUPPORT
-        ====================================================== */
-
-        document.addEventListener(
-            "keydown",
-            (event) => {
-
-                /*
-                 * Don't change carousel
-                 * while modal is open.
-                 */
-
-                if (
-                    modal &&
-                    modal.classList.contains(
-                        "active"
-                    )
-                ) {
-
-                    return;
-
-                }
-
-
-                if (
-                    event.key === "ArrowRight"
-                ) {
-
-                    nextSlide();
-
-                }
-
-
-                if (
-                    event.key === "ArrowLeft"
-                ) {
-
-                    previousSlide();
-
-                }
-
-            }
-        );
-
-
-
-        /* =====================================================
-           RESUME MODAL
-        ====================================================== */
-
-        const resumeButtons =
-            document.querySelectorAll(
-                ".resume-button"
-            );
-
-
-        resumeButtons.forEach(
-            (button) => {
-
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        const resumeName =
-                            button.dataset.resume ||
-                            "Resume";
-
-
-                        if (modalTitle) {
-
-                            modalTitle.textContent =
-                                resumeName;
-
-                        }
-
-
-                        if (modalLabel) {
-
-                            modalLabel.textContent =
-                                "PROFESSIONAL RESUME";
-
-                        }
-
-
-                        /*
-                         * =====================================
-                         * CONNECT YOUR ACTUAL PDF HERE
-                         * =====================================
-                         *
-                         * Example:
-                         *
-                         * if (
-                         *     resumeName === "Data Analyst"
-                         * ) {
-                         *
-                         *     modalDownload.href =
-                         *         "resumes/data-analyst.pdf";
-                         *
-                         * }
-                         *
-                         */
-
-                        if (
-                            modalDownload
-                        ) {
-
-                            if (
-                                resumeName ===
-                                "Data Analyst"
-                            ) {
-
-                                modalDownload.href =
-                                    "resumes/data-analyst.pdf";
-
-                            }
-                            else if (
-                                resumeName ===
-                                "Research Analyst"
-                            ) {
-
-                                modalDownload.href =
-                                    "resumes/research-analyst.pdf";
-
-                            }
-                            else if (
-                                resumeName ===
-                                "Workforce Analyst"
-                            ) {
-
-                                modalDownload.href =
-                                    "resumes/workforce-analyst.pdf";
-
-                            }
-
-
-                            /*
-                             * If PDF does not exist yet,
-                             * don't navigate away.
-                             */
-
-                            modalDownload.onclick =
-                                (event) => {
-
-                                    const href =
-                                        modalDownload
-                                            .getAttribute(
-                                                "href"
-                                            );
-
-
-                                    if (
-                                        !href ||
-                                        href === "#"
-                                    ) {
-
-                                        event.preventDefault();
-
-                                    }
-
-                                };
-
-                        }
-
-
-                        openModal();
-
-                    }
-
-                );
-
-            }
-        );
-
-
-
-        /*
-         * Open modal
-         */
-
-        function openModal() {
-
-            if (!modal) {
-
-                return;
-
-            }
-
-
-            modal.classList.add(
-                "active"
-            );
-
-
-            modal.setAttribute(
-                "aria-hidden",
-                "false"
-            );
-
-
-            document.body.style.overflow =
-                "hidden";
-
-
-            if (modalClose) {
-
-                modalClose.focus();
-
-            }
-
-        }
-
-
-
-        /*
-         * Close modal
-         */
-
-        function closeModal() {
-
-            if (!modal) {
-
-                return;
-
-            }
-
-
-            modal.classList.remove(
-                "active"
-            );
-
-
-            modal.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
-
-            document.body.style.overflow =
-                "";
-
-        }
-
-
-
-        if (modalClose) {
-
-            modalClose.addEventListener(
-                "click",
-                closeModal
-            );
-
-        }
-
-
-        if (modalBackdrop) {
-
-            modalBackdrop.addEventListener(
-                "click",
-                closeModal
-            );
-
-        }
-
-
-
-        /*
-         * ESC closes modal
-         */
-
-        document.addEventListener(
-            "keydown",
-            (event) => {
-
-                if (
-                    event.key === "Escape"
-                ) {
-
-                    closeModal();
-
-                }
-
-            }
-        );
-
-
-
-        /* =====================================================
-           RESIZE
-        ====================================================== */
-
-        window.addEventListener(
-            "resize",
+        Dot.addEventListener(
+            “click”,
             () => {
 
-                updateCarousel(
-                    false
-                );
+                currentIndex = index;
+
+                updateCarousel();
 
             }
         );
-
-
-
-        /* =====================================================
-           INITIALIZE
-        ====================================================== */
-
-        updateCarousel(
-            false
-        );
-
 
     }
 );
+
+
+
+/* =========================================================
+   KEYBOARD NAVIGATION
+========================================================= */
+
+Document.addEventListener(
+    “keydown”,
+    (event) => {
+
+        /*
+           Don’t trigger carousel while typing
+           In the form.
+        */
+
+        Const activeElement =
+            Document.activeElement;
+
+        Const isTyping =
+            activeElement &&
+            (
+                activeElement.tagName === “INPUT” ||
+                activeElement.tagName === “TEXTAREA”
+            );
+
+
+        If (isTyping) {
+            Return;
+        }
+
+
+        If (
+            Event.key === “ArrowRight”
+        ) {
+
+            goNext();
+
+        }
+
+
+        If (
+            Event.key === “ArrowLeft”
+        ) {
+
+            goPrevious();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   TOUCH / SWIPE
+========================================================= */
+
+Let touchStartX = 0;
+Let touchEndX = 0;
+
+
+Viewport.addEventListener(
+    “touchstart”,
+    (event) => {
+
+        touchStartX =
+            event.changedTouches[0].screenX;
+
+    },
+    {
+        Passive: true
+    }
+);
+
+
+Viewport.addEventListener(
+    “touchend”,
+    (event) => {
+
+        touchEndX =
+            event.changedTouches[0].screenX;
+
+
+        const difference =
+            touchStartX – touchEndX;
+
+
+        /*
+           Swipe left
+        */
+
+        If (
+            Difference > 50
+        ) {
+
+            goNext();
+
+        }
+
+
+        /*
+           Swipe right
+        */
+
+        If (
+            Difference < -50
+        ) {
+
+            goPrevious();
+
+        }
+
+    },
+    {
+        Passive: true
+    }
+);
+
+
+
+/* =========================================================
+   WINDOW RESIZE
+========================================================= */
+
+Window.addEventListener(
+    “resize”,
+    () => {
+
+        updateCarousel(false);
+
+    }
+);
+
+
+
+/* =========================================================
+   INITIAL CAROUSEL POSITION
+========================================================= */
+
+Window.addEventListener(
+    “load”,
+    () => {
+
+        updateCarousel(false);
+
+    }
+);
+
+
+
+/* =========================================================
+   RESUME REQUEST MODAL
+========================================================= */
+
+Const modal =
+    Document.getElementById(
+        “resumeModal”
+    );
+
+Const closeModalButton =
+    Document.querySelector(
+        “.close-modal”
+    );
+
+Const modalOverlay =
+    Document.querySelector(
+        “.modal-overlay”
+    );
+
+Const requestedResume =
+    Document.getElementById(
+        “requestedResume”
+    );
+
+Const emailSubject =
+    Document.getElementById(
+        “emailSubject”
+    );
+
+
+
+/* =========================================================
+   OPEN MODAL
+========================================================= */
+
+Const requestButtons =
+    Document.querySelectorAll(
+        “.request-btn”
+    );
+
+
+requestButtons.forEach(
+    (button) => {
+
+        Button.addEventListener(
+            “click”,
+            () => {
+
+                Const resumeName =
+                    Button.dataset.resume;
+
+
+                /*
+                   Store which resume
+                   The recruiter requested.
+                */
+
+                requestedResume.value =
+                    resumeName;
+
+
+                /*
+                   Change the email subject
+                   Automatically.
+                */
+
+                emailSubject.value =
+                    `${resumeName} – Resume Request`;
+
+
+                /*
+                   Open modal.
+                */
+
+                Modal.classList.add(
+                    “active”
+                );
+
+                Modal.setAttribute(
+                    “aria-hidden”,
+                    “false”
+                );
+
+
+                /*
+                   Prevent page scrolling
+                   While modal is open.
+                */
+
+                Document.body.style.overflow =
+                    “hidden”;
+
+
+                /*
+                   Focus the first field.
+                */
+
+                setTimeout(
+                    () => {
+
+                        Document
+                            .getElementById(“name”)
+                            .focus();
+
+                    },
+                    200
+                );
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   CLOSE MODAL FUNCTION
+========================================================= */
+
+Function closeModal() {
+
+    Modal.classList.remove(
+        “active”
+    );
+
+    Modal.setAttribute(
+        “aria-hidden”,
+        “true”
+    );
+
+    Document.body.style.overflow =
+        “”;
+
+}
+
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+closeModalButton.addEventListener(
+    “click”,
+    closeModal
+);
+
+
+
+/* =========================================================
+   CLOSE BY CLICKING OUTSIDE
+========================================================= */
+
+modalOverlay.addEventListener(
+    “click”,
+    closeModal
+);
+
+
+
+/* =========================================================
+   ESCAPE KEY
+========================================================= */
+
+Document.addEventListener(
+    “keydown”,
+    (event) => {
+
+        If (
+            Event.key === “Escape” &&
+            Modal.classList.contains(“active”)
+        ) {
+
+            closeModal();
+
+        }
+
+    }
+);
+
