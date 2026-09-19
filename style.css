@@ -307,11 +307,11 @@ textarea {
 
 /* Graduation Photo */
 .about-photo {
-    width: 150px;
-    height: 195px;
+    width: 260px;
+    height: 350px;
     overflow: hidden;
-    border-radius: 12px;
-    justify-self: start;
+    border-radius: 18px;
+    justify-self: center;
 }
 
 .about-photo img {
@@ -319,7 +319,7 @@ textarea {
     height: 100%;
     display: block;
     object-fit: cover;
-    object-position: center 25%;
+    object-position: center 20%;
 }
 
 .about-text {
