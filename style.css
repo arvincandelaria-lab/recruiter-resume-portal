@@ -188,26 +188,39 @@ textarea {
 
 
 ```css
+
 /* =========================
-   RESUME CARDS WITH IMAGES
+   RESUME GRID
 ========================= */
 
 .resume-grid {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
   gap: 22px;
+  align-items: stretch;
 }
 
+
+/* =========================
+   RESUME CARD
+========================= */
+
 .resume-card {
-  position: relative;
-  min-height: 520px;
+  min-width: 0;
+  min-height: 500px;
+
   display: flex;
   flex-direction: column;
+
   padding: 0;
-  overflow: hidden;
 
   background: #ffffff;
   border: 1px solid #dedbd4;
+
+  overflow: hidden;
 
   transition:
     transform 0.25s ease,
@@ -221,19 +234,23 @@ textarea {
 
 
 /* =========================
-   CARD IMAGE
+   IMAGE
 ========================= */
 
 .card-image {
   width: 100%;
-  height: 190px;
+  height: 170px;
+
   overflow: hidden;
+  flex-shrink: 0;
+
   background: #eeeae3;
 }
 
 .card-image img {
   width: 100%;
   height: 100%;
+
   display: block;
 
   object-fit: cover;
@@ -248,61 +265,68 @@ textarea {
 
 
 /* =========================
-   CARD CONTENT
+   CONTENT
 ========================= */
 
 .card-content {
   flex: 1;
+
   display: flex;
   flex-direction: column;
 
-  padding: 28px 30px 30px;
+  padding: 25px;
 }
 
 .card-number {
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 
   color: #8a867e;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.12em;
 }
 
 .resume-card h3 {
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 
-  font-size: 1.55rem;
-  letter-spacing: -0.025em;
+  font-size: 1.45rem;
+  line-height: 1.1;
 }
 
 .resume-card p {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 
   color: #65615a;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
 }
 
 .skills-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
 
-  margin-bottom: 25px;
+  gap: 6px;
+
+  margin-bottom: 20px;
 }
 
 .skills-list span {
-  padding: 5px 9px;
+  padding: 5px 8px;
 
   background: #f1efe9;
+
   color: #4f4b45;
 
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
 }
 
 .request-btn {
   width: 100%;
+
   margin-top: auto;
+
+  min-height: 45px;
 
   background: #171717;
   color: #ffffff;
@@ -314,7 +338,7 @@ textarea {
 
 
 /* =========================
-   RESPONSIVE
+   TABLET
 ========================= */
 
 @media (max-width: 900px) {
@@ -323,32 +347,29 @@ textarea {
     grid-template-columns: 1fr;
   }
 
-  .resume-card {
-    min-height: auto;
-  }
-
-  .card-image {
-    height: 220px;
-  }
 }
 
 
+/* =========================
+   MOBILE
+========================= */
+
 @media (max-width: 650px) {
 
-  .resume-card {
-    padding: 0;
-  }
-
-  .card-content {
-    padding: 25px;
+  .resume-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 
   .card-image {
     height: 190px;
   }
-}
-```
 
+  .card-content {
+    padding: 22px;
+  }
+
+}
 
 
 /* =========================
