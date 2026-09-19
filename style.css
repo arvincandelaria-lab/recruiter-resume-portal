@@ -1,780 +1,293 @@
 /* =========================================================
-   RESET
-========================================================= */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-
-/* =========================================================
-   GLOBAL
-========================================================= */
-
-html {
-  scroll-behavior: smooth;
-}
-
-
-body {
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  background: #f7f5f0;
-
-  color: #171717;
-
-  line-height: 1.6;
-
-  overflow-x: hidden;
-}
-
-
-body.modal-open {
-  overflow: hidden;
-}
-
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-
-button,
-input,
-textarea {
-  font: inherit;
-}
-
-
-button {
-  -webkit-tap-highlight-color: transparent;
-}
-
-
-.container {
-  width: min(1180px, 92%);
-  margin: 0 auto;
-}
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-.navbar {
-
-  position: sticky;
-
-  top: 0;
-
-  z-index: 1000;
-
-  background:
-    rgba(247, 245, 240, 0.92);
-
-  border-bottom:
-    1px solid #dedbd4;
-
-  backdrop-filter:
-    blur(16px);
-}
-
-
-.nav-container {
-
-  min-height: 76px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  gap: 30px;
-}
-
-
-.logo {
-
-  font-size: 0.88rem;
-
-  font-weight: 800;
-
-  letter-spacing: 0.1em;
-}
-
-
-.nav-links {
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 28px;
-}
-
-
-.nav-links a {
-
-  font-size: 0.86rem;
-
-  font-weight: 700;
-
-  transition:
-    opacity 0.2s ease;
-}
-
-
-.nav-links a:hover {
-  opacity: 0.5;
-}
-
-
-/* =========================================================
-   FULL-SCREEN GRADUATION HERO
-========================================================= */
-
-.portrait-hero {
-
-  position: relative;
-
-  min-height:
-    calc(100svh - 76px);
-
-  isolation: isolate;
-
-  overflow: hidden;
-
-  display: flex;
-
-  align-items: center;
-
-  background: #111;
-
-  color: #fff;
-}
-
-
-/* BLURRED PHOTO BACKGROUND */
-
-.portrait-backdrop {
-
-  position: absolute;
-
-  inset: -28px;
-
-  z-index: -3;
-
-  background-image:
-    url("assets/graduation.jpg");
-
-  background-size: cover;
-
-  background-position:
-    center 24%;
-
-  filter:
-    blur(24px);
-
-  transform:
-    scale(1.08);
-
-  opacity: 0.48;
-}
-
-
-/* DARK OVERLAY */
-
-.portrait-vignette {
-
-  position: absolute;
-
-  inset: 0;
-
-  z-index: -2;
-
-  background:
-
-    linear-gradient(
-      90deg,
-      rgba(0,0,0,0.90) 0%,
-      rgba(0,0,0,0.68) 42%,
-      rgba(0,0,0,0.32) 72%,
-      rgba(0,0,0,0.72) 100%
-    ),
-
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,0.08),
-      rgba(0,0,0,0.58)
-    );
-}
-
-
-/* HERO CONTENT */
-
-.portrait-content {
-
-  min-height:
-    calc(100svh - 76px);
-
-  padding:
-    70px 0 90px;
-
-  display: grid;
-
-  grid-template-columns:
-    minmax(0, 1fr)
-    minmax(320px, 470px);
-
-  align-items: center;
-
-  gap:
-    clamp(40px, 7vw, 110px);
-}
-
-
-/* HERO TEXT */
-
-.portrait-copy {
-  max-width: 760px;
-}
-
-
-.eyebrow {
-
-  margin-bottom: 16px;
-
-  font-size: 0.72rem;
-
-  font-weight: 800;
-
-  letter-spacing: 0.18em;
-
-  text-transform: uppercase;
-}
-
-
-.portrait-copy .eyebrow {
-  color: #d7d4ce;
-}
-
-
-.portrait-copy h1 {
-
-  max-width: 800px;
-
-  margin-bottom: 26px;
-
-  font-size:
-    clamp(3rem, 6.3vw, 6.3rem);
-
-  line-height: 0.98;
-
-  letter-spacing:
-    -0.055em;
-}
-
-
-.portrait-copy h1 span {
-
-  display: block;
-
-  color: #c9c5bc;
-}
-
-
-.hero-description {
-
-  max-width: 650px;
-
-  margin-bottom: 34px;
-
-  color: #e2dfd8;
-
-  font-size: 1.04rem;
-}
-
-
-/* HERO BUTTONS */
-
-.hero-buttons {
-
-  display: flex;
-
-  flex-wrap: wrap;
-
-  gap: 12px;
-}
-
-
-/* =========================================================
-   GRADUATION PHOTO
-========================================================= */
-
-.portrait-frame {
-
-  width:
-    min(100%, 470px);
-
-  justify-self: end;
-
-  aspect-ratio:
-    2 / 3;
-
-  max-height:
-    78svh;
-
-  overflow: hidden;
-
-  border:
-    1px solid rgba(255,255,255,0.35);
-
-  border-radius: 4px;
-
-  box-shadow:
-    0 35px 100px rgba(0,0,0,0.42);
-
-  background: #171717;
-}
-
-
-.portrait-frame img {
-
-  width: 100%;
-
-  height: 100%;
-
-  display: block;
-
-  object-fit: cover;
-
-  object-position:
-    center 16%;
-}
-
-
-/* =========================================================
-   SCROLL CUE
-========================================================= */
-
-.scroll-cue {
-
-  position: absolute;
-
-  bottom: 24px;
-
-  left: 50%;
-
-  transform:
-    translateX(-50%);
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  gap: 7px;
-
-  color:
-    rgba(255,255,255,0.7);
-
-  font-size: 0.62rem;
-
-  font-weight: 800;
-
-  letter-spacing: 0.18em;
-}
-
-
-.scroll-line {
-
-  width: 1px;
-
-  height: 36px;
-
-  background:
-    rgba(255,255,255,0.55);
-}
-
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-.primary-btn,
-.secondary-btn,
-.request-btn,
-.submit-btn {
-
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  min-height: 48px;
-
-  padding:
-    0 22px;
-
-  border:
-    1px solid transparent;
-
-  cursor: pointer;
-
-  font-weight: 700;
-
-  transition:
-
-    transform 0.2s ease,
-
-    background 0.2s ease,
-
-    color 0.2s ease,
-
-    border-color 0.2s ease;
-}
-
-
-.primary-btn:hover,
-.secondary-btn:hover,
-.request-btn:hover,
-.submit-btn:hover {
-
-  transform:
-    translateY(-2px);
-}
-
-
-.primary-btn {
-
-  background: #fff;
-
-  color: #171717;
-}
-
-
-.primary-btn:hover {
-  background: #e8e5df;
-}
-
-
-.secondary-btn {
-
-  background: transparent;
-
-  color: #fff;
-
-  border-color:
-    rgba(255,255,255,0.42);
-}
-
-
-.secondary-btn:hover {
-
-  background: #fff;
-
-  color: #171717;
-}
-
-
-/* =========================================================
    RESUME SECTION
 ========================================================= */
 
 .resume-section {
 
-  padding:
-    112px 0 120px;
+    position: relative;
 
-  background:
-    #f7f5f0;
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 90px 30px 120px;
+
+    overflow: hidden;
+
 }
 
 
-.section-heading {
+/* Heading */
 
-  max-width: 720px;
+.resume-heading {
 
-  margin-bottom: 46px;
+    max-width: 600px;
+
+    margin:
+        0 auto 45px;
+
+    text-align: center;
+
 }
 
 
-.section-heading .eyebrow {
-  color: #68645d;
+.section-label {
+
+    margin: 0 0 10px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: .2em;
+
+    opacity: .6;
+
 }
 
 
-.section-heading h2,
-.about-section h2,
-.contact-section h2 {
+.resume-heading h2 {
 
-  margin-bottom: 16px;
+    margin: 0;
 
-  font-size:
-    clamp(2.3rem, 5vw, 4rem);
+    font-size: clamp(
+        32px,
+        5vw,
+        50px
+    );
 
-  line-height: 1.05;
+    line-height: 1.05;
 
-  letter-spacing:
-    -0.045em;
 }
 
 
-.section-heading p:last-child {
-  color: #68645d;
+.resume-heading h2 span {
+
+    opacity: .55;
+
+}
+
+
+.section-description {
+
+    max-width: 470px;
+
+    margin:
+        16px auto 0;
+
+    line-height: 1.7;
+
+    opacity: .65;
+
 }
 
 
 /* =========================================================
-   RESUME CAROUSEL
-   ONE MAIN CARD + NEXT CARD PARTIALLY VISIBLE
+   CAROUSEL
 ========================================================= */
 
-.resume-carousel-wrap {
+.resume-carousel {
 
-  position: relative;
+    position: relative;
 
-  width: 100%;
+    width: 100%;
+
+    max-width: 760px;
+
+    margin: 0 auto;
+
 }
 
 
-.resume-grid {
+/*
+   IMPORTANT:
 
-  display: flex;
+   This is what creates:
 
-  gap: 22px;
+   ONE FULL CARD
+   +
+   NEXT CARD PARTIALLY VISIBLE
+*/
 
-  overflow-x: auto;
+.resume-carousel {
 
-  overflow-y: hidden;
+    overflow: hidden;
 
-  padding:
-    8px 0 30px;
-
-  scroll-snap-type:
-    x mandatory;
-
-  scrollbar-width: none;
-
-  overscroll-behavior-x:
-    contain;
-
-  -webkit-overflow-scrolling:
-    touch;
 }
 
 
-.resume-grid::-webkit-scrollbar {
-  display: none;
+.resume-track {
+
+    display: flex;
+
+    gap: 24px;
+
+    width: max-content;
+
+    transition:
+        transform .55s
+        cubic-bezier(.22,.61,.36,1);
+
 }
 
 
-/* MAIN CARD WIDTH */
+/* =========================================================
+   SMALLER CARD
+========================================================= */
 
 .resume-card {
 
-  position: relative;
+    position: relative;
 
-  flex:
-    0 0 min(
-      760px,
-      calc(100vw - 13vw)
-    );
+    flex:
+        0 0 330px;
 
-  min-width: 0;
+    width: 330px;
 
-  scroll-snap-align:
-    start;
+    min-height: 510px;
 
-  overflow: hidden;
+    overflow: hidden;
 
-  background: #fff;
+    border-radius: 22px;
 
-  border:
-    1px solid #dedbd4;
+    background:
+        rgba(255,255,255,.06);
 
-  border-radius: 4px;
+    border:
+        1px solid
+        rgba(255,255,255,.12);
 
-  box-shadow:
-    0 15px 45px rgba(0,0,0,0.06);
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,.18);
 
-  transition:
+    backdrop-filter:
+        blur(15px);
 
-    transform 0.25s ease,
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
 
-    box-shadow 0.25s ease;
 }
 
 
 .resume-card:hover {
 
-  transform:
-    translateY(-5px);
+    transform:
+        translateY(-5px);
 
-  box-shadow:
-    0 22px 55px rgba(0,0,0,0.10);
+    box-shadow:
+        0 30px 70px
+        rgba(0,0,0,.25);
+
 }
 
 
 /* =========================================================
-   CARD IMAGE — UPPER HALF
+   CARD IMAGE
 ========================================================= */
 
-.card-image {
+.resume-image {
 
-  position: relative;
+    position: relative;
 
-  height: 310px;
+    width: 100%;
 
-  overflow: hidden;
+    height: 220px;
 
-  background: #171717;
+    overflow: hidden;
+
 }
 
 
-.card-image img {
+.resume-number {
 
-  width: 100%;
+    position: absolute;
 
-  height: 100%;
+    top: 15px;
 
-  display: block;
+    right: 15px;
 
-  object-fit: cover;
+    display: flex;
 
-  object-position: center;
+    align-items: center;
 
-  transition:
-    transform 0.5s ease;
-}
+    justify-content: center;
 
+    width: 38px;
 
-.resume-card:hover
-.card-image img {
+    height: 38px;
 
-  transform:
-    scale(1.025);
-}
+    border-radius: 50%;
 
+    background:
+        rgba(0,0,0,.45);
 
-/* IMAGE DARK GRADIENT */
+    color: white;
 
-.card-image::after {
+    font-size: 11px;
 
-  content: "";
+    font-weight: 800;
 
-  position: absolute;
+    backdrop-filter:
+        blur(8px);
 
-  inset: 0;
-
-  background:
-    linear-gradient(
-      180deg,
-      transparent 48%,
-      rgba(0,0,0,0.32)
-    );
-
-  pointer-events: none;
-}
-
-
-/* CARD NUMBER */
-
-.card-number {
-
-  position: absolute;
-
-  top: 18px;
-
-  left: 18px;
-
-  z-index: 2;
-
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  width: 48px;
-
-  height: 48px;
-
-  border:
-    1px solid rgba(255,255,255,0.5);
-
-  background:
-    rgba(0,0,0,0.38);
-
-  color: #fff;
-
-  backdrop-filter:
-    blur(8px);
-
-  font-size: 0.75rem;
-
-  font-weight: 800;
-
-  letter-spacing: 0.1em;
 }
 
 
 /* =========================================================
-   CARD TEXT — LOWER HALF
+   CARD CONTENT
 ========================================================= */
 
-.card-body {
+.resume-content {
 
-  padding:
-    34px 36px 36px;
+    padding:
+        24px 24px 26px;
+
 }
 
 
-.card-kicker {
+.resume-category {
 
-  margin-bottom: 8px;
+    margin:
+        0 0 7px;
 
-  color: #8a867e;
+    font-size: 9px;
 
-  font-size: 0.68rem;
+    font-weight: 800;
 
-  font-weight: 800;
+    letter-spacing: .18em;
 
-  letter-spacing: 0.16em;
+    opacity: .55;
+
 }
 
 
-.resume-card h3 {
+.resume-content h3 {
 
-  margin-bottom: 14px;
+    margin:
+        0 0 10px;
 
-  font-size:
-    clamp(1.65rem, 3vw, 2.1rem);
+    font-size: 25px;
 
-  letter-spacing:
-    -0.03em;
+    line-height: 1.1;
+
 }
 
 
-.resume-card
-.card-body > p:not(.card-kicker) {
+.resume-content > p:not(.resume-category) {
 
-  max-width: 620px;
+    margin:
+        0 0 17px;
 
-  margin-bottom: 22px;
+    font-size: 13px;
 
-  color: #65615a;
+    line-height: 1.65;
 
-  font-size: 0.95rem;
+    opacity: .7;
+
 }
 
 
@@ -782,1536 +295,463 @@ button {
    SKILLS
 ========================================================= */
 
-.skills-list {
+.resume-skills {
 
-  display: flex;
+    display: flex;
 
-  flex-wrap: wrap;
+    flex-wrap: wrap;
 
-  gap: 7px;
+    gap: 6px;
 
-  margin-bottom: 28px;
+    margin-bottom: 20px;
+
 }
 
 
-.skills-list span {
+.resume-skills span {
 
-  padding:
-    5px 9px;
+    padding:
+        6px 9px;
 
-  background:
-    #f1efe9;
-
-  color:
-    #4f4b45;
-
-  font-size: 0.72rem;
-
-  font-weight: 700;
-}
-
-
-/* =========================================================
-   REQUEST BUTTON
-========================================================= */
-
-.request-btn {
-
-  width: 100%;
-
-  background:
-    #171717;
-
-  color: #fff;
-}
-
-
-.request-btn:hover {
-  background: #343434;
-}
-
-
-/* =========================================================
-   CAROUSEL ARROWS
-========================================================= */
-
-.carousel-arrow {
-
-  position: absolute;
-
-  z-index: 5;
-
-  top: 50%;
-
-  width: 48px;
-
-  height: 48px;
-
-  border:
-    1px solid #d5d1c9;
-
-  border-radius: 50%;
-
-  background:
-    rgba(255,255,255,0.94);
-
-  color:
-    #171717;
-
-  cursor: pointer;
-
-  box-shadow:
-    0 12px 30px rgba(0,0,0,0.12);
-
-  transform:
-    translateY(-50%);
-
-  transition:
-    transform 0.2s ease,
-    opacity 0.2s ease;
-}
-
-
-.carousel-arrow:hover {
-
-  transform:
-    translateY(-50%) scale(1.05);
-}
-
-
-.carousel-prev {
-  left: -24px;
-}
-
-
-.carousel-next {
-  right: -24px;
-}
-
-
-/* =========================================================
-   CAROUSEL HINT
-========================================================= */
-
-.carousel-hint {
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 9px;
-
-  margin-top: 3px;
-
-  color: #8a867e;
-
-  font-size: 0.72rem;
-}
-
-
-.hint-dot {
-
-  width: 7px;
-
-  height: 7px;
-
-  border-radius: 50%;
-
-  background:
-    #8a867e;
-}
-
-
-/* =========================================================
-   ABOUT
-========================================================= */
-
-.about-section {
-
-  padding:
-    110px 0;
-
-  background:
-    #eae7e0;
-}
-
-
-.about-content {
-
-  display: grid;
-
-  grid-template-columns:
-    0.8fr 1.2fr;
-
-  gap: 80px;
-
-  align-items: start;
-}
-
-
-.about-text {
-  max-width: 700px;
-}
-
-
-.about-text p {
-
-  margin-bottom: 22px;
-
-  color:
-    #4f4b45;
-
-  font-size:
-    1.05rem;
-}
-
-
-/* =========================================================
-   CONTACT
-========================================================= */
-
-.contact-section {
-
-  padding:
-    110px 0;
-
-  background:
-    #171717;
-
-  color:
-    #fff;
-}
-
-
-.contact-section .eyebrow {
-  color:
-    #aaa69e;
-}
-
-
-.contact-section h2 {
-  margin-bottom: 16px;
-}
-
-
-.contact-section p:not(.eyebrow) {
-
-  max-width: 650px;
-
-  margin-bottom: 32px;
-
-  color:
-    #d0cdc6;
-}
-
-
-/* CONTACT CARDS */
-
-.contact-details {
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
-  gap: 18px;
-
-  margin-bottom: 30px;
-}
-
-
-.contact-item {
-
-  padding: 20px;
-
-  border:
-    1px solid #373737;
-
-  background:
-    #1d1d1d;
-}
-
-
-.contact-item span {
-
-  display: block;
-
-  margin-bottom: 6px;
-
-  color:
-    #aaa69e;
-
-  font-size: 0.68rem;
-
-  font-weight: 800;
-
-  letter-spacing: 0.14em;
-
-  text-transform: uppercase;
-}
-
-
-.contact-item a {
-
-  font-size:
-    0.88rem;
-
-  overflow-wrap:
-    anywhere;
-}
-
-
-.contact-buttons {
-
-  display: flex;
-
-  flex-wrap: wrap;
-
-  gap: 12px;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.footer {
-
-  padding:
-    30px 0;
-
-  background:
-    #101010;
-
-  color:
-    #88847d;
-
-  font-size:
-    0.78rem;
-}
-
-
-.footer .container {
-
-  display: flex;
-
-  justify-content:
-    space-between;
-
-  gap: 20px;
-}
-
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-.modal {
-
-  position: fixed;
-
-  inset: 0;
-
-  z-index: 2000;
-
-  display: none;
-
-  align-items: center;
-
-  justify-content: center;
-
-  padding: 25px;
-}
-
-
-.modal.active {
-  display: flex;
-}
-
-
-.modal-overlay {
-
-  position: absolute;
-
-  inset: 0;
-
-  background:
-    rgba(0,0,0,0.76);
-
-  backdrop-filter:
-    blur(5px);
-}
-
-
-.modal-content {
-
-  position: relative;
-
-  z-index: 1;
-
-  width:
-    min(620px, 100%);
-
-  max-height:
-    90vh;
-
-  overflow-y: auto;
-
-  padding: 45px;
-
-  background:
-    #ffffff;
-
-  color:
-    #171717;
-
-  box-shadow:
-    0 25px 80px rgba(0,0,0,0.3);
-}
-
-
-.close-modal {
-
-  position: absolute;
-
-  top: 16px;
-
-  right: 20px;
-
-  width: 38px;
-
-  height: 38px;
-
-  border: none;
-
-  background: transparent;
-
-  color: #444;
-
-  cursor: pointer;
-
-  font-size: 2rem;
-
-  line-height: 1;
-}
-
-
-.modal-content .eyebrow {
-  color: #68645d;
-}
-
-
-.modal-content h2 {
-
-  margin-bottom: 12px;
-
-  font-size: 2.2rem;
-
-  letter-spacing:
-    -0.04em;
-}
-
-
-.modal-description {
-
-  margin-bottom: 30px;
-
-  color:
-    #68645d;
-
-  font-size:
-    0.92rem;
-}
-
-
-/* =========================================================
-   FORM
-========================================================= */
-
-.form-group {
-
-  margin-bottom: 19px;
-}
-
-
-.form-group label {
-
-  display: block;
-
-  margin-bottom: 7px;
-
-  font-size:
-    0.82rem;
-
-  font-weight:
-    800;
-}
-
-
-.form-group input,
-.form-group textarea {
-
-  width: 100%;
-
-  padding:
-    13px 14px;
-
-  border:
-    1px solid #d5d1c9;
-
-  outline: none;
-
-  background:
-    #faf9f6;
-
-  color:
-    #171717;
-
-  transition:
-    border-color 0.2s ease;
-}
-
-
-.form-group input:focus,
-.form-group textarea:focus {
-
-  border-color:
-    #171717;
-}
-
-
-.form-group textarea {
-
-  resize: vertical;
-
-  min-height:
-    110px;
-}
-
-
-.submit-btn {
-
-  width: 100%;
-
-  margin-top: 5px;
-
-  background:
-    #171717;
-
-  color:
-    #ffffff;
-}
-
-
-.submit-btn:hover {
-  background:
-    #343434;
-}
-
-
-.form-note {
-
-  margin-top: 14px;
-
-  color:
-    #858178;
-
-  font-size:
-    0.72rem;
-
-  text-align:
-    center;
-}
-
-
-/* =========================================================
-   RESPONSIVE — TABLET
-========================================================= */
-
-@media (max-width: 1000px) {
-
-
-  .portrait-content {
-
-    grid-template-columns:
-      1fr;
-
-    gap:
-      45px;
-
-    padding-top:
-      65px;
-  }
-
-
-  .portrait-copy {
-    order: 1;
-  }
-
-
-  .portrait-frame {
-
-    order: 0;
-
-    justify-self:
-      start;
-
-    width:
-      min(330px, 72vw);
-
-    max-height:
-      58svh;
-  }
-
-
-  .portrait-vignette {
+    border-radius: 100px;
 
     background:
+        rgba(255,255,255,.07);
 
-      linear-gradient(
-        180deg,
-        rgba(0,0,0,0.72) 0%,
-        rgba(0,0,0,0.4) 42%,
-        rgba(0,0,0,0.78) 100%
-      );
-  }
+    border:
+        1px solid
+        rgba(255,255,255,.1);
 
+    font-size: 9px;
 
-  .resume-card {
-
-    flex-basis:
-      min(
-        700px,
-        calc(100vw - 12vw)
-      );
-  }
-
-
-  .carousel-prev {
-    left: -10px;
-  }
-
-
-  .carousel-next {
-    right: -10px;
-  }
+    font-weight: 700;
 
 }
 
 
 /* =========================================================
-   RESPONSIVE — MOBILE
+   BUTTON
 ========================================================= */
 
-@media (max-width: 750px) {
+.resume-button {
+
+    width: 100%;
+
+    min-height: 42px;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font: inherit;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: .04em;
+
+    background:
+        rgba(255,255,255,.9);
+
+    color:
+        #111;
+
+    transition:
+        transform .2s ease,
+        opacity .2s ease;
+
+}
 
 
-  .nav-container {
-    min-height: 65px;
-  }
+.resume-button:hover {
 
+    transform:
+        translateY(-2px);
 
-  .nav-links {
-    display: none;
-  }
-
-
-  .portrait-hero,
-  .portrait-content {
-
-    min-height:
-      calc(100svh - 65px);
-  }
-
-
-  .portrait-content {
-
-    padding:
-      52px 0 76px;
-  }
-
-
-  .portrait-copy h1 {
-
-    font-size:
-      clamp(
-        2.7rem,
-        13vw,
-        4.8rem
-      );
-  }
-
-
-  .portrait-frame {
-
-    width:
-      min(300px, 70vw);
-  }
-
-
-  .resume-section,
-  .about-section,
-  .contact-section {
-
-    padding:
-      80px 0;
-  }
-
-
-  .resume-card {
-
-    flex-basis:
-      calc(100vw - 10vw);
-  }
-
-
-  .card-image {
-    height: 250px;
-  }
-
-
-  .card-body {
-
-    padding:
-      28px 26px 30px;
-  }
-
-
-  .carousel-arrow {
-    display: none;
-  }
-
-
-  .contact-details {
-
-    grid-template-columns:
-      1fr;
-  }
-
-
-  .modal-content {
-
-    padding:
-      35px 25px;
-  }
-
-
-  .footer .container {
-
-    flex-direction:
-      column;
-  }
+    opacity: .85;
 
 }
 
 
 /* =========================================================
-   SMALL MOBILE
+   CAROUSEL CONTROLS
 ========================================================= */
 
-@media (max-width: 500px) {
+.resume-controls {
 
+    display: flex;
 
-  .portrait-frame {
+    align-items: center;
 
-    width:
-      68vw;
-  }
+    justify-content: center;
 
+    gap: 22px;
 
-  .hero-buttons .primary-btn,
-  .hero-buttons .secondary-btn {
-
-    width:
-      100%;
-  }
-
-
-  .resume-grid {
-
-    gap:
-      14px;
-
-    padding-bottom:
-      24px;
-  }
-
-
-  .resume-card {
-
-    flex-basis:
-      calc(100vw - 12vw);
-  }
-
-
-  .card-image {
-    height: 220px;
-  }
+    margin-top: 28px;
 
 }
 
+
+.carousel-button {
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    background:
+        rgba(255,255,255,.05);
+
+    color: inherit;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+
+}
+
+
+.carousel-button:hover {
+
+    background:
+        rgba(255,255,255,.12);
+
+    transform:
+        scale(1.05);
+
+}
+
+
+.carousel-indicator {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: .1em;
+
+}
+
+
+.indicator-line {
+
+    display: block;
+
+    width: 35px;
+
+    height: 1px;
+
+    background:
+        currentColor;
+
+    opacity: .4;
+
+}
+
+
 /* =========================================================
-   DATA ANALYST AI-STYLE VISUAL
+   GRADUATION PHOTO
 ========================================================= */
 
-.data-analyst-image {
+.graduation-photo {
 
-  position: relative;
+    position: absolute;
 
-  overflow: hidden;
+    /*
+       Place it beside the cards,
+       NOT as hero
+    */
 
-  background:
-    radial-gradient(
-      circle at 70% 25%,
-      #52606d 0%,
-      #27313a 35%,
-      #111820 75%,
-      #090d11 100%
-    );
+    right: -15px;
 
-}
+    top: 48%;
 
+    z-index: 10;
 
-/* Background glow */
+    width: 155px;
 
-.data-analyst-image::before {
-
-  content: "";
-
-  position: absolute;
-
-  width: 300px;
-
-  height: 300px;
-
-  top: -100px;
-
-  right: -60px;
-
-  border-radius: 50%;
-
-  background:
-    rgba(130, 160, 180, 0.18);
-
-  filter:
-    blur(40px);
+    transform:
+        translateY(-50%);
 
 }
 
 
-/* Scene */
+.graduation-photo-frame {
 
-.ai-scene {
+    position: relative;
 
-  position: absolute;
+    width: 155px;
 
-  inset: 0;
+    height: 205px;
 
-}
+    overflow: hidden;
 
+    border-radius: 18px;
 
-/* Monitor */
+    border:
+        5px solid
+        rgba(255,255,255,.9);
 
-.monitor {
+    background: #111;
 
-  position: absolute;
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,.35);
 
-  width: 48%;
-
-  height: 58%;
-
-  top: 12%;
-
-  left: 9%;
-
-  padding: 13px;
-
-  border-radius: 5px;
-
-  background: #151b21;
-
-  border: 3px solid #353f48;
-
-  box-shadow:
-    0 25px 40px rgba(0,0,0,.45);
+    transform:
+        rotate(4deg);
 
 }
 
 
-/* Monitor header */
+.graduation-photo-frame::after {
 
-.monitor-top {
+    content: "";
 
-  height: 15%;
+    position: absolute;
 
-  display: flex;
+    inset: 0;
 
-  align-items: center;
-
-  color: #d9e2e8;
-
-  font-size: 9px;
-
-  font-weight: 800;
-
-  letter-spacing: .12em;
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 60%,
+            rgba(0,0,0,.3)
+        );
 
 }
 
 
-/* Chart */
+.graduation-photo-frame img {
 
-.chart-area {
+    width: 100%;
 
-  position: absolute;
+    height: 100%;
 
-  left: 12%;
+    display: block;
 
-  right: 12%;
+    object-fit: cover;
 
-  bottom: 14%;
-
-  height: 53%;
-
-  display: flex;
-
-  align-items: flex-end;
-
-  gap: 7px;
+    object-position:
+        center top;
 
 }
 
 
-.bar {
+/* Graduation label */
 
-  flex: 1;
+.graduation-label {
 
-  background:
-    linear-gradient(
-      to top,
-      #8398a5,
-      #c2d0d7
-    );
+    margin-top: 10px;
 
-  border-radius:
-    2px 2px 0 0;
+    text-align: center;
+
+    transform:
+        rotate(4deg);
 
 }
 
 
-.bar-1 { height: 35%; }
-.bar-2 { height: 55%; }
-.bar-3 { height: 43%; }
-.bar-4 { height: 78%; }
-.bar-5 { height: 64%; }
+.graduation-label span {
 
+    display: block;
 
-.chart-line {
+    font-size: 8px;
 
-  position: absolute;
+    font-weight: 800;
 
-  left: 15%;
+    letter-spacing: .18em;
 
-  right: 14%;
-
-  top: 42%;
-
-  height: 25%;
-
-  border-top:
-    2px solid #d6a96a;
-
-  transform:
-    skewY(-12deg);
+    opacity: .55;
 
 }
 
 
-/* Laptop */
+.graduation-label strong {
 
-.laptop {
+    display: block;
 
-  position: absolute;
+    margin-top: 3px;
 
-  width: 45%;
-
-  right: 7%;
-
-  bottom: 11%;
-
-  z-index: 4;
-
-}
-
-
-.laptop-screen {
-
-  height: 115px;
-
-  padding: 12px;
-
-  border:
-    7px solid #303940;
-
-  border-radius:
-    8px 8px 3px 3px;
-
-  background:
-    #11171c;
-
-  box-shadow:
-    0 20px 30px rgba(0,0,0,.4);
-
-}
-
-
-.dashboard-title {
-
-  color: #cfd9de;
-
-  font-size: 8px;
-
-  font-weight: 800;
-
-  letter-spacing: .12em;
-
-  margin-bottom: 10px;
-
-}
-
-
-.dashboard-grid {
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(2, 1fr);
-
-  gap: 6px;
-
-}
-
-
-.dashboard-grid div {
-
-  height: 26px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #526572,
-      #293640
-    );
-
-  border-radius: 2px;
-
-}
-
-
-.laptop-base {
-
-  height: 10px;
-
-  margin: 0 -10px;
-
-  border-radius:
-    0 0 8px 8px;
-
-  background:
-    #59636a;
-
-}
-
-
-/* Person */
-
-.person-silhouette {
-
-  position: absolute;
-
-  right: 16%;
-
-  bottom: -2%;
-
-  z-index: 5;
-
-}
-
-
-.person-silhouette .head {
-
-  width: 72px;
-
-  height: 72px;
-
-  margin: auto;
-
-  border-radius: 50%;
-
-  background:
-    linear-gradient(
-      145deg,
-      #d39b79,
-      #815947
-    );
-
-  box-shadow:
-    0 5px 20px rgba(0,0,0,.3);
-
-}
-
-
-.person-silhouette .body {
-
-  width: 170px;
-
-  height: 190px;
-
-  margin-top: -5px;
-
-  border-radius:
-    60px 60px 0 0;
-
-  background:
-    linear-gradient(
-      135deg,
-      #29343b,
-      #11161b
-    );
-
-}
-
-
-/* Desk */
-
-.desk {
-
-  position: absolute;
-
-  bottom: 0;
-
-  left: 0;
-
-  right: 0;
-
-  height: 24%;
-
-  background:
-    linear-gradient(
-      to bottom,
-      #343b40,
-      #171b1e
-    );
-
-  transform:
-    perspective(400px)
-    rotateX(8deg);
+    font-size: 10px;
 
 }
 
 
 /* =========================================================
-   RESEARCH ANALYST AI-STYLE VISUAL
+   DESKTOP POSITION
 ========================================================= */
 
-.research-analyst-image {
+@media (min-width: 1000px) {
 
-  position: relative;
+    .graduation-photo {
 
-  overflow: hidden;
+        right: 30px;
 
-  background:
-    radial-gradient(
-      circle at 30% 25%,
-      #68716f 0%,
-      #37413f 32%,
-      #1a2222 70%,
-      #0d1111 100%
-    );
-
-}
-
-
-/* Background light */
-
-.research-analyst-image::before {
-
-  content: "";
-
-  position: absolute;
-
-  width: 350px;
-
-  height: 350px;
-
-  top: -150px;
-
-  left: -100px;
-
-  border-radius: 50%;
-
-  background:
-    rgba(180, 190, 175, .17);
-
-  filter:
-    blur(45px);
-
-}
-
-
-/* Research scene */
-
-.research-scene {
-
-  position: absolute;
-
-  inset: 0;
-
-}
-
-
-/* Research board */
-
-.research-board {
-
-  position: absolute;
-
-  top: 12%;
-
-  right: 9%;
-
-  width: 54%;
-
-  height: 58%;
-
-  padding: 16px;
-
-  border:
-    5px solid #39423f;
-
-  border-radius: 4px;
-
-  background:
-    #121918;
-
-  box-shadow:
-    0 25px 45px rgba(0,0,0,.45);
-
-}
-
-
-.research-title {
-
-  color:
-    #dce1d9;
-
-  font-size:
-    9px;
-
-  font-weight:
-    800;
-
-  letter-spacing:
-    .1em;
-
-  margin-bottom:
-    15px;
-
-}
-
-
-/* Research chart */
-
-.research-chart {
-
-  height:
-    55%;
-
-  display:
-    flex;
-
-  align-items:
-    flex-end;
-
-  gap:
-    7px;
-
-  border-bottom:
-    1px solid #68736e;
-
-}
-
-
-.research-column {
-
-  flex: 1;
-
-  background:
-    linear-gradient(
-      to top,
-      #8b9a91,
-      #c5cec5
-    );
-
-  border-radius:
-    2px 2px 0 0;
-
-}
-
-
-.c1 { height: 35%; }
-.c2 { height: 62%; }
-.c3 { height: 48%; }
-.c4 { height: 78%; }
-.c5 { height: 68%; }
-
-
-/* Research lines */
-
-.research-lines {
-
-  margin-top:
-    12px;
-
-}
-
-
-.research-lines span {
-
-  display:
-    block;
-
-  height:
-    4px;
-
-  margin-bottom:
-    6px;
-
-  width:
-    75%;
-
-  background:
-    #46514c;
-
-}
-
-
-.research-lines span:nth-child(2) {
-  width: 55%;
-}
-
-
-.research-lines span:nth-child(3) {
-  width: 68%;
-}
-
-
-.research-lines span:nth-child(4) {
-  width: 42%;
-}
-
-
-/* Papers */
-
-.papers {
-
-  position: absolute;
-
-  left: 10%;
-
-  bottom: 9%;
-
-  width: 38%;
-
-  height: 42%;
-
-}
-
-
-.paper {
-
-  position: absolute;
-
-  width: 75%;
-
-  height: 85%;
-
-  padding: 15px;
-
-  background:
-    #dedbd1;
-
-  box-shadow:
-    0 15px 30px rgba(0,0,0,.35);
-
-}
-
-
-.paper div {
-
-  height: 5px;
-
-  margin-bottom: 9px;
-
-  background:
-    #8b8b82;
-
-}
-
-
-.paper-one {
-
-  left: 0;
-
-  bottom: 0;
-
-  transform:
-    rotate(-7deg);
-
-}
-
-
-.paper-two {
-
-  left: 25px;
-
-  bottom: 8px;
-
-  transform:
-    rotate(6deg);
-
-}
-
-
-/* Research person */
-
-.research-person {
-
-  position: absolute;
-
-  left: 42%;
-
-  bottom: -2%;
-
-  z-index: 5;
-
-}
-
-
-.research-head {
-
-  width: 70px;
-
-  height: 70px;
-
-  margin: auto;
-
-  border-radius: 50%;
-
-  background:
-    linear-gradient(
-      145deg,
-      #d6a080,
-      #855c49
-    );
-
-}
-
-
-.research-body {
-
-  width: 155px;
-
-  height: 180px;
-
-  margin-top: -4px;
-
-  border-radius:
-    55px 55px 0 0;
-
-  background:
-    linear-gradient(
-      135deg,
-      #35403d,
-      #111615
-    );
+    }
 
 }
 
 
 /* =========================================================
-   MOBILE AI VISUALS
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .resume-section {
+
+        padding-left: 20px;
+
+        padding-right: 20px;
+
+    }
+
+
+    .graduation-photo {
+
+        position: relative;
+
+        top: auto;
+
+        right: auto;
+
+        width: 125px;
+
+        margin:
+            35px auto 0;
+
+        transform:
+            none;
+
+    }
+
+
+    .graduation-photo-frame {
+
+        width: 125px;
+
+        height: 165px;
+
+        transform:
+            rotate(2deg);
+
+    }
+
+
+    .graduation-label {
+
+        transform:
+            none;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
 ========================================================= */
 
 @media (max-width: 600px) {
 
-  .monitor {
+    .resume-section {
 
-    width: 50%;
+        padding:
+            65px 16px 90px;
 
-    height: 52%;
-
-    left: 5%;
-
-  }
+    }
 
 
-  .laptop {
+    .resume-heading {
 
-    width: 48%;
+        margin-bottom: 30px;
 
-    right: 4%;
-
-  }
+    }
 
 
-  .person-silhouette {
+    /*
+       Narrow mobile carousel
+    */
 
-    right: 13%;
+    .resume-carousel {
 
-    transform:
-      scale(.8);
+        max-width:
+            100%;
 
-    transform-origin:
-      bottom right;
-
-  }
-
-
-  .research-board {
-
-    width: 55%;
-
-    height: 52%;
-
-    right: 5%;
-
-  }
+    }
 
 
-  .papers {
+    .resume-track {
 
-    left: 5%;
+        gap: 16px;
 
-    transform:
-      scale(.85);
-
-    transform-origin:
-      bottom left;
-
-  }
+    }
 
 
-  .research-person {
+    .resume-card {
 
-    left: 38%;
+        flex:
+            0 0 290px;
 
-    transform:
-      scale(.8);
+        width: 290px;
 
-    transform-origin:
-      bottom center;
+        min-height: 485px;
 
-  }
+        border-radius: 19px;
+
+    }
+
+
+    .resume-image {
+
+        height: 195px;
+
+    }
+
+
+    .resume-content {
+
+        padding:
+            20px;
+
+    }
+
+
+    .resume-content h3 {
+
+        font-size: 22px;
+
+    }
+
+
+    /*
+       Graduation photo moves below
+       the carousel on small screens
+    */
+
+    .graduation-photo {
+
+        margin-top: 32px;
+
+    }
 
 }
