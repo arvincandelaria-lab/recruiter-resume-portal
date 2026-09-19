@@ -1,793 +1,582 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-  <meta
-    name="description"
-    content="Recruiter-focused resume portal showcasing targeted resumes for Data Analyst, Research Analyst, and Workforce Analyst roles."
-  >
+    <title>Targeted Resumes | Portfolio</title>
 
-  <title>
-    Arvin H. Candelaria | Recruiter Resume Portal
-  </title>
-
-  <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 </head>
 
 <body>
 
-  <!-- =====================================================
-       NAVIGATION
-       ===================================================== -->
 
-  <header class="navbar">
+<!-- =========================================================
+     TARGETED RESUMES SECTION
+     ========================================================= -->
 
-    <div class="container nav-container">
+<section
+    class="targeted-resumes"
+    id="targeted-resumes"
+>
 
-      <a
-        href="#home"
-        class="logo"
-      >
-        ARVIN H. CANDELARIA
-      </a>
-
-      <nav
-        class="nav-links"
-        aria-label="Primary navigation"
-      >
-        <a href="#home">Home</a>
-        <a href="#resumes">Resumes</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-    </div>
-
-  </header>
-
-
-  <main>
-
-    <!-- =====================================================
-         HERO
-         ===================================================== -->
-
-    <section
-      id="home"
-      class="hero"
-    >
-
-      <div class="container hero-content">
-
-        <div class="hero-copy">
-
-          <p class="eyebrow">
-            RECRUITER RESUME PORTAL
-          </p>
-
-          <h1>
-            Targeted Resumes for
-            <span>
-              Data &amp; Analytics Roles
-            </span>
-          </h1>
-
-          <p class="hero-description">
-            Welcome to my recruiter-focused resume portal.
-            Select the resume that best matches
-            the position you are hiring for.
-          </p>
-
-          <div class="hero-buttons">
-
-            <a
-              href="#resumes"
-              class="primary-btn"
-            >
-              View Resumes
-            </a>
-
-            <a
-              href="#contact"
-              class="secondary-btn"
-            >
-              Contact Me
-            </a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         TARGETED RESUMES
-         LEFT = GRADUATION PHOTO + TEXT
-         RIGHT = RESUME CAROUSEL
-         ===================================================== -->
-
-    <section
-      id="resumes"
-      class="resume-section"
-    >
-
-      <div class="container resume-layout">
+    <div class="resume-container">
 
 
         <!-- =================================================
-             LEFT SIDE
-             GRADUATION PHOTO
+             SECTION HEADER
              ================================================= -->
 
-        <div class="resume-visual">
+        <div class="section-heading">
 
-          <img
-            src="CHOSEN_2208_CANDELARIA_ARVIN22231.JPG"
-            alt="CHOSEN_2208_CANDELARIA_ARVIN22231.JPG"
-          >
+            <div>
 
-          <div class="resume-visual-overlay"></div>
+                <p class="eyebrow">
+                    TARGETED RESUMES
+                </p>
 
-          <div class="resume-visual-content">
+                <h1>
+                    Select a Resume
+                </h1>
 
-            <p class="eyebrow">
-              TARGETED RESUMES
-            </p>
+                <p class="heading-description">
+                    Each resume is tailored to a specific
+                    analytical career path.
+                </p>
 
-            <h2>
-              Select a Resume
-            </h2>
-
-            <p>
-              Each resume is tailored to a specific
-              analytical career path.
-            </p>
-
-          </div>
+            </div>
 
         </div>
 
 
         <!-- =================================================
-             RIGHT SIDE
-             RESUME CAROUSEL
+             CAROUSEL
              ================================================= -->
 
-        <div class="resume-carousel-side">
-
-          <div class="resume-carousel-wrap">
+        <div class="resume-carousel">
 
 
-            <!-- PREVIOUS -->
+            <!-- PREVIOUS BUTTON -->
 
             <button
-              class="carousel-arrow carousel-prev"
-              type="button"
-              aria-label="Previous resume"
+                class="carousel-arrow carousel-prev"
+                id="prevResume"
+                type="button"
+                aria-label="Previous resume"
             >
-              &#8592;
+                <span>&lsaquo;</span>
             </button>
 
 
-            <!-- VIEWPORT -->
+            <!-- =================================================
+                 VIEWPORT
+                 ================================================= -->
 
             <div
-              class="resume-carousel-viewport"
-              id="resumeViewport"
+                class="resume-viewport"
+                id="resumeViewport"
             >
 
-              <div
-                class="resume-grid"
-                id="resumeCarousel"
-              >
+                <div
+                    class="resume-track"
+                    id="resumeTrack"
+                >
 
 
-                <!-- =========================================
-                     CARD 01 — DATA ANALYST
-                     ========================================= -->
+                    <!-- =================================================
+                         SLIDE 1
+                         DATA ANALYTICS
+                         ================================================= -->
 
-                <article class="resume-card">
-
-                  <div class="card-image">
-
-                    <img
-                      src="https://image.pollinations.ai/prompt/photorealistic%20professional%20data%20analyst%20working%20at%20a%20modern%20desk%20with%20laptop%20and%20analytics%20dashboard%2C%20clean%20corporate%20office%2C%20professional%20editorial%20photography%2C%20no%20text?width=1200&height=800&nologo=true"
-                      alt="Professional data analyst workspace"
-                      loading="lazy"
+                    <article
+                        class="resume-slide"
+                        data-index="0"
                     >
 
-                    <span class="card-number">
-                      01
-                    </span>
 
-                  </div>
+                        <!-- ================================
+                             LEFT PHOTO
+                             ================================ -->
+
+                        <div class="resume-photo">
+
+                            <img
+                                src="assets/graduation.jpg"
+                                alt="Graduation photo"
+                            >
+
+                            <div class="photo-dark-overlay"></div>
 
 
-                  <div class="card-body">
+                            <!-- TEXT OVERLAY -->
 
-                    <p class="card-kicker">
-                      ANALYTICS
-                    </p>
+                            <div class="photo-copy">
 
-                    <h3>
-                      Data Analyst
-                    </h3>
+                                <p class="photo-category">
+                                    DATA ANALYTICS
+                                </p>
 
-                    <p>
-                      Focused on data analysis,
-                      reporting, data validation,
-                      Excel, Power BI, statistical
-                      analysis, and data-driven insights.
-                    </p>
+                                <h2>
+                                    Data tells a story.
+                                </h2>
 
-                    <div class="skills-list">
+                                <p class="photo-tagline">
+                                    I help make it meaningful.
+                                </p>
 
-                      <span>Excel</span>
-                      <span>Power BI</span>
-                      <span>SQL</span>
-                      <span>Statistics</span>
+                            </div>
 
-                    </div>
+                        </div>
 
-                    <button
-                      class="request-btn"
-                      data-resume="Data Analyst Resume"
-                      type="button"
+
+                        <!-- ================================
+                             RIGHT RESUME INFORMATION
+                             ================================ -->
+
+                        <div class="resume-information">
+
+                            <p class="resume-small-label">
+                                RESUME PORTFOLIO
+                            </p>
+
+                            <h2>
+                                Data Analytics
+                            </h2>
+
+                            <p class="resume-description">
+                                Analyzing data, building reports,
+                                and creating visualizations to
+                                support better decisions.
+                            </p>
+
+
+                            <!-- SKILLS -->
+
+                            <div class="resume-skills">
+
+                                <div class="skill">
+
+                                    <span class="skill-icon excel">
+                                        X
+                                    </span>
+
+                                    <span>
+                                        Excel
+                                    </span>
+
+                                </div>
+
+
+                                <div class="skill">
+
+                                    <span class="skill-icon sql">
+                                        S
+                                    </span>
+
+                                    <span>
+                                        SQL
+                                    </span>
+
+                                </div>
+
+
+                                <div class="skill">
+
+                                    <span class="skill-icon powerbi">
+                                        P
+                                    </span>
+
+                                    <span>
+                                        Power BI
+                                    </span>
+
+                                </div>
+
+
+                                <div class="skill">
+
+                                    <span class="skill-icon r">
+                                        R
+                                    </span>
+
+                                    <span>
+                                        R
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- VIEW RESUME -->
+
+                            <button
+                                class="view-resume"
+                                type="button"
+                                data-resume="Data Analytics"
+                            >
+
+                                <span>
+                                    View Resume
+                                </span>
+
+                                <span class="view-arrow">
+                                    →
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- =================================================
+                         SLIDE 2
+                         RESEARCH ANALYTICS
+                         ================================================= -->
+
+                    <article
+                        class="resume-slide"
+                        data-index="1"
                     >
-                      Request Resume
-                    </button>
-
-                  </div>
-
-                </article>
 
 
-                <!-- =========================================
-                     CARD 02 — RESEARCH ANALYST
-                     ========================================= -->
+                        <!-- PHOTO -->
 
-                <article class="resume-card">
+                        <div class="resume-photo">
 
-                  <div class="card-image">
+                            <img
+                                src="assets/graduation.jpg"
+                                alt="Graduation photo"
+                            >
 
-                    <img
-                      src="https://image.pollinations.ai/prompt/photorealistic%20professional%20research%20analyst%20reviewing%20survey%20data%20and%20statistical%20charts%20on%20computer%2C%20modern%20research%20office%2C%20professional%20editorial%20photography%2C%20no%20text?width=1200&height=800&nologo=true"
-                      alt="Professional research analyst workspace"
-                      loading="lazy"
+                            <div class="photo-dark-overlay"></div>
+
+
+                            <div class="photo-copy">
+
+                                <p class="photo-category">
+                                    RESEARCH ANALYTICS
+                                </p>
+
+                                <h2>
+                                    Research tells a story.
+                                </h2>
+
+                                <p class="photo-tagline">
+                                    I turn evidence into insight.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- INFORMATION -->
+
+                        <div class="resume-information">
+
+                            <p class="resume-small-label">
+                                RESUME PORTFOLIO
+                            </p>
+
+                            <h2>
+                                Research Analytics
+                            </h2>
+
+                            <p class="resume-description">
+                                Conducting quantitative research,
+                                analyzing datasets, and translating
+                                findings into meaningful insights.
+                            </p>
+
+
+                            <div class="resume-skills">
+
+                                <div class="skill">
+
+                                    <span class="skill-icon excel">
+                                        X
+                                    </span>
+
+                                    <span>
+                                        Excel
+                                    </span>
+
+                                </div>
+
+
+                                <div class="skill">
+
+                                    <span class="skill-icon r">
+                                        R
+                                    </span>
+
+                                    <span>
+                                        R
+                                    </span>
+
+                                </div>
+
+
+                                <div class="skill">
+
+                                    <span class="skill-icon sql">
+                                        S
+                                    </span>
+
+                                    <span>
+                                        SPSS
+                                    </span>
+
+                                </div>
+
+
+                                <div class="skill">
+
+                                    <span class="skill-icon research">
+                                        Q
+                                    </span>
+
+                                    <span>
+                                        Research
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <button
+                                class="view-resume"
+                                type="button"
+                                data-resume="Research Analytics"
+                            >
+
+                                <span>
+                                    View Resume
+                                </span>
+
+                                <span class="view-arrow">
+                                    →
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- =================================================
+                         SLIDE 3
+                         WORKFORCE ANALYTICS
+                         ================================================= -->
+
+                    <article
+                        class="resume-slide"
+                        data-index="2"
                     >
 
-                    <span class="card-number">
-                      02
-                    </span>
 
-                  </div>
+                        <!-- PHOTO -->
 
+                        <div class="resume-photo">
 
-                  <div class="card-body">
+                            <img
+                                src="assets/graduation.jpg"
+                                alt="Graduation photo"
+                            >
 
-                    <p class="card-kicker">
-                      RESEARCH
-                    </p>
-
-                    <h3>
-                      Research Analyst
-                    </h3>
-
-                    <p>
-                      Focused on quantitative research,
-                      statistical analysis, survey methodology,
-                      hypothesis testing, research design,
-                      and interpretation of findings.
-                    </p>
-
-                    <div class="skills-list">
-
-                      <span>SPSS</span>
-                      <span>Research</span>
-                      <span>Statistics</span>
-                      <span>Survey Design</span>
-
-                    </div>
-
-                    <button
-                      class="request-btn"
-                      data-resume="Research Analyst Resume"
-                      type="button"
-                    >
-                      Request Resume
-                    </button>
-
-                  </div>
-
-                </article>
+                            <div class="photo-dark-overlay"></div>
 
 
-                <!-- =========================================
-                     CARD 03 — WORKFORCE ANALYST
-                     ========================================= -->
+                            <div class="photo-copy">
 
-                <article class="resume-card">
+                                <p class="photo-category">
+                                    WORKFORCE ANALYTICS
+                                </p>
 
-                  <div class="card-image">
+                                <h2>
+                                    People create the data.
+                                </h2>
 
-                    <img
-                      src="https://image.pollinations.ai/prompt/photorealistic%20professional%20workforce%20analyst%20monitoring%20business%20performance%20dashboard%20and%20workforce%20planning%2C%20modern%20operations%20office%2C%20professional%20editorial%20photography%2C%20no%20text?width=1200&height=800&nologo=true"
-                      alt="Professional workforce analyst workspace"
-                      loading="lazy"
-                    >
+                                <p class="photo-tagline">
+                                    I turn it into decisions.
+                                </p>
 
-                    <span class="card-number">
-                      03
-                    </span>
+                            </div>
 
-                  </div>
+                        </div>
 
 
-                  <div class="card-body">
+                        <!-- INFORMATION -->
 
-                    <p class="card-kicker">
-                      WORKFORCE
-                    </p>
+                        <div class="resume-information">
 
-                    <h3>
-                      Workforce Analyst
-                    </h3>
+                            <p class="resume-small-label">
+                                RESUME PORTFOLIO
+                            </p>
 
-                    <p>
-                      Focused on workforce reporting,
-                      performance monitoring, trend analysis,
-                      operational data, and workforce analytics.
-                    </p>
+                            <h2>
+                                Workforce Analytics
+                            </h2>
 
-                    <div class="skills-list">
-
-                      <span>Excel</span>
-                      <span>Power BI</span>
-                      <span>Reporting</span>
-                      <span>WFM</span>
-
-                    </div>
-
-                    <button
-                      class="request-btn"
-                      data-resume="Workforce Analyst Resume"
-                      type="button"
-                    >
-                      Request Resume
-                    </button>
-
-                  </div>
-
-                </article>
+                            <p class="resume-description">
+                                Using workforce data, reporting,
+                                and performance trends to support
+                                operational decisions.
+                            </p>
 
 
-              </div>
+                            <div class="resume-skills">
+
+                                <div class="skill">
+
+                                    <span class="skill-icon excel">
+                                        X
+                                    </span>
+
+                                    <span>
+                                        Excel
+                                    </span>
+
+                                </div>
+
+
+                                <div class="skill">
+
+                                    <span class="skill-icon powerbi">
+                                        P
+                                    </span>
+
+                                    <span>
+                                        Power BI
+                                    </span>
+
+                                </div>
+
+
+                                <div class="skill">
+
+                                    <span class="skill-icon workforce">
+                                        W
+                                    </span>
+
+                                    <span>
+                                        WFM
+                                    </span>
+
+                                </div>
+
+
+                                <div class="skill">
+
+                                    <span class="skill-icon research">
+                                        ↗
+                                    </span>
+
+                                    <span>
+                                        Reporting
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <button
+                                class="view-resume"
+                                type="button"
+                                data-resume="Workforce Analytics"
+                            >
+
+                                <span>
+                                    View Resume
+                                </span>
+
+                                <span class="view-arrow">
+                                    →
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
 
             </div>
 
 
-            <!-- NEXT -->
+            <!-- NEXT BUTTON -->
 
             <button
-              class="carousel-arrow carousel-next"
-              type="button"
-              aria-label="Next resume"
+                class="carousel-arrow carousel-next"
+                id="nextResume"
+                type="button"
+                aria-label="Next resume"
             >
-              &#8594;
+                <span>&rsaquo;</span>
             </button>
 
-          </div>
-
-
-          <div class="carousel-hint">
-
-            <span class="hint-dot"></span>
-
-            <span>
-              Swipe horizontally to view the next resume
-            </span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         ABOUT
-         ===================================================== -->
-
-    <section
-      id="about"
-      class="about-section"
-    >
-
-      <div class="container about-content">
-
-        <div class="section-heading">
-
-          <p class="eyebrow">
-            ABOUT
-          </p>
-
-          <h2>
-            About Me
-          </h2>
-
         </div>
 
 
-        <div class="about-text">
+        <!-- =================================================
+             DOT NAVIGATION
+             ================================================= -->
 
-          <p>
-            I am a BS Statistics graduate with experience in
-            customer service, quality reporting support,
-            and workforce-related operations.
-          </p>
+        <div
+            class="resume-dots"
+            id="resumeDots"
+        >
 
-          <p>
-            My academic and professional background has
-            developed my interest in data analysis,
-            statistical research, workforce analytics,
-            and data-driven decision-making.
-          </p>
+            <button
+                class="resume-dot active"
+                type="button"
+                data-slide="0"
+                aria-label="Go to Data Analytics"
+            ></button>
 
-          <p>
-            This portal provides recruiters with targeted
-            resume versions aligned with different
-            analytical career paths.
-          </p>
+            <button
+                class="resume-dot"
+                type="button"
+                data-slide="1"
+                aria-label="Go to Research Analytics"
+            ></button>
 
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         CONTACT
-         ===================================================== -->
-
-    <section
-      id="contact"
-      class="contact-section"
-    >
-
-      <div class="container contact-content">
-
-        <p class="eyebrow">
-          CONTACT
-        </p>
-
-        <h2>
-          Let's Connect
-        </h2>
-
-        <p>
-          For recruitment opportunities,
-          resume requests, or professional inquiries,
-          you may reach me through the following:
-        </p>
-
-
-        <div class="contact-details">
-
-          <div class="contact-item">
-
-            <span>
-              Email
-            </span>
-
-            <a href="mailto:arvin.candelaria0410@gmail.com">
-              arvin.candelaria0410@gmail.com
-            </a>
-
-          </div>
-
-
-          <div class="contact-item">
-
-            <span>
-              LinkedIn
-            </span>
-
-            <a
-              href="https://www.linkedin.com/in/arvincandelaria/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              linkedin.com/in/arvincandelaria
-            </a>
-
-          </div>
-
-
-          <div class="contact-item">
-
-            <span>
-              GitHub
-            </span>
-
-            <a
-              href="https://github.com/arvincandelaria-lab"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              github.com/arvincandelaria-lab
-            </a>
-
-          </div>
+            <button
+                class="resume-dot"
+                type="button"
+                data-slide="2"
+                aria-label="Go to Workforce Analytics"
+            ></button>
 
         </div>
 
-
-        <div class="contact-buttons">
-
-          <a
-            href="mailto:arvin.candelaria0410@gmail.com"
-            class="primary-btn"
-          >
-            Email Me
-          </a>
-
-          <a
-            href="https://www.linkedin.com/in/arvincandelaria/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="secondary-btn"
-          >
-            LinkedIn
-          </a>
-
-          <a
-            href="https://github.com/arvincandelaria-lab"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="secondary-btn"
-          >
-            GitHub
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- =====================================================
-       FOOTER
-       ===================================================== -->
-
-  <footer class="footer">
-
-    <div class="container">
-
-      <p>
-        © 2026 Arvin H. Candelaria.
-        All rights reserved.
-      </p>
-
-      <p>
-        Recruiter Resume Portal
-      </p>
 
     </div>
 
-  </footer>
+</section>
 
 
-  <!-- =====================================================
-       RESUME REQUEST MODAL
-       ===================================================== -->
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
 
-  <div
-    id="resumeModal"
-    class="modal"
-    aria-hidden="true"
-  >
-
-    <div class="modal-overlay"></div>
-
-
-    <div
-      class="modal-content"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="modalTitle"
-    >
-
-      <button
-        type="button"
-        class="close-modal"
-        aria-label="Close"
-      >
-        &times;
-      </button>
-
-
-      <p class="eyebrow">
-        RESUME REQUEST
-      </p>
-
-      <h2 id="modalTitle">
-        Request Resume
-      </h2>
-
-      <p class="modal-description">
-        Please provide your professional information.
-        Your request will be reviewed before the
-        appropriate resume is provided.
-      </p>
-
-
-      <!-- =================================================
-           FORMSPREE
-           ================================================= -->
-
-      <form
-        id="resumeRequestForm"
-        action="https://formspree.io/f/xqpkykqa"
-        method="POST"
-      >
-
-        <input
-          type="hidden"
-          name="requested_resume"
-          id="requestedResume"
-        >
-
-        <input
-          type="hidden"
-          name="_subject"
-          id="emailSubject"
-          value="Resume Request"
-        >
-
-
-        <!-- SPAM PROTECTION -->
-
-        <input
-          type="text"
-          name="_gotcha"
-          style="display:none"
-          tabindex="-1"
-          autocomplete="off"
-        >
-
-
-        <!-- NAME -->
-
-        <div class="form-group">
-
-          <label for="name">
-            Full Name *
-          </label>
-
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Your full name"
-            required
-          >
-
-        </div>
-
-
-        <!-- COMPANY -->
-
-        <div class="form-group">
-
-          <label for="company">
-            Company *
-          </label>
-
-          <input
-            type="text"
-            id="company"
-            name="company"
-            placeholder="Company name"
-            required
-          >
-
-        </div>
-
-
-        <!-- EMAIL -->
-
-        <div class="form-group">
-
-          <label for="email">
-            Work Email *
-          </label>
-
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="name@company.com"
-            required
-          >
-
-        </div>
-
-
-        <!-- POSITION -->
-
-        <div class="form-group">
-
-          <label for="position">
-            Position Hiring For *
-          </label>
-
-          <input
-            type="text"
-            id="position"
-            name="position"
-            placeholder="e.g. Data Analyst"
-            required
-          >
-
-        </div>
-
-
-        <!-- MESSAGE -->
-
-        <div class="form-group">
-
-          <label for="message">
-            Message
-          </label>
-
-          <textarea
-            id="message"
-            name="message"
-            rows="4"
-            placeholder="Optional message"
-          ></textarea>
-
-        </div>
-
-
-        <!-- SUBMIT -->
-
-        <button
-          type="submit"
-          class="submit-btn"
-        >
-          Submit Resume Request
-        </button>
-
-
-        <p class="form-note">
-          Your information will be used only
-          to respond to your resume request.
-        </p>
-
-      </form>
-
-    </div>
-
-  </div>
-
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
