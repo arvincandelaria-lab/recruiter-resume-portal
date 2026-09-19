@@ -581,3 +581,312 @@ textarea {
     }
 }
 
+/* =====================================
+   PREMIUM BLACK THEME
+===================================== */
+
+:root {
+    --black: #050505;
+    --surface: #0b0b0b;
+    --card: #111111;
+    --card-hover: #161616;
+    --border: #292929;
+
+    --text: #f5f5f5;
+    --muted: #a1a1a1;
+    --soft: #737373;
+}
+
+
+/* =========================
+   GLOBAL
+========================= */
+
+html,
+body {
+    background: var(--black);
+    color: var(--text);
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar {
+    background: rgba(5, 5, 5, 0.94);
+    border-bottom: 1px solid var(--border);
+}
+
+.logo,
+.nav-links a {
+    color: var(--text);
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    background: var(--black);
+    color: var(--text);
+}
+
+.hero .eyebrow {
+    color: var(--soft);
+}
+
+.hero h1 {
+    color: var(--text);
+}
+
+.hero h1 span {
+    color: #777777;
+}
+
+.hero-description {
+    color: var(--muted);
+}
+
+
+/* =========================
+   RESUME SECTION
+========================= */
+
+.resume-section {
+    background: var(--surface);
+    color: var(--text);
+}
+
+.section-heading .eyebrow {
+    color: var(--soft);
+}
+
+.section-heading p:last-child {
+    color: var(--muted);
+}
+
+
+/* =========================
+   RESUME GRID
+========================= */
+
+.resume-grid {
+    background: transparent;
+}
+
+
+/* =========================
+   RESUME CARDS
+========================= */
+
+.resume-card {
+    background: var(--card);
+    color: var(--text);
+
+    border: 1px solid var(--border);
+}
+
+.resume-card:hover {
+    background: var(--card-hover);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+
+/* =========================
+   CARD IMAGE
+========================= */
+
+.card-image {
+    background: #080808;
+}
+
+
+/* =========================
+   CARD CONTENT
+========================= */
+
+.card-number {
+    color: #666666;
+}
+
+.resume-card h3 {
+    color: var(--text);
+}
+
+.resume-card p {
+    color: var(--muted);
+}
+
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills-list span {
+    background: #1b1b1b;
+    color: #cfcfcf;
+
+    border: 1px solid #292929;
+}
+
+
+/* =========================
+   REQUEST BUTTON
+========================= */
+
+.request-btn {
+    background: #f5f5f5;
+    color: #050505;
+
+    border: none;
+}
+
+.request-btn:hover {
+    background: #d8d8d8;
+    color: #000000;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-section {
+    background: #080808;
+    color: var(--text);
+}
+
+.about-section h2 {
+    color: var(--text);
+}
+
+.about-text p {
+    color: var(--muted);
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-section {
+    background: #050505;
+    color: var(--text);
+
+    border-top: 1px solid var(--border);
+}
+
+.contact-section .eyebrow {
+    color: var(--soft);
+}
+
+.contact-section p:not(.eyebrow) {
+    color: var(--muted);
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.primary-btn {
+    background: #f5f5f5;
+    color: #050505;
+}
+
+.primary-btn:hover {
+    background: #d8d8d8;
+}
+
+.secondary-btn {
+    background: transparent;
+    color: #f5f5f5;
+
+    border-color: #444444;
+}
+
+.secondary-btn:hover {
+    background: #f5f5f5;
+    color: #050505;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    background: #000000;
+    color: #666666;
+
+    border-top: 1px solid #1c1c1c;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal-content {
+    background: #111111;
+    color: #f5f5f5;
+
+    border: 1px solid #292929;
+}
+
+.modal-content .eyebrow {
+    color: #777777;
+}
+
+.modal-description {
+    color: #a1a1a1;
+}
+
+.close-modal {
+    color: #aaaaaa;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.form-group label {
+    color: #eeeeee;
+}
+
+.form-group input,
+.form-group textarea {
+    background: #0b0b0b;
+    color: #f5f5f5;
+
+    border: 1px solid #292929;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #666666;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #777777;
+}
+
+.submit-btn {
+    background: #f5f5f5;
+    color: #050505;
+}
+
+.submit-btn:hover {
+    background: #d8d8d8;
+}
+
+.form-note {
+    color: #666666;
+}
+
