@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -10,1104 +9,958 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <meta
-        name="description"
-        content="Professional Resume Portfolio and Recruiter Portal"
-    >
-
     <title>
-        Arvin Candelaria | Recruiter Resume Portal
+        Arvin H. Candelaria | Recruiter Resume Portal
     </title>
 
-    <link
-        rel="stylesheet"
-        href="style.css"
+    <meta
+        name="description"
+        content="Recruiter-focused resume portal showcasing targeted resumes for Data Analyst, Research Analyst, and Workforce Analyst roles."
     >
 
+    <link rel="stylesheet" href="style.css">
 </head>
 
 
 <body>
 
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
 
-    <!-- =====================================================
-         BACKGROUND
-    ====================================================== -->
+<header class="navbar">
 
-    <div class="page-background">
+    <div class="container nav-container">
 
-        <div class="background-glow glow-one"></div>
+        <a href="#home" class="logo">
+            ARVIN H. CANDELARIA
+        </a>
 
-        <div class="background-glow glow-two"></div>
+        <nav class="nav-links" aria-label="Primary navigation">
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#resumes">
+                Resumes
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </nav>
 
     </div>
 
-
-
-    <!-- =====================================================
-         NAVIGATION
-    ====================================================== -->
-
-    <header class="site-header">
-
-        <div class="nav-container">
-
-            <a
-                href="#top"
-                class="logo"
-            >
-                AC
-            </a>
-
-
-            <nav class="main-nav">
-
-                <a href="#top">
-                    Home
-                </a>
-
-                <a href="#resumes">
-                    Resumes
-                </a>
-
-                <a href="#about">
-                    About
-                </a>
-
-            </nav>
-
-
-            <a
-                href="#resumes"
-                class="nav-button"
-            >
-                Recruiter Portal
-            </a>
-
-        </div>
-
-    </header>
+</header>
 
 
 
-    <!-- =====================================================
-         HERO
-         
-         IMPORTANT:
-         NO GRADUATION PHOTO HERE.
-    ====================================================== -->
+<main>
 
-    <main id="top">
+<!-- =========================================================
+     HERO
+     IMPORTANT:
+     Graduation photo is NOT here.
+========================================================= -->
 
-        <section class="hero-section">
+<section id="home" class="hero">
 
-            <div class="hero-content">
+    <div class="container hero-content">
 
-                <p class="eyebrow">
-                    PROFESSIONAL RESUME PORTAL
-                </p>
+        <div class="hero-copy">
 
+            <p class="eyebrow">
+                RECRUITER RESUME PORTAL
+            </p>
 
-                <h1>
+            <h1>
+                Targeted Resumes for
+                <span>
+                    Data &amp; Analytics Roles
+                </span>
+            </h1>
 
-                    Find the right
-                    <span>professional profile.</span>
+            <p class="hero-description">
+                Welcome to my recruiter-focused resume portal.
+                Select the resume that best matches
+                the position you are hiring for.
+            </p>
 
-                </h1>
-
-
-                <p class="hero-description">
-
-                    Explore my professional resumes
-                    based on different career tracks,
-                    skills, and areas of expertise.
-
-                </p>
-
+            <div class="hero-buttons">
 
                 <a
                     href="#resumes"
-                    class="hero-button"
+                    class="primary-btn"
                 >
+                    View Resumes
+                </a>
 
-                    Explore Resumes
-
-                    <span>
-                        →
-                    </span>
-
+                <a
+                    href="#contact"
+                    class="secondary-btn"
+                >
+                    Contact Me
                 </a>
 
             </div>
 
+        </div>
 
-            <div class="hero-decoration">
+    </div>
 
-                <div class="hero-circle">
+</section>
 
-                    <span>
-                        CV
-                    </span>
 
-                </div>
 
-            </div>
+<!-- =========================================================
+     RESUME SECTION
+     
+     Graduation photo is used as the BACKGROUND here.
+     The cards sit on top of it.
+========================================================= -->
 
-        </section>
+<section
+    id="resumes"
+    class="resume-section"
+>
+
+    <!-- Background image layer -->
+    <div
+        class="resume-background"
+        aria-hidden="true"
+    ></div>
+
+    <!-- Dark / premium overlay -->
+    <div
+        class="resume-overlay"
+        aria-hidden="true"
+    ></div>
+
+
+    <div class="container resume-container">
+
+        <div class="section-heading">
+
+            <p class="eyebrow">
+                TARGETED RESUMES
+            </p>
+
+            <h2>
+                Select a Resume
+            </h2>
+
+            <p>
+                Each resume is tailored to a specific
+                analytical career path.
+            </p>
+
+        </div>
 
 
 
         <!-- =================================================
-             RESUME SECTION
+             CAROUSEL
         ================================================== -->
 
-        <section
-            class="resume-section"
-            id="resumes"
-        >
+        <div class="resume-carousel">
 
+            <!-- Previous button -->
 
-            <!-- SECTION HEADING -->
+            <button
+                class="carousel-arrow carousel-prev"
+                type="button"
+                aria-label="Previous resume"
+            >
+                &#8592;
+            </button>
 
-            <div class="resume-heading">
 
-                <p class="section-label">
-                    PROFESSIONAL RESUMES
-                </p>
 
+            <!-- Viewport -->
 
-                <h2>
+            <div
+                class="carousel-viewport"
+                id="carouselViewport"
+            >
 
-                    Explore My
-                    <span>Resumes</span>
+                <!-- Track -->
 
-                </h2>
+                <div
+                    class="resume-track"
+                    id="resumeTrack"
+                >
 
 
-                <p class="section-description">
+                    <!-- =====================================
+                         CARD 01 — DATA ANALYST
+                    ====================================== -->
 
-                    Select a professional profile
-                    to explore the corresponding
-                    resume.
+                    <article class="resume-card">
 
-                </p>
+                        <!-- IMAGE / VISUAL -->
+                        <div class="card-image data-visual">
 
-            </div>
+                            <div class="visual-grid"></div>
 
+                            <div class="dashboard-window">
 
+                                <div class="window-header">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
 
-            <!-- =================================================
-                 CAROUSEL AREA
-            ================================================== -->
+                                <div class="chart-area">
 
-            <div class="resume-layout">
-
-
-                <!-- =================================================
-                     RESUME CAROUSEL
-                ================================================== -->
-
-                <div class="resume-carousel">
-
-
-                    <div
-                        class="resume-viewport"
-                        id="resumeViewport"
-                    >
-
-
-                        <div
-                            class="resume-track"
-                            id="resumeTrack"
-                        >
-
-
-                            <!-- =====================================
-                                 CARD 01 — DATA ANALYST
-                            ====================================== -->
-
-                            <article
-                                class="resume-card"
-                                data-index="0"
-                            >
-
-
-                                <div
-                                    class="
-                                        resume-image
-                                        data-analyst-image
-                                    "
-                                >
-
-
-                                    <div class="ai-scene">
-
-
-                                        <!-- MONITOR -->
-
-                                        <div class="monitor">
-
-                                            <div class="monitor-top">
-                                                DATA ANALYTICS
-                                            </div>
-
-
-                                            <div class="chart-area">
-
-                                                <div
-                                                    class="bar bar-1"
-                                                ></div>
-
-                                                <div
-                                                    class="bar bar-2"
-                                                ></div>
-
-                                                <div
-                                                    class="bar bar-3"
-                                                ></div>
-
-                                                <div
-                                                    class="bar bar-4"
-                                                ></div>
-
-                                                <div
-                                                    class="bar bar-5"
-                                                ></div>
-
-                                            </div>
-
-
-                                            <div
-                                                class="chart-line"
-                                            ></div>
-
-                                        </div>
-
-
-
-                                        <!-- LAPTOP -->
-
-                                        <div class="laptop">
-
-                                            <div
-                                                class="laptop-screen"
-                                            >
-
-                                                <div
-                                                    class="
-                                                        dashboard-title
-                                                    "
-                                                >
-                                                    ANALYTICS
-                                                </div>
-
-
-                                                <div
-                                                    class="
-                                                        dashboard-grid
-                                                    "
-                                                >
-
-                                                    <div></div>
-                                                    <div></div>
-                                                    <div></div>
-                                                    <div></div>
-
-                                                </div>
-
-                                            </div>
-
-
-                                            <div
-                                                class="laptop-base"
-                                            ></div>
-
-                                        </div>
-
-
-
-                                        <!-- PERSON -->
-
-                                        <div
-                                            class="
-                                                person-silhouette
-                                            "
-                                        >
-
-                                            <div
-                                                class="head"
-                                            ></div>
-
-                                            <div
-                                                class="body"
-                                            ></div>
-
-                                        </div>
-
-
-                                    </div>
-
-
-                                    <span
-                                        class="resume-number"
-                                    >
-                                        01
-                                    </span>
-
-
-                                    <span
-                                        class="image-label"
-                                    >
-                                        DATA ANALYTICS
-                                    </span>
+                                    <div class="bar bar-1"></div>
+                                    <div class="bar bar-2"></div>
+                                    <div class="bar bar-3"></div>
+                                    <div class="bar bar-4"></div>
+                                    <div class="bar bar-5"></div>
 
                                 </div>
 
-
-
-                                <div class="resume-content">
-
-                                    <p
-                                        class="resume-category"
-                                    >
-                                        ANALYTICS
-                                    </p>
-
-
-                                    <h3>
-                                        Data Analyst
-                                    </h3>
-
-
-                                    <p>
-
-                                        Data analysis, reporting,
-                                        visualization, data validation,
-                                        statistical analysis, and
-                                        data-driven insights.
-
-                                    </p>
-
-
-                                    <div
-                                        class="resume-skills"
-                                    >
-
-                                        <span>
-                                            Excel
-                                        </span>
-
-                                        <span>
-                                            Power BI
-                                        </span>
-
-                                        <span>
-                                            SQL
-                                        </span>
-
-                                        <span>
-                                            Statistics
-                                        </span>
-
-                                    </div>
-
-
-                                    <button
-                                        class="resume-button"
-                                        data-resume="Data Analyst"
-                                    >
-
-                                        View Resume
-
-                                        <span>
-                                            →
-                                        </span>
-
-                                    </button>
-
+                                <div class="mini-line">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
                                 </div>
 
-                            </article>
+                            </div>
 
+                            <div class="visual-label">
+                                DATA
+                            </div>
 
-
-                            <!-- =====================================
-                                 CARD 02 — RESEARCH ANALYST
-                            ====================================== -->
-
-                            <article
-                                class="resume-card"
-                                data-index="1"
-                            >
-
-
-                                <div
-                                    class="
-                                        resume-image
-                                        research-analyst-image
-                                    "
-                                >
-
-
-                                    <div
-                                        class="research-scene"
-                                    >
-
-
-                                        <!-- BOARD -->
-
-                                        <div
-                                            class="
-                                                research-board
-                                            "
-                                        >
-
-                                            <div
-                                                class="
-                                                    research-title
-                                                "
-                                            >
-                                                RESEARCH ANALYSIS
-                                            </div>
-
-
-                                            <div
-                                                class="
-                                                    research-chart
-                                                "
-                                            >
-
-                                                <div
-                                                    class="
-                                                        research-column
-                                                        c1
-                                                    "
-                                                ></div>
-
-                                                <div
-                                                    class="
-                                                        research-column
-                                                        c2
-                                                    "
-                                                ></div>
-
-                                                <div
-                                                    class="
-                                                        research-column
-                                                        c3
-                                                    "
-                                                ></div>
-
-                                                <div
-                                                    class="
-                                                        research-column
-                                                        c4
-                                                    "
-                                                ></div>
-
-                                                <div
-                                                    class="
-                                                        research-column
-                                                        c5
-                                                    "
-                                                ></div>
-
-                                            </div>
-
-
-                                            <div
-                                                class="
-                                                    research-lines
-                                                "
-                                            >
-
-                                                <span></span>
-
-                                                <span></span>
-
-                                                <span></span>
-
-                                                <span></span>
-
-                                            </div>
-
-                                        </div>
-
-
-
-                                        <!-- PAPERS -->
-
-                                        <div class="papers">
-
-                                            <div
-                                                class="
-                                                    paper
-                                                    paper-one
-                                                "
-                                            >
-
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-
-                                            </div>
-
-
-                                            <div
-                                                class="
-                                                    paper
-                                                    paper-two
-                                                "
-                                            >
-
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-
-                                            </div>
-
-                                        </div>
-
-
-
-                                        <!-- PERSON -->
-
-                                        <div
-                                            class="
-                                                research-person
-                                            "
-                                        >
-
-                                            <div
-                                                class="
-                                                    research-head
-                                                "
-                                            ></div>
-
-                                            <div
-                                                class="
-                                                    research-body
-                                                "
-                                            ></div>
-
-                                        </div>
-
-                                    </div>
-
-
-                                    <span
-                                        class="resume-number"
-                                    >
-                                        02
-                                    </span>
-
-
-                                    <span
-                                        class="image-label"
-                                    >
-                                        RESEARCH
-                                    </span>
-
-                                </div>
-
-
-
-                                <div class="resume-content">
-
-                                    <p
-                                        class="resume-category"
-                                    >
-                                        RESEARCH
-                                    </p>
-
-
-                                    <h3>
-                                        Research Analyst
-                                    </h3>
-
-
-                                    <p>
-
-                                        Quantitative research,
-                                        statistical analysis,
-                                        survey methodology,
-                                        research design, and
-                                        interpretation of findings.
-
-                                    </p>
-
-
-                                    <div
-                                        class="resume-skills"
-                                    >
-
-                                        <span>
-                                            SPSS
-                                        </span>
-
-                                        <span>
-                                            Research
-                                        </span>
-
-                                        <span>
-                                            Statistics
-                                        </span>
-
-                                        <span>
-                                            Survey Design
-                                        </span>
-
-                                    </div>
-
-
-                                    <button
-                                        class="resume-button"
-                                        data-resume="Research Analyst"
-                                    >
-
-                                        View Resume
-
-                                        <span>
-                                            →
-                                        </span>
-
-                                    </button>
-
-                                </div>
-
-                            </article>
-
-
-
-                            <!-- =====================================
-                                 CARD 03 — WORKFORCE ANALYST
-                            ====================================== -->
-
-                            <article
-                                class="resume-card"
-                                data-index="2"
-                            >
-
-
-                                <div
-                                    class="
-                                        resume-image
-                                        workforce-image
-                                    "
-                                >
-
-
-                                    <div
-                                        class="
-                                            workforce-visual
-                                        "
-                                    >
-
-
-                                        <div
-                                            class="
-                                                workforce-screen
-                                            "
-                                        >
-
-                                            <div>
-                                                WORKFORCE
-                                            </div>
-
-
-                                            <div
-                                                class="
-                                                    workforce-bars
-                                                "
-                                            >
-
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-
-                                            </div>
-
-                                        </div>
-
-
-
-                                        <div
-                                            class="
-                                                workforce-person
-                                            "
-                                        >
-
-                                            <div
-                                                class="wf-head"
-                                            ></div>
-
-                                            <div
-                                                class="wf-body"
-                                            ></div>
-
-                                        </div>
-
-
-                                    </div>
-
-
-                                    <span
-                                        class="resume-number"
-                                    >
-                                        03
-                                    </span>
-
-
-                                    <span
-                                        class="image-label"
-                                    >
-                                        WORKFORCE
-                                    </span>
-
-                                </div>
-
-
-
-                                <div class="resume-content">
-
-                                    <p
-                                        class="resume-category"
-                                    >
-                                        WORKFORCE
-                                    </p>
-
-
-                                    <h3>
-                                        Workforce Analyst
-                                    </h3>
-
-
-                                    <p>
-
-                                        Workforce planning,
-                                        reporting, productivity
-                                        analysis, staffing,
-                                        and operational insights.
-
-                                    </p>
-
-
-                                    <div
-                                        class="resume-skills"
-                                    >
-
-                                        <span>
-                                            Workforce
-                                        </span>
-
-                                        <span>
-                                            Reporting
-                                        </span>
-
-                                        <span>
-                                            Excel
-                                        </span>
-
-                                    </div>
-
-
-                                    <button
-                                        class="resume-button"
-                                        data-resume="Workforce Analyst"
-                                    >
-
-                                        View Resume
-
-                                        <span>
-                                            →
-                                        </span>
-
-                                    </button>
-
-                                </div>
-
-                            </article>
-
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- CAROUSEL CONTROLS -->
-
-                    <div
-                        class="resume-controls"
-                    >
-
-                        <button
-                            type="button"
-                            class="carousel-button"
-                            id="resumePrev"
-                            aria-label="Previous resume"
-                        >
-                            ←
-                        </button>
-
-
-                        <div
-                            class="carousel-indicator"
-                        >
-
-                            <span
-                                class="current-slide"
-                                id="currentSlide"
-                            >
+                            <span class="card-number">
                                 01
                             </span>
 
-
-                            <span
-                                class="indicator-line"
-                            ></span>
+                        </div>
 
 
-                            <span
-                                class="total-slides"
+                        <!-- TEXT -->
+
+                        <div class="card-body">
+
+                            <p class="card-kicker">
+                                ANALYTICS
+                            </p>
+
+                            <h3>
+                                Data Analyst
+                            </h3>
+
+                            <p>
+                                Focused on data analysis,
+                                reporting, data validation,
+                                Excel, Power BI, statistical
+                                analysis, and data-driven insights.
+                            </p>
+
+
+                            <div class="skills-list">
+
+                                <span>
+                                    Excel
+                                </span>
+
+                                <span>
+                                    Power BI
+                                </span>
+
+                                <span>
+                                    SQL
+                                </span>
+
+                                <span>
+                                    Statistics
+                                </span>
+
+                            </div>
+
+
+                            <button
+                                class="request-btn"
+                                data-resume="Data Analyst Resume"
+                                type="button"
                             >
+                                Request Resume
+                                <span>→</span>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- =====================================
+                         CARD 02 — RESEARCH ANALYST
+                    ====================================== -->
+
+                    <article class="resume-card">
+
+                        <!-- IMAGE / VISUAL -->
+
+                        <div class="card-image research-visual">
+
+                            <div class="research-orbit orbit-1"></div>
+                            <div class="research-orbit orbit-2"></div>
+
+                            <div class="research-center">
+                                σ
+                            </div>
+
+                            <div class="research-dot dot-1"></div>
+                            <div class="research-dot dot-2"></div>
+                            <div class="research-dot dot-3"></div>
+                            <div class="research-dot dot-4"></div>
+
+                            <div class="visual-label">
+                                RESEARCH
+                            </div>
+
+                            <span class="card-number">
+                                02
+                            </span>
+
+                        </div>
+
+
+                        <!-- TEXT -->
+
+                        <div class="card-body">
+
+                            <p class="card-kicker">
+                                RESEARCH
+                            </p>
+
+                            <h3>
+                                Research Analyst
+                            </h3>
+
+                            <p>
+                                Focused on quantitative research,
+                                statistical analysis, survey methodology,
+                                hypothesis testing, research design,
+                                and interpretation of findings.
+                            </p>
+
+
+                            <div class="skills-list">
+
+                                <span>
+                                    SPSS
+                                </span>
+
+                                <span>
+                                    Research
+                                </span>
+
+                                <span>
+                                    Statistics
+                                </span>
+
+                                <span>
+                                    Survey Design
+                                </span>
+
+                            </div>
+
+
+                            <button
+                                class="request-btn"
+                                data-resume="Research Analyst Resume"
+                                type="button"
+                            >
+                                Request Resume
+                                <span>→</span>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- =====================================
+                         CARD 03 — WORKFORCE ANALYST
+                    ====================================== -->
+
+                    <article class="resume-card">
+
+                        <!-- IMAGE / VISUAL -->
+
+                        <div class="card-image workforce-visual">
+
+                            <div class="workforce-dashboard">
+
+                                <div class="wfm-header">
+                                    WORKFORCE
+                                </div>
+
+                                <div class="wfm-stats">
+
+                                    <div>
+                                        <strong>
+                                            94%
+                                        </strong>
+                                        <small>
+                                            SLA
+                                        </small>
+                                    </div>
+
+                                    <div>
+                                        <strong>
+                                            87%
+                                        </strong>
+                                        <small>
+                                            Occupancy
+                                        </small>
+                                    </div>
+
+                                </div>
+
+                                <div class="wfm-chart">
+
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+
+                                </div>
+
+                            </div>
+
+                            <div class="visual-label">
+                                WFM
+                            </div>
+
+                            <span class="card-number">
                                 03
                             </span>
 
                         </div>
 
 
-                        <button
-                            type="button"
-                            class="carousel-button"
-                            id="resumeNext"
-                            aria-label="Next resume"
-                        >
-                            →
-                        </button>
+                        <!-- TEXT -->
 
-                    </div>
+                        <div class="card-body">
+
+                            <p class="card-kicker">
+                                WORKFORCE
+                            </p>
+
+                            <h3>
+                                Workforce Analyst
+                            </h3>
+
+                            <p>
+                                Focused on workforce reporting,
+                                performance monitoring, trend analysis,
+                                operational data, and workforce analytics.
+                            </p>
+
+
+                            <div class="skills-list">
+
+                                <span>
+                                    Excel
+                                </span>
+
+                                <span>
+                                    Power BI
+                                </span>
+
+                                <span>
+                                    Reporting
+                                </span>
+
+                                <span>
+                                    WFM
+                                </span>
+
+                            </div>
+
+
+                            <button
+                                class="request-btn"
+                                data-resume="Workforce Analyst Resume"
+                                type="button"
+                            >
+                                Request Resume
+                                <span>→</span>
+                            </button>
+
+                        </div>
+
+                    </article>
 
 
                 </div>
 
-
-
-                <!-- =================================================
-                     GRADUATION PHOTO
-                     
-                     THIS IS BESIDE THE RESUME CARD,
-                     NOT IN THE HERO.
-                ================================================== -->
-
-                <aside
-                    class="graduation-profile"
-                >
-
-
-                    <div
-                        class="graduation-photo"
-                    >
-
-                        <div
-                            class="
-                                graduation-photo-blur
-                            "
-                        ></div>
-
-
-                        <div
-                            class="
-                                graduation-photo-frame
-                            "
-                        >
-
-                            <img
-                                src="assets/graduation.jpg"
-                                alt="Graduation portrait"
-                                onerror="
-                                    this.style.display='none';
-                                    this.parentElement.classList.add('photo-missing');
-                                "
-                            >
-
-                            <div
-                                class="
-                                    photo-missing-text
-                                "
-                            >
-                                Add graduation.jpg
-                                to assets/
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="graduation-caption"
-                    >
-
-                        <span>
-                            GRADUATE
-                        </span>
-
-                        <strong>
-                            Professional Profile
-                        </strong>
-
-                    </div>
-
-
-                </aside>
-
-
             </div>
 
 
-        </section>
+
+            <!-- Next button -->
+
+            <button
+                class="carousel-arrow carousel-next"
+                type="button"
+                aria-label="Next resume"
+            >
+                &#8594;
+            </button>
+
+        </div>
 
 
 
-        <!-- =================================================
-             ABOUT SECTION
-        ================================================== -->
-
-        <section
-            class="about-section"
-            id="about"
-        >
-
-            <div class="about-card">
-
-                <p class="section-label">
-                    ABOUT THIS PORTAL
-                </p>
-
-
-                <h2>
-                    One profile.
-                    <span>Multiple career tracks.</span>
-                </h2>
-
-
-                <p>
-
-                    This recruiter portal provides
-                    different resume profiles based
-                    on professional skills, experience,
-                    and career direction.
-
-                </p>
-
-            </div>
-
-        </section>
-
-
-    </main>
-
-
-
-    <!-- =====================================================
-         RESUME MODAL
-    ====================================================== -->
-
-    <div
-        class="resume-modal"
-        id="resumeModal"
-        aria-hidden="true"
-    >
+        <!-- Dots -->
 
         <div
-            class="modal-backdrop"
-            id="modalBackdrop"
-        ></div>
-
-
-        <div
-            class="modal-card"
-            role="dialog"
-            aria-modal="true"
+            class="carousel-dots"
+            id="carouselDots"
+            aria-label="Resume selection"
         >
 
             <button
                 type="button"
-                class="modal-close"
-                id="modalClose"
-                aria-label="Close"
-            >
-                ×
-            </button>
+                class="dot active"
+                aria-label="Data Analyst Resume"
+            ></button>
+
+            <button
+                type="button"
+                class="dot"
+                aria-label="Research Analyst Resume"
+            ></button>
+
+            <button
+                type="button"
+                class="dot"
+                aria-label="Workforce Analyst Resume"
+            ></button>
+
+        </div>
 
 
-            <p
-                class="modal-label"
-                id="modalLabel"
-            >
-                RESUME
+        <p class="carousel-hint">
+            <span>←</span>
+            Explore the targeted resumes
+            <span>→</span>
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section
+    id="about"
+    class="about-section"
+>
+
+    <div class="container about-content">
+
+        <div class="section-heading">
+
+            <p class="eyebrow">
+                ABOUT
             </p>
 
-
-            <h2
-                id="modalTitle"
-            >
-                Resume
+            <h2>
+                About Me
             </h2>
 
+        </div>
+
+
+        <div class="about-text">
 
             <p>
-
-                The selected resume can be
-                connected to your PDF file here.
-
+                I am a BS Statistics graduate with experience in
+                customer service, quality reporting support,
+                and workforce-related operations.
             </p>
 
+            <p>
+                My academic and professional background has
+                developed my interest in data analysis,
+                statistical research, workforce analytics,
+                and data-driven decision-making.
+            </p>
 
-            <!--
-                CHANGE THE href VALUES LATER
-                TO YOUR ACTUAL PDF FILES.
-            -->
+            <p>
+                This portal provides recruiters with targeted
+                resume versions aligned with different
+                analytical career paths.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section
+    id="contact"
+    class="contact-section"
+>
+
+    <div class="container contact-content">
+
+        <p class="eyebrow">
+            CONTACT
+        </p>
+
+        <h2>
+            Let's Connect
+        </h2>
+
+        <p>
+            For recruitment opportunities,
+            resume requests, or professional inquiries,
+            you may reach me through the following:
+        </p>
+
+
+        <div class="contact-details">
+
+            <div class="contact-item">
+
+                <span>
+                    Email
+                </span>
+
+                <a href="mailto:arvin.candelaria0410@gmail.com">
+                    arvin.candelaria0410@gmail.com
+                </a>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <span>
+                    LinkedIn
+                </span>
+
+                <a
+                    href="https://www.linkedin.com/in/arvincandelaria/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    linkedin.com/in/arvincandelaria
+                </a>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <span>
+                    GitHub
+                </span>
+
+                <a
+                    href="https://github.com/arvincandelaria-lab"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    github.com/arvincandelaria-lab
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="contact-buttons">
 
             <a
-                href="#"
-                class="modal-download"
-                id="modalDownload"
+                href="mailto:arvin.candelaria0410@gmail.com"
+                class="primary-btn"
             >
-                Open Resume PDF
-                →
+                Email Me
+            </a>
+
+            <a
+                href="https://www.linkedin.com/in/arvincandelaria/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="secondary-btn"
+            >
+                LinkedIn
+            </a>
+
+            <a
+                href="https://github.com/arvincandelaria-lab"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="secondary-btn"
+            >
+                GitHub
             </a>
 
         </div>
 
     </div>
 
+</section>
+
+</main>
 
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
 
-    <footer class="site-footer">
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+    <div class="container">
 
         <p>
-            © 2026 Arvin Candelaria
+            © 2026 Arvin H. Candelaria.
+            All rights reserved.
         </p>
 
         <p>
-            Professional Resume Portal
+            Recruiter Resume Portal
         </p>
 
-    </footer>
+    </div>
+
+</footer>
 
 
 
-    <script src="script.js"></script>
+<!-- =========================================================
+     RESUME REQUEST MODAL
+========================================================= -->
+
+<div
+    id="resumeModal"
+    class="modal"
+    aria-hidden="true"
+>
+
+    <div class="modal-overlay"></div>
+
+
+    <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+    >
+
+        <button
+            type="button"
+            class="close-modal"
+            aria-label="Close"
+        >
+            &times;
+        </button>
+
+
+        <p class="eyebrow">
+            RESUME REQUEST
+        </p>
+
+        <h2 id="modalTitle">
+            Request Resume
+        </h2>
+
+        <p class="modal-description">
+            Please provide your professional information.
+            Your request will be reviewed before the
+            appropriate resume is provided.
+        </p>
+
+
+        <!-- =================================================
+             FORMSPREE
+        ================================================== -->
+
+        <form
+            id="resumeRequestForm"
+            action="https://formspree.io/f/xqpkykqa"
+            method="POST"
+        >
+
+            <!-- Requested resume -->
+
+            <input
+                type="hidden"
+                name="requested_resume"
+                id="requestedResume"
+            >
+
+
+            <!-- Subject -->
+
+            <input
+                type="hidden"
+                name="_subject"
+                id="emailSubject"
+                value="Resume Request"
+            >
+
+
+            <!-- Spam protection -->
+
+            <input
+                type="text"
+                name="_gotcha"
+                style="display:none"
+                tabindex="-1"
+                autocomplete="off"
+            >
+
+
+            <!-- NAME -->
+
+            <div class="form-group">
+
+                <label for="name">
+                    Full Name *
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Your full name"
+                    required
+                >
+
+            </div>
+
+
+            <!-- COMPANY -->
+
+            <div class="form-group">
+
+                <label for="company">
+                    Company *
+                </label>
+
+                <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    placeholder="Company name"
+                    required
+                >
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label for="email">
+                    Work Email *
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="name@company.com"
+                    required
+                >
+
+            </div>
+
+
+            <!-- POSITION -->
+
+            <div class="form-group">
+
+                <label for="position">
+                    Position Hiring For *
+                </label>
+
+                <input
+                    type="text"
+                    id="position"
+                    name="position"
+                    placeholder="e.g. Data Analyst"
+                    required
+                >
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <div class="form-group">
+
+                <label for="message">
+                    Message
+                </label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    placeholder="Optional message"
+                ></textarea>
+
+            </div>
+
+
+            <!-- SUBMIT -->
+
+            <button
+                type="submit"
+                class="submit-btn"
+            >
+                Submit Resume Request
+            </button>
+
+
+            <p class="form-note">
+                Your information will be used only
+                to respond to your resume request.
+            </p>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<script src="script.js"></script>
 
 </body>
-
 </html>
