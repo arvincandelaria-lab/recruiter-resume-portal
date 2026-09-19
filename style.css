@@ -378,6 +378,17 @@ textarea {
     transform: scale(1.02);
 }
 
+.about-photo {
+    position: relative;
+    isolation: isolate;
+}
+
+.about-photo {
+    filter: drop-shadow(
+        0 25px 60px rgba(0, 0, 0, 0.8)
+    );
+}
+
 
 /* TOP + BOTTOM FADE */
 
@@ -399,6 +410,16 @@ textarea {
         );
 }
 
+.about-photo {
+    position: relative;
+    isolation: isolate;
+}
+
+.about-photo {
+    filter: drop-shadow(
+        0 25px 60px rgba(0, 0, 0, 0.8)
+    );
+}
 
 /* LEFT + RIGHT FADE */
 
