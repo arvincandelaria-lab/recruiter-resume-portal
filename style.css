@@ -302,16 +302,18 @@ textarea {
     display: grid;
     grid-template-columns: 0.65fr 1.35fr;
     gap: 70px;
-    align-items: start;
+    align-items: stretch;
 }
 
+/* PHOTO */
 .about-photo {
     width: 270px;
-    height: 245px;
+    height: auto;
+    min-height: 100%;
     overflow: hidden;
     border-radius: 18px;
     justify-self: center;
-    margin-top: 205px;
+    align-self: stretch;
 }
 
 .about-photo img {
@@ -320,6 +322,12 @@ textarea {
     display: block;
     object-fit: cover;
     object-position: center 20%;
+}
+
+/* TEXT */
+.about-info {
+    display: flex;
+    flex-direction: column;
 }
 
 .about-text {
