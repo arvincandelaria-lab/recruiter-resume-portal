@@ -1789,3 +1789,411 @@ nav,
     background: #f5f5f5 !important;
     color: #050505 !important;
 }
+
+/* =========================================================
+   HORIZONTAL FULL-SCREEN SLIDES
+   ========================================================= */
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #050505;
+}
+
+
+/* MAIN SLIDE TRACK */
+
+#slide-container {
+    width: 100vw;
+    height: 100vh;
+    height: 100svh;
+
+    display: flex;
+    flex-direction: row;
+
+    overflow: hidden;
+
+    position: relative;
+
+    scroll-snap-type: none;
+
+    transform: translateX(0);
+
+    transition: transform 0.75s cubic-bezier(.77, 0, .18, 1);
+}
+
+
+/* EACH SLIDE */
+
+#slide-container .slide {
+    flex: 0 0 100vw;
+
+    width: 100vw;
+    min-width: 100vw;
+
+    height: 100vh;
+    height: 100svh;
+
+    min-height: 0;
+
+    box-sizing: border-box;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    padding:
+        90px
+        6vw
+        40px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   REMOVE VERTICAL SCROLL BEHAVIOR
+   ========================================================= */
+
+#slide-container::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================================================
+   HORIZONTAL NAVIGATION
+   ========================================================= */
+
+.slide-controls {
+    position: fixed;
+
+    right: 35px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    z-index: 99999;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+/* ARROW BUTTON */
+
+.slide-control {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(15, 15, 15, 0.9);
+
+    border: 1px solid #333;
+
+    color: #fff;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    transition:
+        background .25s ease,
+        border-color .25s ease,
+        transform .25s ease,
+        opacity .25s ease;
+}
+
+.slide-control:hover {
+    background: #1c1c1c;
+
+    border-color: #555;
+
+    transform: scale(1.08);
+}
+
+
+/* DISABLED */
+
+.slide-control:disabled {
+    opacity: 0.25;
+
+    cursor: default;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   LEFT / RIGHT ARROW
+   ========================================================= */
+
+#slide-prev {
+    display: none;
+}
+
+
+/* =========================================================
+   DOTS
+   ========================================================= */
+
+.slide-dots {
+    position: fixed;
+
+    bottom: 30px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 99999;
+
+    display: flex;
+
+    gap: 10px;
+}
+
+.slide-dot {
+    width: 7px;
+    height: 7px;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    border: 1px solid #555;
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        background .25s ease;
+}
+
+.slide-dot.active {
+    background: #fff;
+
+    border-color: #fff;
+
+    transform: scale(1.5);
+}
+
+
+/* =========================================================
+   RESUME SLIDE
+   ========================================================= */
+
+#resumes .container {
+    width: min(1200px, 100%);
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+
+/* 3 CARDS */
+
+#resumes .resume-grid {
+    display: grid !important;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr)) !important;
+
+    gap: 20px;
+
+    width: 100%;
+}
+
+
+/* CARD */
+
+#resumes .resume-card {
+    width: 100%;
+
+    height: 390px;
+
+    min-width: 0;
+
+    padding: 0 !important;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #101010;
+
+    border: 1px solid #292929;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+}
+
+
+/* IMAGE */
+
+#resumes .card-image {
+    width: 100%;
+    height: 135px;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    background: #080808;
+}
+
+#resumes .card-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    filter:
+        brightness(.72)
+        contrast(1.08)
+        saturate(.7);
+}
+
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.about-container {
+    width: min(1100px, 100%);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        300px
+        minmax(0, 650px);
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 70px;
+}
+
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact-container {
+    width: min(750px, 100%);
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    html,
+    body {
+        overflow: hidden;
+    }
+
+    #slide-container {
+        height: 100svh;
+
+        overflow: hidden;
+    }
+
+    #slide-container .slide {
+        width: 100vw;
+        min-width: 100vw;
+
+        height: 100svh;
+
+        padding:
+            100px 22px
+            70px;
+    }
+
+
+    /* Resume cards can become vertically scrollable
+       inside the resume slide if needed */
+
+    #resumes .container {
+        max-height: calc(100svh - 150px);
+
+        overflow-y: auto;
+
+        scrollbar-width: none;
+    }
+
+    #resumes .container::-webkit-scrollbar {
+        display: none;
+    }
+
+    #resumes .resume-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    #resumes .resume-card {
+        height: auto;
+
+        min-height: 360px;
+    }
+
+
+    /* ABOUT */
+
+    .about-container {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+        text-align: center;
+
+        max-height: calc(100svh - 150px);
+
+        overflow-y: auto;
+    }
+
+
+    /* ARROW */
+
+    .slide-controls {
+        right: 15px;
+    }
+
+    .slide-control {
+        width: 44px;
+        height: 44px;
+    }
+
+
+    /* DOTS */
+
+    .slide-dots {
+        bottom: 20px;
+    }
+
+}
