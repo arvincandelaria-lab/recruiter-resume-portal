@@ -14,14 +14,14 @@ html {
 
 body {
     font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
+        Arial,
+        Helvetica,
         sans-serif;
 
     background: #080808;
     color: #f5f5f5;
+
+    line-height: 1.6;
 
     overflow-x: hidden;
 }
@@ -42,6 +42,7 @@ textarea {
 }
 
 button {
+    -webkit-tap-highlight-color: transparent;
     cursor: pointer;
 }
 
@@ -52,159 +53,204 @@ button {
 
 
 /* =========================================================
-   NAVBAR
+   NAVIGATION
 ========================================================= */
 
 .navbar {
-    position: fixed;
+    position: sticky;
     top: 0;
-    left: 0;
-
-    width: 100%;
 
     z-index: 1000;
 
     background:
-        rgba(5, 5, 5, 0.75);
-
-    backdrop-filter:
-        blur(18px);
-
-    -webkit-backdrop-filter:
-        blur(18px);
+        rgba(8, 8, 8, 0.82);
 
     border-bottom:
-        1px solid rgba(255, 255, 255, 0.08);
+        1px solid rgba(255,255,255,0.10);
+
+    backdrop-filter:
+        blur(16px);
 }
 
 .nav-container {
-    height: 76px;
+    min-height: 76px;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
+
+    gap: 30px;
 }
 
 .logo {
-    font-size: 0.78rem;
+    color: #fff;
+
+    font-size: 0.88rem;
     font-weight: 800;
-    letter-spacing: 0.18em;
+
+    letter-spacing: 0.1em;
 }
 
 .nav-links {
     display: flex;
-    gap: 30px;
+
+    align-items: center;
+
+    gap: 28px;
 }
 
 .nav-links a {
     color: #aaa;
-    font-size: 0.82rem;
+
+    font-size: 0.86rem;
+    font-weight: 700;
 
     transition:
-        color 0.25s ease;
+        color 0.2s ease;
 }
 
 .nav-links a:hover {
-    color: white;
+    color: #fff;
 }
 
 
 /* =========================================================
    HERO
+   NO GRADUATION PHOTO HERE
 ========================================================= */
 
 .hero {
-    min-height: 78vh;
+    min-height:
+        calc(100svh - 76px);
 
     display: flex;
-    align-items: center;
 
-    position: relative;
+    align-items: center;
 
     background:
         radial-gradient(
-            circle at 70% 30%,
-            rgba(255, 255, 255, 0.08),
+            circle at 75% 25%,
+            rgba(255,255,255,0.08),
             transparent 30%
         ),
+
         #080808;
+
+    color: #fff;
 }
 
 .hero-content {
-    padding-top: 100px;
+    padding:
+        80px 0;
 }
 
 .hero-copy {
-    max-width: 720px;
+    max-width:
+        760px;
 }
 
 .eyebrow {
-    color: #9a9a9a;
+    margin-bottom:
+        16px;
 
-    font-size: 0.72rem;
-    font-weight: 800;
+    font-size:
+        0.72rem;
 
-    letter-spacing: 0.22em;
+    font-weight:
+        800;
 
-    margin-bottom: 18px;
+    letter-spacing:
+        0.18em;
+
+    text-transform:
+        uppercase;
+}
+
+.hero .eyebrow {
+    color: #aaa;
 }
 
 .hero h1 {
+    max-width:
+        800px;
+
+    margin-bottom:
+        26px;
+
     font-size:
-        clamp(3rem, 7vw, 6.5rem);
+        clamp(3rem, 6.3vw, 6.3rem);
 
-    line-height: 0.95;
+    line-height:
+        0.98;
 
-    letter-spacing: -0.06em;
-
-    max-width: 900px;
+    letter-spacing:
+        -0.055em;
 }
 
 .hero h1 span {
-    display: block;
+    display:
+        block;
 
-    color: #777;
-
-    margin-top: 10px;
+    color:
+        #777;
 }
 
 .hero-description {
-    max-width: 600px;
+    max-width:
+        650px;
 
-    color: #a5a5a5;
+    margin-bottom:
+        34px;
 
-    line-height: 1.8;
+    color:
+        #aaa;
 
-    margin-top: 28px;
+    font-size:
+        1.04rem;
 }
 
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
 .hero-buttons {
-    display: flex;
+    display:
+        flex;
 
-    gap: 12px;
+    gap:
+        12px;
 
-    margin-top: 32px;
-
-    flex-wrap: wrap;
+    flex-wrap:
+        wrap;
 }
 
 .primary-btn,
-.secondary-btn,
-.request-btn,
-.submit-btn {
-    display: inline-flex;
+.secondary-btn {
+    display:
+        inline-flex;
 
-    align-items: center;
-    justify-content: center;
+    align-items:
+        center;
 
-    min-height: 46px;
+    justify-content:
+        center;
 
-    padding: 0 22px;
+    min-height:
+        46px;
 
-    border-radius: 999px;
+    padding:
+        0 22px;
 
-    font-size: 0.78rem;
-    font-weight: 700;
+    border-radius:
+        999px;
+
+    font-size:
+        0.78rem;
+
+    font-weight:
+        700;
 
     transition:
         transform 0.25s ease,
@@ -213,163 +259,196 @@ button {
 }
 
 .primary-btn {
-    background: #fff;
-    color: #080808;
+    background:
+        #fff;
+
+    color:
+        #080808;
 }
 
 .primary-btn:hover {
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 }
 
 .secondary-btn {
     border:
-        1px solid rgba(255, 255, 255, 0.18);
+        1px solid
+        rgba(255,255,255,0.18);
 
-    color: #eee;
+    color:
+        #eee;
 
-    background: transparent;
+    background:
+        transparent;
 }
 
 .secondary-btn:hover {
     background:
-        rgba(255, 255, 255, 0.08);
+        rgba(255,255,255,0.08);
 }
 
 
 /* =========================================================
    RESUME SECTION
-   GRADUATION PHOTO BACKGROUND
 ========================================================= */
 
 .resume-section {
-    position: relative;
+    position:
+        relative;
 
-    min-height: 780px;
+    min-height:
+        760px;
 
     padding:
-        100px 0 110px;
+        105px 0 100px;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
-    isolation: isolate;
+    isolation:
+        isolate;
 }
 
 
 /* =========================================================
    GRADUATION PHOTO
-   POSITIONED TOWARD THE RIGHT
+   THIS IS THE BACKGROUND BESIDE THE CARDS
 ========================================================= */
 
 .resume-background {
-    position: absolute;
+    position:
+        absolute;
 
-    inset: -70px;
+    inset:
+        -60px;
 
-    z-index: -3;
+    z-index:
+        -3;
 
     background-image:
         url("assets/graduation.jpg");
 
-    background-size: cover;
+    background-size:
+        cover;
 
     /*
-       Graduation picture is intentionally
-       positioned toward the right side.
+       PHOTO MOVED TO THE RIGHT
     */
     background-position:
-        right 20% center;
+        78% 20%;
+
+    background-repeat:
+        no-repeat;
 
     filter:
-        blur(14px);
+        blur(13px);
 
     transform:
-        scale(1.08);
+        scale(1.06);
 
     opacity:
-        0.52;
+        0.68;
 }
 
 
 /* =========================================================
-   PREMIUM BLACK OVERLAY
-   DARKER ON LEFT, LIGHTER ON RIGHT
+   DARK PREMIUM OVERLAY
 ========================================================= */
 
 .resume-overlay {
-    position: absolute;
+    position:
+        absolute;
 
-    inset: 0;
+    inset:
+        0;
 
-    z-index: -2;
+    z-index:
+        -2;
 
     background:
         linear-gradient(
             90deg,
-            rgba(0, 0, 0, 0.96) 0%,
-            rgba(0, 0, 0, 0.90) 38%,
-            rgba(0, 0, 0, 0.62) 68%,
-            rgba(0, 0, 0, 0.28) 100%
+
+            rgba(0,0,0,0.97) 0%,
+
+            rgba(0,0,0,0.91) 34%,
+
+            rgba(0,0,0,0.60) 64%,
+
+            rgba(0,0,0,0.20) 100%
         );
 
     backdrop-filter:
-        blur(3px);
+        blur(2px);
 }
 
 
 /* =========================================================
-   EXTRA VIGNETTE
+   VIGNETTE
 ========================================================= */
 
 .resume-section::after {
-    content: "";
+    content:
+        "";
 
-    position: absolute;
+    position:
+        absolute;
 
-    inset: 0;
+    inset:
+        0;
 
-    z-index: -1;
+    z-index:
+        -1;
 
-    pointer-events: none;
+    pointer-events:
+        none;
 
     background:
         radial-gradient(
             circle at center,
+
             transparent 0%,
-            rgba(0, 0, 0, 0.22) 48%,
-            rgba(0, 0, 0, 0.68) 100%
+
+            rgba(0,0,0,0.20) 48%,
+
+            rgba(0,0,0,0.70) 100%
         );
 }
 
 
 /* =========================================================
-   RESUME SECTION HEADING
+   SECTION HEADING
 ========================================================= */
 
 .section-heading {
-    max-width: 720px;
+    text-align:
+        center;
 
-    margin-bottom: 42px;
-}
-
-.section-heading .eyebrow {
-    color: #aaa;
+    margin-bottom:
+        42px;
 }
 
 .section-heading h2 {
-    margin-bottom: 14px;
-
     font-size:
-        clamp(2.3rem, 5vw, 4rem);
+        clamp(2.2rem, 5vw, 4rem);
 
-    line-height: 1.05;
+    line-height:
+        1.05;
 
-    letter-spacing: -0.045em;
+    letter-spacing:
+        -0.05em;
+
+    margin-bottom:
+        12px;
 }
 
-.section-heading p:last-child {
-    color: #aaa;
+.section-heading > p:last-child {
+    color:
+        #aaa;
 
-    line-height: 1.7;
+    line-height:
+        1.7;
 }
 
 
@@ -378,31 +457,43 @@ button {
 ========================================================= */
 
 .resume-carousel-wrap {
-    position: relative;
+    position:
+        relative;
 
-    width: 100%;
+    width:
+        100%;
 }
 
 
 /*
-   ONE MAIN CARD + NEXT CARD PARTIALLY VISIBLE
+   IMPORTANT:
+
+   The cards remain in a horizontal row.
+   Because each card is only 520px wide,
+   the next card can partially appear.
 */
 
 .resume-grid {
-    display: flex;
+    display:
+        flex;
 
-    gap: 22px;
+    gap:
+        22px;
 
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow-x:
+        auto;
+
+    overflow-y:
+        hidden;
 
     padding:
-        8px 70px 30px;
+        8px 60px 30px;
 
     scroll-snap-type:
         x mandatory;
 
-    scrollbar-width: none;
+    scrollbar-width:
+        none;
 
     overscroll-behavior-x:
         contain;
@@ -412,58 +503,68 @@ button {
 }
 
 .resume-grid::-webkit-scrollbar {
-    display: none;
+    display:
+        none;
 }
 
 
 /* =========================================================
-   COMPACT SPLIT RESUME CARD
-   IMAGE LEFT + TEXT RIGHT
+   RESUME CARD
+   COMPACT + SPLIT LAYOUT
 ========================================================= */
 
 .resume-card {
-    position: relative;
+    position:
+        relative;
 
     /*
-       SMALLER THAN THE PREVIOUS 650px CARD
+       THIS IS THE SIZE
     */
     flex:
-        0 0 min(
-            520px,
-            calc(100vw - 22vw)
-        );
+        0 0 520px;
 
-    min-width: 0;
+    width:
+        520px;
+
+    min-width:
+        520px;
 
     /*
-       SPLIT LAYOUT
+       SPLIT:
+       42% IMAGE
+       58% TEXT
     */
-    display: grid;
+    display:
+        grid;
 
     grid-template-columns:
         42% 58%;
 
-    min-height: 360px;
+    min-height:
+        360px;
 
     scroll-snap-align:
         center;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
     background:
-        rgba(255, 255, 255, 0.96);
+        rgba(255,255,255,0.96);
 
-    color: #171717;
+    color:
+        #171717;
 
     border:
-        1px solid rgba(255, 255, 255, 0.35);
+        1px solid
+        rgba(255,255,255,0.35);
 
     border-radius:
         18px;
 
     box-shadow:
         0 25px 70px
-        rgba(0, 0, 0, 0.42);
+        rgba(0,0,0,0.42);
 
     transition:
         transform 0.25s ease,
@@ -476,40 +577,47 @@ button {
 
     box-shadow:
         0 30px 80px
-        rgba(0, 0, 0, 0.50);
+        rgba(0,0,0,0.50);
 }
 
 
 /* =========================================================
-   CARD IMAGE — LEFT SIDE
+   CARD IMAGE
+   LEFT SIDE
 ========================================================= */
 
 .card-image {
-    position: relative;
+    position:
+        relative;
 
-    width: 100%;
-    height: 100%;
+    width:
+        100%;
 
-    min-height: 360px;
+    height:
+        100%;
 
-    overflow: hidden;
+    min-height:
+        360px;
+
+    overflow:
+        hidden;
 
     background:
         #171717;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
 }
 
 .card-image img {
-    width: 100%;
-    height: 100%;
+    width:
+        100%;
 
-    display: block;
+    height:
+        100%;
 
-    object-fit: cover;
+    display:
+        block;
+
+    object-fit:
+        cover;
 
     object-position:
         center;
@@ -525,24 +633,28 @@ button {
 }
 
 
-/* =========================================================
-   IMAGE DARK GRADIENT
-========================================================= */
+/* IMAGE GRADIENT */
 
 .card-image::after {
-    content: "";
+    content:
+        "";
 
-    position: absolute;
+    position:
+        absolute;
 
-    inset: 0;
+    inset:
+        0;
 
-    pointer-events: none;
+    pointer-events:
+        none;
 
     background:
         linear-gradient(
             180deg,
-            rgba(0, 0, 0, 0.04),
-            rgba(0, 0, 0, 0.40)
+
+            rgba(0,0,0,0.05),
+
+            rgba(0,0,0,0.40)
         );
 }
 
@@ -552,32 +664,45 @@ button {
 ========================================================= */
 
 .card-number {
-    position: absolute;
+    position:
+        absolute;
 
-    top: 15px;
-    left: 15px;
+    top:
+        15px;
 
-    z-index: 5;
+    left:
+        15px;
 
-    display: inline-flex;
+    z-index:
+        5;
 
-    align-items: center;
-    justify-content: center;
+    display:
+        flex;
 
-    width: 38px;
-    height: 38px;
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        38px;
+
+    height:
+        38px;
 
     border:
         1px solid
-        rgba(255, 255, 255, 0.45);
+        rgba(255,255,255,0.40);
 
     border-radius:
         10px;
 
     background:
-        rgba(0, 0, 0, 0.35);
+        rgba(0,0,0,0.35);
 
-    color: white;
+    color:
+        white;
 
     backdrop-filter:
         blur(8px);
@@ -587,78 +712,72 @@ button {
 
     font-weight:
         800;
-
-    letter-spacing:
-        0.1em;
 }
 
 
 /* =========================================================
-   CARD TEXT — RIGHT SIDE
+   CARD BODY
+   RIGHT SIDE
 ========================================================= */
 
 .card-body {
     padding:
-        27px 26px 26px;
+        26px 24px;
 
-    display: flex;
+    display:
+        flex;
 
-    flex-direction: column;
+    flex-direction:
+        column;
 
-    justify-content: center;
+    justify-content:
+        center;
 }
 
 .card-kicker {
     color:
-        #8a867e;
+        #777;
 
     font-size:
-        0.65rem;
+        0.62rem;
 
     font-weight:
         800;
 
     letter-spacing:
-        0.16em;
+        0.18em;
 
     margin-bottom:
         8px;
 }
 
 .card-body h3 {
-    margin-bottom:
-        11px;
-
     font-size:
-        clamp(
-            1.45rem,
-            2.5vw,
-            1.85rem
-        );
+        1.65rem;
 
     line-height:
         1.1;
 
     letter-spacing:
-        -0.03em;
+        -0.04em;
+
+    margin-bottom:
+        12px;
 }
 
 .card-body >
 p:not(.card-kicker) {
-    max-width:
-        100%;
-
-    margin-bottom:
-        17px;
-
     color:
-        #65615a;
+        #666;
 
     font-size:
-        0.82rem;
+        0.79rem;
 
     line-height:
         1.6;
+
+    margin-bottom:
+        15px;
 }
 
 
@@ -677,28 +796,28 @@ p:not(.card-kicker) {
         6px;
 
     margin-bottom:
-        18px;
+        17px;
 }
 
 .skills-list span {
     padding:
         5px 8px;
 
-    background:
-        #f1efe9;
-
     border:
         1px solid
-        rgba(0, 0, 0, 0.04);
+        rgba(0,0,0,0.06);
 
     border-radius:
         999px;
+
+    background:
+        #f1efe9;
 
     color:
         #4f4b45;
 
     font-size:
-        0.62rem;
+        0.60rem;
 
     font-weight:
         600;
@@ -706,17 +825,18 @@ p:not(.card-kicker) {
 
 
 /* =========================================================
-   REQUEST RESUME BUTTON
+   REQUEST RESUME
 ========================================================= */
 
 .request-btn {
-    width: 100%;
-
-    margin-top:
-        auto;
+    width:
+        100%;
 
     min-height:
         43px;
+
+    margin-top:
+        auto;
 
     border:
         0;
@@ -728,16 +848,13 @@ p:not(.card-kicker) {
         #171717;
 
     color:
-        #fff;
-
-    font-weight:
-        800;
+        white;
 
     font-size:
         0.70rem;
 
-    cursor:
-        pointer;
+    font-weight:
+        800;
 
     display:
         flex;
@@ -764,45 +881,42 @@ p:not(.card-kicker) {
         #333;
 }
 
-.request-btn:disabled {
-    opacity:
-        0.6;
-
-    cursor:
-        wait;
-
-    transform:
-        none;
-}
-
 
 /* =========================================================
    CAROUSEL ARROWS
 ========================================================= */
 
 .carousel-arrow {
-    position: absolute;
+    position:
+        absolute;
 
-    z-index: 20;
+    top:
+        50%;
 
-    width: 44px;
-    height: 44px;
+    z-index:
+        20;
+
+    transform:
+        translateY(-50%);
+
+    width:
+        44px;
+
+    height:
+        44px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.20);
 
     border-radius:
         50%;
 
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.20);
-
     background:
-        rgba(10, 10, 10, 0.72);
+        rgba(10,10,10,0.75);
 
     color:
         white;
-
-    cursor:
-        pointer;
 
     display:
         flex;
@@ -825,75 +939,21 @@ p:not(.card-kicker) {
 }
 
 .carousel-arrow:hover {
-    transform:
-        scale(1.08);
-
     background:
-        rgba(255, 255, 255, 0.12);
+        rgba(255,255,255,0.12);
+
+    transform:
+        translateY(-50%) scale(1.08);
 }
 
 .carousel-prev {
     left:
-        10px;
+        8px;
 }
 
 .carousel-next {
     right:
-        10px;
-}
-
-
-/* =========================================================
-   CAROUSEL DOTS
-========================================================= */
-
-.carousel-dots {
-    display:
-        flex;
-
-    justify-content:
-        center;
-
-    gap:
         8px;
-
-    margin-top:
-        24px;
-}
-
-.dot {
-    width:
-        8px;
-
-    height:
-        8px;
-
-    border:
-        0;
-
-    border-radius:
-        50%;
-
-    background:
-        rgba(255, 255, 255, 0.25);
-
-    cursor:
-        pointer;
-
-    transition:
-        width 0.25s ease,
-        background 0.25s ease;
-}
-
-.dot.active {
-    width:
-        25px;
-
-    border-radius:
-        20px;
-
-    background:
-        white;
 }
 
 
@@ -918,12 +978,24 @@ p:not(.card-kicker) {
         0.05em;
 }
 
-.carousel-hint span {
-    color:
-        #aaa;
+.hint-dot {
+    display:
+        inline-block;
 
-    padding:
-        0 5px;
+    width:
+        7px;
+
+    height:
+        7px;
+
+    border-radius:
+        50%;
+
+    background:
+        #ddd;
+
+    margin-right:
+        5px;
 }
 
 
@@ -950,19 +1022,17 @@ p:not(.card-kicker) {
         80px;
 }
 
-.about-section
-.section-heading {
+.about-section .section-heading {
+    text-align:
+        left;
+
     margin:
         0;
 }
 
 .about-section h2 {
     font-size:
-        clamp(
-            2.5rem,
-            5vw,
-            4.5rem
-        );
+        clamp(2.5rem,5vw,4.5rem);
 
     letter-spacing:
         -0.06em;
@@ -1007,11 +1077,7 @@ p:not(.card-kicker) {
 
 .contact-content h2 {
     font-size:
-        clamp(
-            2.5rem,
-            5vw,
-            4.5rem
-        );
+        clamp(2.5rem,5vw,4.5rem);
 
     letter-spacing:
         -0.06em;
@@ -1055,13 +1121,13 @@ p:not(.eyebrow) {
 
     border:
         1px solid
-        rgba(255, 255, 255, 0.08);
+        rgba(255,255,255,0.08);
 
     border-radius:
         12px;
 
     background:
-        rgba(255, 255, 255, 0.025);
+        rgba(255,255,255,0.025);
 }
 
 .contact-item span {
@@ -1114,7 +1180,7 @@ p:not(.eyebrow) {
 
     border-top:
         1px solid
-        rgba(255, 255, 255, 0.07);
+        rgba(255,255,255,0.07);
 
     background:
         #050505;
@@ -1183,11 +1249,6 @@ p:not(.eyebrow) {
         visible;
 }
 
-
-/* =========================================================
-   MODAL OVERLAY
-========================================================= */
-
 .modal-overlay {
     position:
         absolute;
@@ -1196,16 +1257,11 @@ p:not(.eyebrow) {
         0;
 
     background:
-        rgba(0, 0, 0, 0.82);
+        rgba(0,0,0,0.82);
 
     backdrop-filter:
         blur(10px);
 }
-
-
-/* =========================================================
-   MODAL CONTENT
-========================================================= */
 
 .modal-content {
     position:
@@ -1215,7 +1271,7 @@ p:not(.eyebrow) {
         2;
 
     width:
-        min(520px, 100%);
+        min(520px,100%);
 
     max-height:
         90vh;
@@ -1228,7 +1284,7 @@ p:not(.eyebrow) {
 
     border:
         1px solid
-        rgba(255, 255, 255, 0.14);
+        rgba(255,255,255,0.14);
 
     border-radius:
         24px;
@@ -1238,7 +1294,7 @@ p:not(.eyebrow) {
 
     box-shadow:
         0 40px 100px
-        rgba(0, 0, 0, 0.65);
+        rgba(0,0,0,0.65);
 
     transform:
         translateY(20px);
@@ -1252,11 +1308,6 @@ p:not(.eyebrow) {
     transform:
         translateY(0);
 }
-
-
-/* =========================================================
-   CLOSE MODAL
-========================================================= */
 
 .close-modal {
     position:
@@ -1281,30 +1332,14 @@ p:not(.eyebrow) {
         50%;
 
     background:
-        rgba(255, 255, 255, 0.08);
+        rgba(255,255,255,0.08);
 
     color:
         white;
 
     font-size:
         1.3rem;
-
-    cursor:
-        pointer;
-
-    transition:
-        background 0.2s ease;
 }
-
-.close-modal:hover {
-    background:
-        rgba(255, 255, 255, 0.16);
-}
-
-
-/* =========================================================
-   MODAL TEXT
-========================================================= */
 
 .modal-content h2 {
     font-size:
@@ -1368,7 +1403,7 @@ p:not(.eyebrow) {
 
     border:
         1px solid
-        rgba(255, 255, 255, 0.10);
+        rgba(255,255,255,0.10);
 
     border-radius:
         10px;
@@ -1384,9 +1419,6 @@ p:not(.eyebrow) {
 
     resize:
         vertical;
-
-    transition:
-        border-color 0.2s ease;
 }
 
 .form-group textarea {
@@ -1397,7 +1429,7 @@ p:not(.eyebrow) {
 .form-group input:focus,
 .form-group textarea:focus {
     border-color:
-        rgba(255, 255, 255, 0.40);
+        rgba(255,255,255,0.40);
 }
 
 .form-group input::placeholder,
@@ -1405,11 +1437,6 @@ p:not(.eyebrow) {
     color:
         #555;
 }
-
-
-/* =========================================================
-   SUBMIT BUTTON
-========================================================= */
 
 .submit-btn {
     width:
@@ -1433,9 +1460,6 @@ p:not(.eyebrow) {
     font-weight:
         800;
 
-    cursor:
-        pointer;
-
     margin-top:
         4px;
 }
@@ -1452,11 +1476,6 @@ p:not(.eyebrow) {
     cursor:
         wait;
 }
-
-
-/* =========================================================
-   FORM NOTE
-========================================================= */
 
 .form-note {
     color:
@@ -1480,7 +1499,7 @@ p:not(.eyebrow) {
 @media (max-width: 800px) {
 
     .nav-container {
-        height:
+        min-height:
             68px;
     }
 
@@ -1507,59 +1526,23 @@ p:not(.eyebrow) {
             90px 0;
     }
 
-    /*
-       Keep split layout on tablet,
-       but make card slightly narrower.
-    */
-
     .resume-card {
-        flex-basis:
-            min(
-                500px,
-                82vw
-            );
+        flex:
+            0 0 500px;
 
-        min-height:
-            350px;
-    }
+        width:
+            500px;
 
-    .card-image {
-        min-height:
-            350px;
-    }
-
-    .card-body {
-        padding:
-            24px 22px;
-    }
-
-    .card-body h3 {
-        font-size:
-            1.55rem;
-    }
-
-    .card-body >
-    p:not(.card-kicker) {
-        font-size:
-            0.78rem;
+        min-width:
+            500px;
     }
 
     .carousel-arrow {
         width:
-            43px;
+            42px;
 
         height:
-            43px;
-    }
-
-    .carousel-prev {
-        left:
-            3px;
-    }
-
-    .carousel-next {
-        right:
-            3px;
+            42px;
     }
 
     .about-content {
@@ -1570,8 +1553,7 @@ p:not(.eyebrow) {
             35px;
     }
 
-    .about-section
-    .section-heading {
+    .about-section .section-heading {
         text-align:
             center;
     }
@@ -1624,8 +1606,9 @@ p:not(.eyebrow) {
     }
 
     /*
-       On mobile, split layout becomes
-       image on top + text underneath.
+       On phones:
+       image becomes top
+       text becomes bottom.
     */
 
     .resume-section {
@@ -1638,27 +1621,22 @@ p:not(.eyebrow) {
 
     .resume-background {
         background-position:
-            65% 20%;
+            70% 20%;
+
+        opacity:
+            0.50;
 
         filter:
             blur(12px);
-
-        opacity:
-            0.42;
     }
 
     .resume-overlay {
         background:
             linear-gradient(
                 90deg,
-                rgba(0, 0, 0, 0.92),
-                rgba(0, 0, 0, 0.68)
+                rgba(0,0,0,0.94),
+                rgba(0,0,0,0.62)
             );
-    }
-
-    .section-heading {
-        margin-bottom:
-            32px;
     }
 
     .resume-grid {
@@ -1670,11 +1648,15 @@ p:not(.eyebrow) {
     }
 
     .resume-card {
-        flex-basis:
+
+        flex:
+            0 0 86vw;
+
+        width:
             86vw;
 
-        display:
-            grid;
+        min-width:
+            86vw;
 
         grid-template-columns:
             1fr;
@@ -1687,9 +1669,6 @@ p:not(.eyebrow) {
     }
 
     .card-image {
-        width:
-            100%;
-
         height:
             205px;
 
@@ -1699,34 +1678,12 @@ p:not(.eyebrow) {
 
     .card-body {
         padding:
-            24px 22px 24px;
+            24px 22px;
     }
 
     .card-body h3 {
         font-size:
             1.5rem;
-    }
-
-    .card-body >
-    p:not(.card-kicker) {
-        min-height:
-            auto;
-
-        font-size:
-            0.82rem;
-
-        margin-bottom:
-            15px;
-    }
-
-    .skills-list {
-        margin-bottom:
-            17px;
-    }
-
-    .request-btn {
-        min-height:
-            43px;
     }
 
     .carousel-arrow {
@@ -1753,7 +1710,14 @@ p:not(.eyebrow) {
     }
 
     .resume-card {
-        flex-basis:
+
+        flex:
+            0 0 88vw;
+
+        width:
+            88vw;
+
+        min-width:
             88vw;
     }
 
@@ -1770,13 +1734,4 @@ p:not(.eyebrow) {
             22px 20px;
     }
 
-    .card-body h3 {
-        font-size:
-            1.4rem;
-    }
-
-    .skills-list span {
-        font-size:
-            0.58rem;
-    }
 }
