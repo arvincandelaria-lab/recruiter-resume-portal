@@ -1034,6 +1034,757 @@ body {
     border: 1px solid #444444 !important;
 }
 
+/* =========================================================
+   FULL SCREEN SLIDE SYSTEM
+   ========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background: #050505;
+    color: #f5f5f5;
+}
+
+
+/* MAIN SLIDE CONTAINER */
+
+#slide-container {
+    height: 100vh;
+    height: 100svh;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#slide-container::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* EACH SLIDE */
+
+#slide-container .slide {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+
+    box-sizing: border-box;
+
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    padding: 90px 6vw 40px;
+
+    overflow: hidden;
+}
+
+
+/* CONTAINER */
+
+.slide .container {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   HERO SLIDE
+   ========================================================= */
+
+.hero-section {
+    background:
+        radial-gradient(
+            circle at 75% 30%,
+            rgba(255,255,255,0.055),
+            transparent 30%
+        ),
+        #050505;
+}
+
+.hero-content {
+    max-width: 1050px;
+}
+
+.hero-content h1 {
+    font-size: clamp(3rem, 6vw, 6.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.055em;
+    margin: 20px 0 30px;
+    max-width: 1000px;
+}
+
+.hero-content h1 span {
+    display: block;
+    color: #8f8f8f;
+}
+
+.hero-description {
+    max-width: 650px;
+    color: #9c9c9c;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+
+/* EYEBROW */
+
+.eyebrow {
+    color: #777;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    font-weight: 700;
+    margin: 0 0 14px;
+}
+
+
+/* BUTTONS */
+
+.hero-buttons,
+.contact-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.primary-btn,
+.secondary-btn,
+.request-btn {
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.primary-btn,
+.secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 13px 22px;
+
+    text-decoration: none;
+
+    border-radius: 999px;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.primary-btn {
+    background: #f5f5f5;
+    color: #050505;
+    border: 1px solid #f5f5f5;
+}
+
+.secondary-btn {
+    background: #111;
+    color: #f5f5f5;
+    border: 1px solid #303030;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover,
+.request-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   RESUME SLIDE
+   ========================================================= */
+
+.resume-section {
+    background: #080808;
+}
+
+#resumes .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.section-heading {
+    margin-bottom: 25px;
+}
+
+.section-heading h2,
+.about-content h2,
+.contact-container h2 {
+    font-size: clamp(2rem, 4vw, 4rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin: 0 0 12px;
+}
+
+.section-heading p {
+    color: #777;
+    margin: 0;
+}
+
+
+/* RESUME GRID */
+
+#resumes .resume-grid {
+    display: grid !important;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr)) !important;
+
+    gap: 20px;
+
+    width: 100%;
+}
+
+
+/* RESUME CARD */
+
+#resumes .resume-card {
+    width: 100%;
+    min-width: 0;
+
+    height: 390px;
+
+    padding: 0 !important;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #101010;
+
+    border: 1px solid #292929;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+}
+
+#resumes .resume-card:hover {
+    transform: translateY(-6px);
+
+    background: #151515;
+
+    border-color: #444;
+}
+
+
+/* CARD IMAGE */
+
+#resumes .card-image {
+    width: 100%;
+    height: 130px;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    background: #080808;
+}
+
+#resumes .card-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    filter:
+        brightness(0.72)
+        contrast(1.08)
+        saturate(0.7);
+
+    transition:
+        transform 0.5s ease,
+        filter 0.5s ease;
+}
+
+#resumes .resume-card:hover .card-image img {
+    transform: scale(1.05);
+
+    filter:
+        brightness(0.85)
+        contrast(1.05)
+        saturate(0.8);
+}
+
+
+/* CARD CONTENT */
+
+#resumes .card-content {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 18px 20px;
+}
+
+#resumes .card-number {
+    color: #555;
+
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+
+    margin-bottom: 5px;
+}
+
+#resumes .card-content h3 {
+    margin: 0 0 8px;
+
+    font-size: 1.3rem;
+
+    letter-spacing: -0.025em;
+}
+
+#resumes .card-content p {
+    color: #858585;
+
+    font-size: 0.78rem;
+
+    line-height: 1.55;
+
+    margin: 0;
+}
+
+
+/* SKILLS */
+
+#resumes .skills {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    margin-top: 12px;
+}
+
+#resumes .skills span {
+    padding: 5px 9px;
+
+    background: #181818;
+
+    border: 1px solid #292929;
+
+    border-radius: 999px;
+
+    color: #999;
+
+    font-size: 0.63rem;
+}
+
+
+/* REQUEST BUTTON */
+
+#resumes .request-btn {
+    margin-top: auto;
+
+    width: 100%;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    background: #f2f2f2;
+
+    color: #050505;
+
+    border: 1px solid #f2f2f2;
+
+    font-size: 0.72rem;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   ABOUT SLIDE
+   ========================================================= */
+
+.about-section {
+    background: #050505;
+}
+
+.about-container {
+    display: grid;
+
+    grid-template-columns:
+        minmax(260px, 360px)
+        minmax(0, 650px);
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 70px;
+}
+
+
+/* GRADUATION PHOTO */
+
+.about-photo {
+    position: relative;
+
+    width: 300px;
+    height: 430px;
+
+    overflow: hidden;
+
+    background: #050505;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.8);
+}
+
+.about-photo img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center 20%;
+
+    filter:
+        brightness(0.78)
+        contrast(1.06)
+        saturate(0.75);
+
+    transform: scale(1.02);
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            black 10%,
+            black 88%,
+            transparent 100%
+        );
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            black 10%,
+            black 88%,
+            transparent 100%
+        );
+}
+
+
+/* CINEMATIC FADE */
+
+.about-photo::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #050505 0%,
+            transparent 18%,
+            transparent 72%,
+            #050505 100%
+        );
+}
+
+.about-photo::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to right,
+            #050505 0%,
+            transparent 18%,
+            transparent 82%,
+            #050505 100%
+        );
+}
+
+
+.about-content {
+    max-width: 650px;
+}
+
+.about-content p:not(.eyebrow) {
+    color: #8b8b8b;
+
+    line-height: 1.8;
+
+    margin: 0 0 18px;
+}
+
+
+/* =========================================================
+   CONTACT SLIDE
+   ========================================================= */
+
+.contact-section {
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(255,255,255,0.035),
+            transparent 40%
+        ),
+        #050505;
+}
+
+.contact-container {
+    max-width: 750px !important;
+
+    text-align: center;
+}
+
+.contact-container .eyebrow {
+    text-align: center;
+}
+
+.contact-container p:not(.eyebrow) {
+    color: #858585;
+
+    line-height: 1.8;
+}
+
+.contact-buttons {
+    justify-content: center;
+}
+
+
+/* =========================================================
+   SLIDE DOT NAVIGATION
+   ========================================================= */
+
+.slide-dots {
+    position: fixed;
+
+    right: 28px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    z-index: 9999;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.slide-dot {
+    width: 7px;
+    height: 7px;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    border: 1px solid #555;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.slide-dot.active {
+    background: #fff;
+
+    border-color: #fff;
+
+    transform: scale(1.5);
+}
+
+
+/* =========================================================
+   SLIDE ARROW CONTROLS
+   ========================================================= */
+
+.slide-controls {
+    position: fixed;
+
+    right: 25px;
+    bottom: 28px;
+
+    z-index: 9999;
+
+    display: flex;
+
+    gap: 7px;
+}
+
+.slide-control {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    background: #111;
+
+    border: 1px solid #303030;
+
+    color: #fff;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.slide-control:hover {
+    background: #1d1d1d;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+nav,
+.navbar {
+    z-index: 10000;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    #resumes .resume-grid {
+        gap: 14px;
+    }
+
+    #resumes .resume-card {
+        height: 410px;
+    }
+
+    .about-container {
+        gap: 40px;
+
+        grid-template-columns:
+            250px
+            minmax(0, 1fr);
+    }
+
+    .about-photo {
+        width: 250px;
+        height: 380px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        overflow: auto;
+    }
+
+    #slide-container {
+        height: auto;
+
+        overflow: visible;
+
+        scroll-snap-type: none;
+    }
+
+    #slide-container .slide {
+        min-height: auto;
+
+        padding:
+            100px 22px
+            70px;
+
+        overflow: visible;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    #resumes .resume-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    #resumes .resume-card {
+        height: auto;
+        min-height: 390px;
+    }
+
+    .about-container {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+
+        text-align: center;
+    }
+
+    .about-photo {
+        width: 230px;
+        height: 330px;
+
+        margin: 0 auto;
+    }
+
+    .slide-dots,
+    .slide-controls {
+        display: none;
+    }
+
+}
 .contact-buttons .primary-btn:hover {
     background: #f5f5f5 !important;
     color: #050505 !important;
